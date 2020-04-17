@@ -15,7 +15,7 @@ exports.up = function(knex) {
       table.integer('xp_points').unsigned().notNullable()
       
       //Atributos
-      table.integer('inspiration').unsigned().notNullable()
+      table.string('inspiration', 4)
       table.integer('proficiency_bonus').unsigned().notNullable()
 
       table.integer('strength').unsigned().notNullable()
@@ -36,7 +36,7 @@ exports.up = function(knex) {
       table.integer('charisma').unsigned().notNullable()
       table.integer('charisma_modifier').notNullable()
 
-      table.integer('passive_wisdow').unsigned().notNullable()
+      table.integer('passive_wisdow').notNullable()
 
       //Saving Throws
       table.integer('str_saving_throw').notNullable()
@@ -174,8 +174,38 @@ exports.up = function(knex) {
       table.text('additional_features')
       table.text('treasure')
 
-      //Informações de feitiços
+      //Informações para magos
+      table.string('spellcasting_class', 16)
+      table.string('spellcasting_ability', 16)
+      table.integer('spell_save_dc')
+      table.integer('spell_attack_bonus')
 
+      table.integer('lv1_slots_total').unsigned()
+      table.integer('lv1_slots_expended').unsigned()
+
+      table.integer('lv2_slots_total').unsigned()
+      table.integer('lv2_slots_expended').unsigned()
+
+      table.integer('lv3_slots_total').unsigned()
+      table.integer('lv3_slots_expended').unsigned()
+
+      table.integer('lv4_slots_total').unsigned()
+      table.integer('lv4_slots_expended').unsigned()
+
+      table.integer('lv5_slots_total').unsigned()
+      table.integer('lv5_slots_expended').unsigned()
+
+      table.integer('lv6_slots_total').unsigned()
+      table.integer('lv6_slots_expended').unsigned()
+
+      table.integer('lv7_slots_total').unsigned()
+      table.integer('lv7_slots_expended').unsigned()
+
+      table.integer('lv8_slots_total').unsigned()
+      table.integer('lv8_slots_expended').unsigned()
+
+      table.integer('lv9_slots_total').unsigned()
+      table.integer('lv9_slots_expended').unsigned()
   })
 };
 
