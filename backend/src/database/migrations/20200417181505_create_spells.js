@@ -1,7 +1,9 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('spells', function (table) {
-      table.integer('sheet_id').unsigned().primary()    //chave primária (que também é chave estrangeira)
+      table.increments('spell_id')  //chave primária
+
+      table.integer('sheet_id').unsigned()
       table.foreign('sheet_id').references('sheet_id').inTable('sheets')
 
       table.integer('spell_level').unsigned().notNullable()
