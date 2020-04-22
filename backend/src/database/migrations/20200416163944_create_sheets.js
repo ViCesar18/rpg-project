@@ -36,7 +36,7 @@ exports.up = function(knex) {
       table.integer('charisma').unsigned().notNullable()
       table.integer('charisma_modifier').notNullable()
 
-      table.integer('passive_wisdow').notNullable()
+      table.integer('passive_wisdom').notNullable()
 
       //Saving Throws
       table.integer('str_saving_throw').notNullable()
