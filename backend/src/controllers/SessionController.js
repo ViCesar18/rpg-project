@@ -7,17 +7,15 @@ module.exports = {
 
         const hPassword = sha256(password).toString()
 
-        const [ user_id ] = await connection('users').insert({
+        const user_id = await connection('users').where({
             username,
             password: hPassword
-        })
+        }).select('user_id').first()
 
-        return response.json({ user_id })
-    },
+        if(!user_id){
+            return response.status(400).json({ error: 'Usuário ou senha incorretos.' })
+        }
 
-    async index(request, response) {
-        const users = await connection('users').select('*')
-
-        return response.json(users)
+        return response.json(user_id)
     }
 }
