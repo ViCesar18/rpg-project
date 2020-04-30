@@ -19,14 +19,16 @@ routes.post('/login', Validate.user(), SessionController.create)
 //Fichas
 routes.get('/sheet/index-sheets', SheetController.index)
 
+routes.get('/sheet/user-sheets', Validate.indexSheets(), SheetController.index_per_user)
+
 routes.post('/sheet/create-sheet', Validate.createSheet(), SheetController.create)
 
 routes.delete('/sheet/delete-sheet/:sheet_id', Validate.deleteSheet(), SheetController.delete)
 
 //Magias
-routes.get('/spells/index-spells', SpellController.index)
+routes.get('/spell/index-spells', SpellController.index)
 
-routes.get('/sheet/:sheet_id/index-spells', Validate.indexSpell(), SpellController.index_per_sheet)
+routes.get('/sheet/:sheet_id/index-spells', Validate.indexSpells(), SpellController.index_per_sheet)
 
 routes.post('/sheet/:sheet_id/create-spell', Validate.createSpell(), SpellController.create)
 

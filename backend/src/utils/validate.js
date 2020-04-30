@@ -221,6 +221,14 @@ module.exports = {
         })
     },
 
+    indexSheets() {
+        return celebrate({
+            [ Segments.HEADERS ]: Joi.object({
+                authorization: Joi.number().positive().required()
+            }).unknown()
+        })
+    },
+
     deleteSheet(){ 
         return celebrate({
             [ Segments.PARAMS ]: Joi.object().keys({
@@ -245,7 +253,7 @@ module.exports = {
         })
     },
 
-    indexSpell() {
+    indexSpells() {
         return celebrate({
             [ Segments.PARAMS ]: Joi.object().keys({
                 sheet_id: Joi.number().positive().required()
