@@ -220,6 +220,25 @@ module.exports = {
         return response.json(sheets)
     },
 
+    async index_per_user(request, response) {
+        const { page = 1 } = request.query
+        
+        const user_id = request.headers.authorization
+
+        const [ count ] = await connection('sheets').where('user_id', user_id).count()
+        //const [ count ] = await connection('sheets').count(`user_id as ${user_id}`)
+
+        const sheets = await connection('sheets')
+         .where('user_id', user_id)
+         .limit(5)
+         .offset((page - 1) * 5)
+         .select('*')
+
+        response.header('X-Total-Count', count['count(*)'])
+
+        return response.json(sheets)
+    },
+
     async delete(request, response) {
         const user_id = request.headers.authorization
         const { sheet_id } = request.params
