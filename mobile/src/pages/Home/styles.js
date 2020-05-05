@@ -12,6 +12,10 @@ export default StyleSheet.create({
         marginLeft: 15
     },
 
+    headerButton: {
+        width: 36
+    },
+
     headerLogo: {
         width: 225,
         height: 225,

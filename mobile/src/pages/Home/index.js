@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
 
 import logoImg from '../../assets/logo.png'
 import { Feather, AntDesign } from '@expo/vector-icons'
@@ -39,11 +39,16 @@ const DATA = [
     }
 ]
 
-export default function Home() {
+export default function Home({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Feather name={'menu'} size={36} color={'#FFF'} />
+                <TouchableHighlight
+                    style={styles.headerButton}
+                    onPress={navigation.openDrawer}
+                >
+                    <Feather name={'menu'} size={36} color={'#FFF'} />
+                </TouchableHighlight>
                 <Image style={styles.headerLogo} source={logoImg} />
             </View>
 
