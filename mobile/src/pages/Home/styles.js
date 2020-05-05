@@ -4,8 +4,8 @@ import Constants from 'expo-constants'
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#164C88',
-        paddingTop: Constants.statusBarHeight + 20
+        backgroundColor: '#4A55A1',
+        paddingTop: Constants.statusBarHeight + 10
     },
 
     header: {
@@ -31,7 +31,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 8,
-        elevation: 5,
+        elevation: 8,
         marginHorizontal: 24,
         marginBottom: 30,
     },
@@ -49,5 +49,6 @@ export default StyleSheet.create({
         alignSelf: 'flex-end',
         width: 51,
         marginRight: 24,
+        marginTop: 10
     },
 })
