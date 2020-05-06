@@ -46,6 +46,7 @@ export default function Home({ navigation }) {
                 <TouchableHighlight
                     style={styles.headerButton}
                     onPress={navigation.openDrawer}
+                    underlayColor="transparent"
                 >
                     <Feather name={'menu'} size={36} color={'#FFF'} />
                 </TouchableHighlight>
