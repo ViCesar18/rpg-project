@@ -68,7 +68,7 @@ export default function Home({ navigation }) {
                 
             <TouchableOpacity
                 style={styles.createCharacter}
-                onPress={() => {}}
+                onPress={() => {navigation.navigate('NewSheetScreen')}}
             >
                 <AntDesign name={'pluscircle'} size={50} color={'#FFF'}></AntDesign>
             </TouchableOpacity>
