@@ -12,6 +12,10 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
     },
 
+    itemIcon: {
+        width: 50,
+    },
+
     itemText: {
         fontSize: 20,
     }

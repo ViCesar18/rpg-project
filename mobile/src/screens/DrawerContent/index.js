@@ -3,7 +3,8 @@ import { View } from 'react-native'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import { Drawer } from 'react-native-paper'
 
-import { MaterialIcons, AntDesign, FontAwesome5 } from '@expo/vector-icons'
+import { MaterialIcons, createIconSetFromIcoMoon } from '@expo/vector-icons'
+import iconMoonConfig from '../../selection.json'
 
 import styles from './styles'
 
@@ -13,6 +14,8 @@ export default function CustomDrawer({ navigation }) {
     const [newSheetIsFocused, setNewSheetIsFocused] = useState(false)
     const [configIsFocused, setConfigIsFocused] = useState(false)
 
+    const Icon = createIconSetFromIcoMoon(iconMoonConfig)
+
     return (
         <View style={{ flex: 1 }}>
             <View style={styles.itemsScroll}>
@@ -20,7 +23,8 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={homeIsFocused}
                         label="Home"
-                        icon={({ color, size }) => <MaterialIcons
+                        icon={({ color }) => <Icon
+                            style={styles.itemIcon}
                             name="home"
                             color={color}
                             size={40}
@@ -40,7 +44,8 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={dicesIsFocused}
                         label="Dados"
-                        icon={({ color, size }) => <FontAwesome5
+                        icon={({ color }) => <Icon
+                            style={styles.itemIcon}
                             name="dice-d20"
                             color={color}
                             size={40}
@@ -60,8 +65,9 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={newSheetIsFocused}
                         label="Nova Ficha"
-                        icon={({ color, size }) => <AntDesign
-                            name="pluscircle"
+                        icon={({ color }) => <Icon
+                            style={styles.itemIcon}
+                            name="plus-circle"
                             color={color}
                             size={40}
                         />}
@@ -80,8 +86,9 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={configIsFocused}
                         label="Configurações"
-                        icon={({ color, size }) => <MaterialIcons
-                            name="settings"
+                        icon={({ color }) => <Icon
+                            style={styles.itemIcon}
+                            name="config"
                             color={color}
                             size={40}
                         />}

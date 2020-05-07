@@ -2,7 +2,12 @@ import React from 'react'
 import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
 
 import logoImg from '../../assets/logo.png'
-import { Feather, AntDesign } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
+
+import { createIconSetFromIcoMoon } from '@expo/vector-icons'
+import iconMoonConfig from '../../selection.json'
+
+const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
 import styles from './styles'
 
@@ -59,7 +64,7 @@ export default function Home({ navigation }) {
                 keyExtractor={item => String(item.id)}
                 renderItem={({ item }) => (
                     <View style={styles.character}>
-                        <Feather name={'user'} size={50} color={'black'} />
+                        <Icon name={'home'} size={50} color="black" />
                         <Text style={styles.characterName}>Balin</Text>
                         <Text style={styles.characterDescription}>Anão/Guerreiro</Text>
                     </View>
@@ -70,7 +75,7 @@ export default function Home({ navigation }) {
                 style={styles.createCharacter}
                 onPress={() => {navigation.navigate('NewSheetScreen')}}
             >
-                <AntDesign name={'pluscircle'} size={50} color={'#FFF'}></AntDesign>
+                <Icon name={'plus-circle'} size={50} color={'#FFF'} />
             </TouchableOpacity>
         </View>
     )

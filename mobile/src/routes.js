@@ -6,11 +6,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 const AppStack = createStackNavigator()
 const AppDrawer = createDrawerNavigator()
 
-import Home from './pages/Home'
-import DrawerContent from './pages/DrawerContent'
-import Dices from './pages/Dices'
-import NewSheetScreen from './pages/NewSheet'
-import ConfigScreen from './pages/ConfigScreen'
+import Home from './screens/Home'
+import DrawerContent from './screens/DrawerContent'
+import Dices from './screens/Dices'
+import NewSheetScreen from './screens/NewSheet'
+import ConfigScreen from './screens/ConfigScreen'
 
 export default function Routes() {
     return (
