@@ -7,7 +7,7 @@ import { MaterialIcons, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
 
 import styles from './styles'
-import { useIsFocused, useNavigationState, useRoute, useFocusEffect, useLinkProps } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 
 export default function CustomDrawer({ navigation }) {
     var homeIsFocused
