@@ -7,19 +7,34 @@ import { MaterialIcons, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
 
 import styles from './styles'
+import { useIsFocused, useNavigationState, useRoute, useFocusEffect, useLinkProps } from '@react-navigation/native'
 
 export default function CustomDrawer({ navigation }) {
-    const [homeIsFocused, setHomeIsFocused] = useState(true)
-    const [dicesIsFocused, setDicesIsFocused] = useState(false)
-    const [newSheetIsFocused, setNewSheetIsFocused] = useState(false)
-    const [configIsFocused, setConfigIsFocused] = useState(false)
+    var homeIsFocused
+    var dicesIsFocused
+    var newSheetIsFocused
+    var configIsFocused
+
+    const route = useRoute()
+    if(route.params === undefined) {
+        homeIsFocused = true
+        dicesIsFocused = false
+        newSheetIsFocused = false
+        configIsFocused = false
+    }
+    else {
+        homeIsFocused = route.params.homeIsFocused
+        dicesIsFocused = route.params.dicesIsFocused
+        newSheetIsFocused = route.params.newSheetIsFocused
+        configIsFocused = route.params.configIsFocused
+    }
 
     const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
     return (
         <View style={{ flex: 1 }}>
             <View style={styles.itemsScroll}>
-                <DrawerContentScrollView contentContainerStyle={styles.itemsList}>
+                <DrawerContentScrollView contentContainerStyle={styles.itemsList} >
                     <DrawerItem
                         focused={homeIsFocused}
                         label="Home"
@@ -30,16 +45,19 @@ export default function CustomDrawer({ navigation }) {
                             size={40}
                         />}
                         onPress={() => {
-                            if(!homeIsFocused){
-                                setHomeIsFocused(true)
-                                setDicesIsFocused(false)
-                                setNewSheetIsFocused(false)
-                                setConfigIsFocused(false)
-                            }
+                            const parentNavigation = navigation.dangerouslyGetParent()
+                            parentNavigation.setParams({
+                                homeIsFocused: true,
+                                dicesIsFocused: false,
+                                newSheetIsFocused: false,
+                                configIsFocused: false,
+                            })
+
                             navigation.navigate('Home')
                         }}
                         labelStyle={styles.itemText}
                         activeTintColor="#4A55A1"
+                        inactiveTintColor="#353535"
                     />
                     <DrawerItem
                         focused={dicesIsFocused}
@@ -51,16 +69,19 @@ export default function CustomDrawer({ navigation }) {
                             size={40}
                         />}
                         onPress={() => {
-                            if(!dicesIsFocused){
-                                setHomeIsFocused(false)
-                                setDicesIsFocused(true)
-                                setNewSheetIsFocused(false)
-                                setConfigIsFocused(false)
-                            }
+                            const parentNavigation = navigation.dangerouslyGetParent()
+                            parentNavigation.setParams({
+                                homeIsFocused: false,
+                                dicesIsFocused: true,
+                                newSheetIsFocused: false,
+                                configIsFocused: false,
+                            })
+
                             navigation.navigate('Dices')
                         }}
                         labelStyle={styles.itemText}
                         activeTintColor="#4A55A1"
+                        inactiveTintColor="#353535"
                     />
                     <DrawerItem
                         focused={newSheetIsFocused}
@@ -72,16 +93,19 @@ export default function CustomDrawer({ navigation }) {
                             size={40}
                         />}
                         onPress={() => {
-                            if(!newSheetIsFocused){
-                                setHomeIsFocused(false)
-                                setDicesIsFocused(false)
-                                setNewSheetIsFocused(true)
-                                setConfigIsFocused(false)
-                            }
+                            const parentNavigation = navigation.dangerouslyGetParent()
+                            parentNavigation.setParams({
+                                homeIsFocused: false,
+                                dicesIsFocused: false,
+                                newSheetIsFocused: true,
+                                configIsFocused: false,
+                            })
+
                             navigation.navigate('NewSheetScreen')
                         }}
                         labelStyle={styles.itemText}
                         activeTintColor="#4A55A1"
+                        inactiveTintColor="#353535"
                     />
                     <DrawerItem
                         focused={configIsFocused}
@@ -93,16 +117,19 @@ export default function CustomDrawer({ navigation }) {
                             size={40}
                         />}
                         onPress={() => {
-                            if(!configIsFocused){
-                                setHomeIsFocused(false)
-                                setDicesIsFocused(false)
-                                setNewSheetIsFocused(false)
-                                setConfigIsFocused(true)
-                            }
+                            const parentNavigation = navigation.dangerouslyGetParent()
+                            parentNavigation.setParams({
+                                homeIsFocused: false,
+                                dicesIsFocused: false,
+                                newSheetIsFocused: false,
+                                configIsFocused: true,
+                            })
+
                             navigation.navigate('Configuration')
                         }}
                         labelStyle={styles.itemText}
                         activeTintColor="#4A55A1"
+                        inactiveTintColor="#353535"
                     />
                 </DrawerContentScrollView>
             </View>
@@ -115,6 +142,7 @@ export default function CustomDrawer({ navigation }) {
                     size={size}
                 />}
                 onPress={() => {}}
+                inactiveTintColor="#353535"
             />
         </View>
     )
