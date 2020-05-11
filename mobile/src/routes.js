@@ -3,11 +3,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 
+import LogIn from './screens/LogIn'
 import Home from './screens/Home'
 import DrawerContent from './screens/DrawerContent'
 import Dices from './screens/Dices'
-import NewSheetScreen from './screens/NewSheet'
+import NewCharacterScreen from './screens/NewCharacter'
 import ConfigScreen from './screens/ConfigScreen'
+import Character from './screens/Character'
 
 const AppDrawer = createDrawerNavigator()
 const Drawer = () => (
@@ -17,9 +19,9 @@ const Drawer = () => (
     >
         <AppDrawer.Screen name="Home" component={Home} />
         <AppDrawer.Screen name="Dices" component={Dices} />
-        <AppDrawer.Screen name="NewSheetScreen" component={NewSheetScreen} />
+        <AppDrawer.Screen name="NewSheetScreen" component={NewCharacterScreen} />
         <AppDrawer.Screen name="Configuration" component={ConfigScreen} />
-        <AppDrawer.Screen name="LogOut" component={Home} />
+        <AppDrawer.Screen name="Character" component={Character} />
     </AppDrawer.Navigator>
 )
 
@@ -31,6 +33,7 @@ export default function Routes() {
                 <AppStack.Screen name="Drawer" component={Drawer} options={{
                     headerShown: false
                 }}/>
+                <AppStack.Screen name="LogIn" component={LogIn} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

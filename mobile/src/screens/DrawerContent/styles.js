@@ -12,7 +12,8 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
     },
 
-    itemIcon: {
+    itemIconContent: {
+        alignItems: 'center',
         width: 50,
     },
 

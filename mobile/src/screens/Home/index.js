@@ -1,12 +1,9 @@
 import React from 'react'
 import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
 
-import logoImg from '../../assets/logo.png'
 import { Feather } from '@expo/vector-icons'
-
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
-
 const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
 import styles from './styles'
@@ -55,7 +52,7 @@ export default function Home({ navigation }) {
                 >
                     <Feather name={'menu'} size={36} color={'#FFF'} />
                 </TouchableHighlight>
-                <Image style={styles.headerLogo} source={logoImg} />
+                <Image style={styles.headerLogo} source={require('../../assets/logo.png')} />
             </View>
 
             <FlatList
@@ -63,11 +60,14 @@ export default function Home({ navigation }) {
                 data={DATA}
                 keyExtractor={item => String(item.id)}
                 renderItem={({ item }) => (
-                    <View style={styles.character}>
-                        <Icon name={'home'} size={50} color="black" />
+                    <TouchableOpacity 
+                        style={styles.character}
+                        onPress={() => navigation.navigate('Character')}
+                    >
+                        <Image  style={styles.characterImage} source={require('../../assets/avatar/dwarf.png')} />
                         <Text style={styles.characterName}>Balin</Text>
                         <Text style={styles.characterDescription}>Anão/Guerreiro</Text>
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
                 

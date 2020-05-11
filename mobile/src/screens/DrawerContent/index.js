@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import { Drawer } from 'react-native-paper'
+import { useRoute } from '@react-navigation/native'
 
 import { MaterialIcons, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
+const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
 import styles from './styles'
-import { useRoute } from '@react-navigation/native'
 
 export default function CustomDrawer({ navigation }) {
     var homeIsFocused
@@ -29,8 +29,6 @@ export default function CustomDrawer({ navigation }) {
         configIsFocused = route.params.configIsFocused
     }
 
-    const Icon = createIconSetFromIcoMoon(iconMoonConfig)
-
     return (
         <View style={{ flex: 1 }}>
             <View style={styles.itemsScroll}>
@@ -38,12 +36,15 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={homeIsFocused}
                         label="Home"
-                        icon={({ color }) => <Icon
-                            style={styles.itemIcon}
-                            name="home"
-                            color={color}
-                            size={40}
-                        />}
+                        icon={({ color }) => (
+                            <View style={styles.itemIconContent}>
+                                <Icon
+                                    name="home"
+                                    color={color}
+                                    size={40}
+                                />
+                            </View>
+                        )}
                         onPress={() => {
                             const parentNavigation = navigation.dangerouslyGetParent()
                             parentNavigation.setParams({
@@ -62,12 +63,15 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={dicesIsFocused}
                         label="Dados"
-                        icon={({ color }) => <Icon
-                            style={styles.itemIcon}
-                            name="dice-d20"
-                            color={color}
-                            size={40}
-                        />}
+                        icon={({ color }) => (
+                            <View style={styles.itemIconContent}>
+                                <Icon
+                                    name="dice-d20"
+                                    color={color}
+                                    size={40}
+                                />
+                            </View>
+                        )}
                         onPress={() => {
                             const parentNavigation = navigation.dangerouslyGetParent()
                             parentNavigation.setParams({
@@ -86,12 +90,15 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={newSheetIsFocused}
                         label="Nova Ficha"
-                        icon={({ color }) => <Icon
-                            style={styles.itemIcon}
-                            name="plus-circle"
-                            color={color}
-                            size={40}
-                        />}
+                        icon={({ color }) => (
+                            <View style={styles.itemIconContent}>
+                                <Icon
+                                    name="plus-circle"
+                                    color={color}
+                                    size={40}
+                                />
+                            </View>
+                        )}
                         onPress={() => {
                             const parentNavigation = navigation.dangerouslyGetParent()
                             parentNavigation.setParams({
@@ -110,12 +117,15 @@ export default function CustomDrawer({ navigation }) {
                     <DrawerItem
                         focused={configIsFocused}
                         label="Configurações"
-                        icon={({ color }) => <Icon
-                            style={styles.itemIcon}
-                            name="config"
-                            color={color}
-                            size={40}
-                        />}
+                        icon={({ color }) => (
+                            <View style={styles.itemIconContent}>
+                                <Icon
+                                    name="config"
+                                    color={color}
+                                    size={40}
+                                />
+                            </View>
+                        )}
                         onPress={() => {
                             const parentNavigation = navigation.dangerouslyGetParent()
                             parentNavigation.setParams({
@@ -133,15 +143,18 @@ export default function CustomDrawer({ navigation }) {
                     />
                 </DrawerContentScrollView>
             </View>
-            
             <DrawerItem
                 label="Sair"
-                icon={({ color, size }) => <MaterialIcons
-                    name="exit-to-app"
-                    color={color}
-                    size={size}
-                />}
-                onPress={() => {}}
+                icon={({ color, size }) => (
+                    <View>
+                        <MaterialIcons
+                            name="exit-to-app"
+                            color={color}
+                            size={size}
+                        />
+                    </View>
+                )}
+                onPress={() => navigation.navigate('LogIn')}
                 inactiveTintColor="#353535"
             />
         </View>
