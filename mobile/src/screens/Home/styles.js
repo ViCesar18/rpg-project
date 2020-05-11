@@ -42,7 +42,7 @@ export default StyleSheet.create({
     },
 
     characterImage: {
-        width: '19%',
+        width: '18%',
         height: '100%',
         borderRadius: (Dimensions.get('window').width + Dimensions.get('window').height) / 2,
     },
