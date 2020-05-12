@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import Constants from 'expo-constants'
 
 export default StyleSheet.create({
@@ -10,6 +10,10 @@ export default StyleSheet.create({
 
     header: {
         marginLeft: 15
+    },
+
+    headerButton: {
+        width: 36
     },
 
     headerLogo: {
@@ -25,6 +29,7 @@ export default StyleSheet.create({
     },
 
     character: {
+        padding: 5,
         flexDirection: 'row',
         height: 75,
         justifyContent: 'space-around',
@@ -34,6 +39,12 @@ export default StyleSheet.create({
         elevation: 8,
         marginHorizontal: 24,
         marginBottom: 30,
+    },
+
+    characterImage: {
+        width: '18%',
+        height: '100%',
+        borderRadius: (Dimensions.get('window').width + Dimensions.get('window').height) / 2,
     },
 
     characterName: {
