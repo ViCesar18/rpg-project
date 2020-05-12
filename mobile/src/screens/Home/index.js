@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
@@ -8,40 +8,36 @@ const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
 import styles from './styles'
 
-const DATA = [
-    {
-        id: 1,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    },
-    {
-        id: 2,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    },
-    {
-        id: 3,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    },
-    {
-        id: 4,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    },
-    {
-        id: 5,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    },
-    {
-        id: 6,
-        name: 'teste',
-        desc: 'aloalaolaoalo'
-    }
-]
+import api from '../../services/api'
 
 export default function Home({ navigation }) {
+    const [characters, setCharacters] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [total, setTotal] = useState(0)
+    const [page, setPage] = useState(1)
+
+    async function loadCharacters() {
+        if(loading || total > 0 && characters.length === total){
+            return
+        }
+
+        setLoading(true)
+
+        const response = await api.get('sheet/user-sheets', {
+            params: { page },
+            headers: { authorization: 1 }
+        })
+
+        setCharacters([...characters, ...response.data])
+        setTotal(response.headers['x-total-count'])
+        setPage(page + 1)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        loadCharacters()
+    }, [])
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -57,16 +53,21 @@ export default function Home({ navigation }) {
 
             <FlatList
                 style={styles.characterList}
-                data={DATA}
-                keyExtractor={item => String(item.id)}
-                renderItem={({ item }) => (
+                data={characters}
+                keyExtractor={character => String(character.sheet_id)}
+                showsVerticalScrollIndicator={false}
+                onEndReached={loadCharacters}
+                onEndReachedThreshold={0.2}
+                renderItem={({ item: character }) => (
                     <TouchableOpacity 
                         style={styles.character}
                         onPress={() => navigation.navigate('Character')}
                     >
-                        <Image  style={styles.characterImage} source={require('../../assets/avatar/dwarf.png')} />
-                        <Text style={styles.characterName}>Balin</Text>
-                        <Text style={styles.characterDescription}>Anão/Guerreiro</Text>
+                        <Image style={styles.characterImage} source={require('../../assets/avatar/dwarf.png')} />
+                        <View style={styles.textContainer}>
+                            <Text numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</Text>
+                            <Text allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</Text>
+                        </View>
                     </TouchableOpacity>
                 )}
             />
