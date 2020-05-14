@@ -58,18 +58,44 @@ export default function Home({ navigation }) {
                 showsVerticalScrollIndicator={false}
                 onEndReached={loadCharacters}
                 onEndReachedThreshold={0.2}
-                renderItem={({ item: character }) => (
-                    <TouchableOpacity 
-                        style={styles.character}
-                        onPress={() => navigation.navigate('Character')}
-                    >
-                        <Image style={styles.characterImage} source={require('../../assets/avatar/dwarf.png')} />
-                        <View style={styles.textContainer}>
-                            <Text numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</Text>
-                            <Text allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
+                renderItem={({ item: character }) => {
+                    var characterImg
+
+                    if(character.race === 'Humano'){
+                        if(character.class === 'Mago')
+                            characterImg = require('../../assets/avatar/human-mage.png')
+                        else if(character.class === 'Ladino')
+                            characterImg = require('../../assets/avatar/human-rogue.png')
+                        else
+                            characterImg = require('../../assets/avatar/human-fighter.png')
+                    }
+                    else if(character.race === 'Anao da Montanha' || character.race === 'Anao da Colina') {
+                        characterImg = require('../../assets/avatar/dwarf.png')
+                    }
+                    else if(character.race === 'Alto Elfo'
+                     || character.race  === 'Elfo da Floresta' || character.race === 'Elfo Negro') {
+                        characterImg = require('../../assets/avatar/elf.png')
+                    }
+                    else if(character.race === 'Meio-Orc') {
+                        characterImg = require('../../assets/avatar/orc.png')
+                    }
+                    else {
+                        characterImg = require('../../assets/avatar/human-fighter.png')
+                    }
+
+                    return (
+                        <TouchableOpacity 
+                            style={styles.character}
+                            onPress={() => navigation.navigate('Character')}
+                        >
+                            <Image style={styles.characterImage} source={characterImg} />
+                            <View style={styles.textContainer}>
+                                <Text numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</Text>
+                                <Text allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    )
+                }}
             />
                 
             <TouchableOpacity
