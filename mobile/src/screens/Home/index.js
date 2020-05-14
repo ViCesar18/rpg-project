@@ -100,17 +100,7 @@ export default function Home({ navigation }) {
                 
             <TouchableOpacity
                 style={styles.createCharacter}
-                onPress={() => {
-                    const parentNavigation = navigation.dangerouslyGetParent()
-                    parentNavigation.setParams({
-                        homeIsFocused: false,
-                        dicesIsFocused: false,
-                        newSheetIsFocused: true,
-                        configIsFocused: false,
-                    })
-                    
-                    navigation.navigate('NewSheetScreen')
-                }}
+                onPress={() => navigation.navigate('NewSheetScreen')}
             >
                 <Icon name={'plus-circle'} size={50} color={'#FFF'} />
             </TouchableOpacity>

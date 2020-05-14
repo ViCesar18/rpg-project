@@ -2,7 +2,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 import LogIn from './screens/LogIn'
 import Home from './screens/Home'
@@ -16,14 +16,17 @@ import CharacterBag from './screens/CharacterBag'
 import CharacterBackground from './screens/CharacterBackground'
 import CharacterSpells from './screens/CharacterSpells'
 
-const AppTab = createBottomTabNavigator()
+const AppTab = createMaterialBottomTabNavigator()
 const Tab = () => (
-    <AppTab.Navigator>
-        <AppTab.Screen name="CharacterGeneral" component={CharacterGeneral}/>
-        <AppTab.Screen name="CharacterCombat" component={CharacterCombat}/>
-        <AppTab.Screen name="CharacterBag" component={CharacterBag}/>
-        <AppTab.Screen name="CharacterBackground" component={CharacterBackground}/>
-        <AppTab.Screen name="CharacterSpells" component={CharacterSpells}/>
+    <AppTab.Navigator
+        initialRouteName="CharacterGeneral"
+        labeled={false}
+    >
+        <AppTab.Screen name="CharacterGeneral" component={CharacterGeneral} />
+        <AppTab.Screen name="CharacterCombat" component={CharacterCombat} />
+        <AppTab.Screen name="CharacterBag" component={CharacterBag} />
+        <AppTab.Screen name="CharacterBackground" component={CharacterBackground} />
+        <AppTab.Screen name="CharacterSpells" component={CharacterSpells} />
     </AppTab.Navigator>
 )
 
