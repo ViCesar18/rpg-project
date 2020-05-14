@@ -4,7 +4,7 @@ import Constants from 'expo-constants'
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4A55A1',
+        backgroundColor: '#272D54',
         paddingTop: Constants.statusBarHeight + 10
     },
 
@@ -17,22 +17,25 @@ export default StyleSheet.create({
     },
 
     headerLogo: {
-        width: 225,
-        height: 225,
-        alignSelf: 'center'
+        width: 150,
+        height: 150,
+        alignSelf: 'center',
+        marginVertical: 32
     },
 
     characterList: {
         height: '40%',
-        marginTop: 32,
+        marginTop: 10,
+        paddingVertical: 10,
         flexGrow: 0
     },
 
     character: {
-        padding: 5,
-        flexDirection: 'row',
         height: 75,
-        justifyContent: 'space-around',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 8,
@@ -42,18 +45,25 @@ export default StyleSheet.create({
     },
 
     characterImage: {
-        width: '18%',
+        width: 65,
         height: '100%',
         borderRadius: (Dimensions.get('window').width + Dimensions.get('window').height) / 2,
+    },
+
+    textContainer: {
+        width: '75%',
+        marginLeft: 15,
     },
 
     characterName: {
         fontSize: 32,
         fontWeight: 'bold',
+        color: '#353535'
     },
 
     characterDescription: {
         fontSize: 16,
+        color: '#353535'
     },
 
     createCharacter: {

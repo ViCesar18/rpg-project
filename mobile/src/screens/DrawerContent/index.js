@@ -57,7 +57,7 @@ export default function CustomDrawer({ navigation }) {
                             navigation.navigate('Home')
                         }}
                         labelStyle={styles.itemText}
-                        activeTintColor="#4A55A1"
+                        activeTintColor="#272D54"
                         inactiveTintColor="#353535"
                     />
                     <DrawerItem
@@ -84,7 +84,7 @@ export default function CustomDrawer({ navigation }) {
                             navigation.navigate('Dices')
                         }}
                         labelStyle={styles.itemText}
-                        activeTintColor="#4A55A1"
+                        activeTintColor="#272D54"
                         inactiveTintColor="#353535"
                     />
                     <DrawerItem
@@ -111,7 +111,7 @@ export default function CustomDrawer({ navigation }) {
                             navigation.navigate('NewSheetScreen')
                         }}
                         labelStyle={styles.itemText}
-                        activeTintColor="#4A55A1"
+                        activeTintColor="#272D54"
                         inactiveTintColor="#353535"
                     />
                     <DrawerItem
@@ -138,7 +138,7 @@ export default function CustomDrawer({ navigation }) {
                             navigation.navigate('Configuration')
                         }}
                         labelStyle={styles.itemText}
-                        activeTintColor="#4A55A1"
+                        activeTintColor="#272D54"
                         inactiveTintColor="#353535"
                     />
                 </DrawerContentScrollView>
