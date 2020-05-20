@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TextInput, ScrollView, TouchableHighlight, Image } from 'react-native'
-import { CheckBox } from 'native-base'
+import { CheckBox } from 'react-native-elements'
+import { LinearGradient } from 'expo-linear-gradient'
 
 import { Feather } from '@expo/vector-icons'
 
@@ -11,6 +12,7 @@ export default function CharacterGeneral({ navigation }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableHighlight
+                    style={styles.headerButton}
                     onPress={navigation.openDrawer}
                     underlayColor="transparent"
                 >
@@ -19,13 +21,13 @@ export default function CharacterGeneral({ navigation }) {
 
                 <TextInput style={styles.characterName} placeholder="Nome do Personagem"  value="Edran Galanodel" />
 
-                <View style={styles.headerInputs1}>
+                <View style={styles.headerInputsGroup1}>
                     <TextInput style={styles.headerInput} placeholder="Raça" />
                     <TextInput style={styles.headerInput} placeholder="Classe" />
                     <TextInput style={styles.headerInput} placeholder="Antecedente" />
                 </View>
                     
-                <View style={styles.headerInputs2}>
+                <View style={styles.headerInputsGroup2}>
                     <TextInput style={styles.headerInput} placeholder="XP" />
                     
                     <Image style={styles.headerImage} source={require('../../assets/avatar/elf.png')} />
@@ -36,7 +38,7 @@ export default function CharacterGeneral({ navigation }) {
             </View>
 
             <ScrollView style={styles.content}>
-                <View style={styles.inputsContainer1}>
+                <View style={styles.inputsGroup1}>
                     <View style={styles.rectInputContainer}>
                         <TextInput style={styles.rectInput} />
                         <Text style={styles.rectInputText}>Classe de Armadura</Text>
@@ -55,35 +57,89 @@ export default function CharacterGeneral({ navigation }) {
 
                 <View style={styles.hitPointsContainer}>
                     <View style={styles.hitPoints}>
-                        <Text style={styles.hitPointsText}>PV Total</Text>
-                        <Feather name={'heart'} size={36} color={'red'} />
+                        <LinearGradient
+                            style={styles.hpGradient}
+                            start={[0, 0]}
+                            end={[1, 0]}
+                            locations={[1, 1]}
+                            colors={['#EF1146', '#E3E8E8']}
+                        >
+                            <Text style={styles.hpText}>10/10</Text>
+                        </LinearGradient>
+                        
+                        <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
                     </View>
-                    <View style={styles.temporaryHitPoints}>
-                        <Text style={styles.temporaryHitPointsText}>PV Temporário</Text>
-                        <Feather name={'heart'} size={36} color={'yellow'} />
+                    <View style={styles.hitPoints}>
+                        <LinearGradient
+                            style={styles.hpGradient}
+                            start={[0, 0]}
+                            end={[1, 0]}
+                            locations={[0, 0]}
+                            colors={['#EDE214', '#E3E8E8']}
+                        >
+                            <Text style={styles.hpText}>0/0</Text>
+                        </LinearGradient>
+                        
+                        <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
                     </View>
                 </View>
 
                 <View style={styles.inputsContainer2}>
                     <View style={styles.deathSavesContainer}>
                         <View style={styles.savesContainer}>
-                            <Text>Sucesso</Text>
-                            <CheckBox />
-                            <CheckBox />
-                            <CheckBox />
+                            <Text style={styles.savesText}>Sucesso</Text>
+                            <CheckBox
+                                size={30}
+                                checked={true}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
+                            <CheckBox
+                                size={30}
+                                checked={false}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
+                            <CheckBox
+                                size={30}
+                                checked={false}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
                         </View>
 
                         <View style={styles.savesContainer}>
-                            <Text>Falha</Text>
-                            <CheckBox />
-                            <CheckBox />
-                            <CheckBox />
+                            <Text style={styles.savesText}>Falha</Text>
+                            <CheckBox
+                                size={30}
+                                checked={true}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
+                            <CheckBox
+                                size={30}
+                                checked={true}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
+                            <CheckBox
+                                size={30}
+                                checked={true}
+                                checkedColor="#FFF"
+                                uncheckedColor="#FFF"
+                                containerStyle={styles.savesCheckBox}
+                            />
                         </View>
 
-                        <Text>TESTE CONTRA A MORTE</Text>
+                        <Text style={styles.savesTitle}>TESTE CONTRA A MORTE</Text>
                     </View>
 
-                    <View styles={styles.hpDicesContainer}>
+                    <View style={styles.hpDicesContainer}>
                         <View>
                             <Text>Total de Dados</Text>
                             <TextInput />

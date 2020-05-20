@@ -16,8 +16,8 @@ export default StyleSheet.create({
         elevation: 10
     },
 
-    headerButtonContainer: {
-        flexDirection: 'row',
+    headerButton: {
+        width: 36
     },
 
     characterName: {
@@ -36,13 +36,13 @@ export default StyleSheet.create({
         fontSize: 16
     },
 
-    headerInputs1: {
+    headerInputsGroup1: {
         paddingTop: 20,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
 
-    headerInputs2: {
+    headerInputsGroup2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -76,5 +76,112 @@ export default StyleSheet.create({
         borderWidth: 3,
         fontSize: 16,
         textAlign: 'center',
+    },
+
+    content: {
+        marginTop: 50,
+        paddingHorizontal: 25,
+    },
+
+    inputsGroup1: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+
+    rectInputContainer: {
+        alignItems: 'center'
+    },
+
+    rectInput: {
+        width: 55,
+        height: 55,
+        borderWidth: 3,
+        borderRadius: 8,
+        borderColor: '#353535',
+        textAlign: 'center',
+        fontSize: 24
+    },
+
+    rectInputText: {
+        width: 100,
+        fontSize: 14,
+        textAlign: 'center'
+    },
+
+    hitPointsContainer: {
+        alignItems: 'flex-start',
+        marginTop: 15,
+    },
+
+    hitPoints: {
+        flexDirection: 'row',
+        marginBottom: 10,
+        alignItems: 'center',
+    },
+
+    hpGradient: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '85%',
+        height: 40,
+        borderWidth: 3,
+        borderRadius: 20,
+        borderColor: '#353535',
+    },
+
+    hpText: {
+        color: '#FFF',
+        fontSize: 16
+    },
+
+    hpImage: {
+        width: 50,
+        height: 40,
+        marginLeft: 5
+    },
+
+    inputsContainer2: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+
+    deathSavesContainer: {
+        width: 200,
+        padding: 10,
+        justifyContent: 'space-around',
+        backgroundColor: '#353535',
+        borderRadius: 8,
+        elevation: 5
+    },
+
+    savesContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+
+    savesText: {
+        width: 55,
+        color: '#FFF',
+        fontSize: 12,
+        textAlign: 'center'
+    },
+
+    savesCheckBox: {
+        width: 25,
+        padding: 0,
+    },
+
+    savesTitle: {
+        color: '#FFF',
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
+    hpDicesContainer: {
+        backgroundColor: '#353535',
+        borderRadius: 8,
+        elevation: 5
     }
 })
