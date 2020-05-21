@@ -74,6 +74,7 @@ export default StyleSheet.create({
         borderRadius: (Dimensions.get('window').width + Dimensions.get('window').height) / 2,
         borderColor: '#E3E8E8',
         borderWidth: 3,
+        color: '#FFF',
         fontSize: 16,
         textAlign: 'center',
     },
@@ -205,7 +206,9 @@ export default StyleSheet.create({
         width: '100%',
         height: 70,
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        fontSize: 18,
+        textAlign: 'center'
     },
 
     equippedWeaponsContainer: {
@@ -230,7 +233,8 @@ export default StyleSheet.create({
     equippedWeaponsColumnInput: {
         backgroundColor: '#FFF',
         borderRadius: 8,
-        marginBottom: 5
+        marginBottom: 5,
+        textAlign: 'center'
     },
 
     equippedWeaponsTextArea: {
@@ -239,6 +243,7 @@ export default StyleSheet.create({
         width: '100%',
         height: 150,
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        fontSize: 20
     }
 })
