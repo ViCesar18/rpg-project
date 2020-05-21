@@ -83,9 +83,10 @@ export default StyleSheet.create({
         paddingHorizontal: 25,
     },
 
-    inputsGroup1: {
+    rectInputsGroup: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        marginBottom: 15,
     },
 
     rectInputContainer: {
@@ -108,12 +109,11 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
-    hitPointsContainer: {
-        alignItems: 'flex-start',
-        marginTop: 15,
+    lifeContainer: {
+        marginBottom: 10,
     },
 
-    hitPoints: {
+    hp: {
         flexDirection: 'row',
         marginBottom: 10,
         alignItems: 'center',
@@ -140,18 +140,26 @@ export default StyleSheet.create({
         marginLeft: 5
     },
 
-    inputsContainer2: {
+    darkInputsGroup: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
 
-    deathSavesContainer: {
-        width: 200,
-        padding: 10,
-        justifyContent: 'space-around',
+    darkInputContainer: {
+        justifyContent: 'space-between',
+        marginBottom: 15,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
         backgroundColor: '#353535',
         borderRadius: 8,
-        elevation: 5
+        elevation: 3
+    },
+
+    darkInputContainerTitle: {
+        color: '#FFF',
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 
     savesContainer: {
@@ -168,20 +176,69 @@ export default StyleSheet.create({
     },
 
     savesCheckBox: {
-        width: 25,
+        width: 20,
         padding: 0,
     },
 
-    savesTitle: {
-        color: '#FFF',
-        fontSize: 12,
-        fontWeight: 'bold',
-        textAlign: 'center',
+    totalLifeDicesContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
     },
 
-    hpDicesContainer: {
-        backgroundColor: '#353535',
+    totalLifeDicesText: {
+        color: '#FFF',
+        fontSize: 10
+    },
+
+    totalLifeDicesInput: {
+        backgroundColor: '#FFF',
         borderRadius: 8,
-        elevation: 5
+        width: 60,
+        marginLeft: 5,
+        fontSize: 12,
+        textAlign: 'center'
+    },
+
+    hpDicesTextArea: {
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        width: '100%',
+        height: 70,
+        marginTop: 10,
+        marginBottom: 10
+    },
+
+    equippedWeaponsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    equippedWeaponsColumn: {
+        width: '35%'
+    },
+
+    equippedWeaponsColumnBonus: {
+        width: '24%'
+    },
+
+    equippedWeaponsColumnText: {
+        color: '#FFF',
+        fontSize: 12,
+        marginBottom: 5
+    },
+
+    equippedWeaponsColumnInput: {
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        marginBottom: 5
+    },
+
+    equippedWeaponsTextArea: {
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        width: '100%',
+        height: 150,
+        marginTop: 10,
+        marginBottom: 10
     }
 })

@@ -38,7 +38,7 @@ export default function CharacterGeneral({ navigation }) {
             </View>
 
             <ScrollView style={styles.content}>
-                <View style={styles.inputsGroup1}>
+                <View style={styles.rectInputsGroup}>
                     <View style={styles.rectInputContainer}>
                         <TextInput style={styles.rectInput} />
                         <Text style={styles.rectInputText}>Classe de Armadura</Text>
@@ -55,8 +55,8 @@ export default function CharacterGeneral({ navigation }) {
                     </View>
                 </View>
 
-                <View style={styles.hitPointsContainer}>
-                    <View style={styles.hitPoints}>
+                <View style={styles.lifeContainer}>
+                    <View style={styles.hp}>
                         <LinearGradient
                             style={styles.hpGradient}
                             start={[0, 0]}
@@ -69,7 +69,7 @@ export default function CharacterGeneral({ navigation }) {
                         
                         <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
                     </View>
-                    <View style={styles.hitPoints}>
+                    <View style={styles.hp}>
                         <LinearGradient
                             style={styles.hpGradient}
                             start={[0, 0]}
@@ -84,8 +84,8 @@ export default function CharacterGeneral({ navigation }) {
                     </View>
                 </View>
 
-                <View style={styles.inputsContainer2}>
-                    <View style={styles.deathSavesContainer}>
+                <View style={styles.darkInputsGroup}>
+                    <View style={styles.darkInputContainer}>
                         <View style={styles.savesContainer}>
                             <Text style={styles.savesText}>Sucesso</Text>
                             <CheckBox
@@ -136,38 +136,42 @@ export default function CharacterGeneral({ navigation }) {
                             />
                         </View>
 
-                        <Text style={styles.savesTitle}>TESTE CONTRA A MORTE</Text>
+                        <Text style={styles.darkInputContainerTitle}>TESTE CONTRA A MORTE</Text>
                     </View>
 
-                    <View style={styles.hpDicesContainer}>
-                        <View>
-                            <Text>Total de Dados</Text>
-                            <TextInput />
+                    <View style={styles.darkInputContainer}>
+                        <View style={styles.totalLifeDicesContainer}>
+                            <Text style={styles.totalLifeDicesText}>Total de Dados</Text>
+                            <TextInput style={styles.totalLifeDicesInput} />
                         </View>
-                        <TextInput />
-                        <Text>DADOS DE VIDA</Text>
+                        <TextInput style={styles.hpDicesTextArea} />
+                        <Text style={styles.darkInputContainerTitle}>DADOS DE VIDA</Text>
                     </View>
                 </View>
 
-                <View>
-                    <View>
-                        <View>
-                            <Text>Nome</Text>
-                            <TextInput />
-                            <TextInput />
+                <View style={styles.darkInputContainer}>
+                    <View style={styles.equippedWeaponsContainer}>
+                        <View style={styles.equippedWeaponsColumn}>
+                            <Text style={styles.equippedWeaponsColumnText}>Nome</Text>
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
                         </View>
-                        <View>
-                            <Text>Bônus</Text>
-                            <TextInput />
-                            <TextInput />
+                        <View style={styles.equippedWeaponsColumnBonus}>
+                            <Text style={styles.equippedWeaponsColumnText}>Bônus</Text>
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
                         </View>
-                        <View>
-                            <Text>Dano/Tipo</Text>
-                            <TextInput />
-                            <TextInput />
+                        <View style={styles.equippedWeaponsColumn}>
+                            <Text style={styles.equippedWeaponsColumnText}>Dano/Tipo</Text>
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
+                            <TextInput style={styles.equippedWeaponsColumnInput} />
                         </View>
                     </View>
-                    <TextInput />
+                    <TextInput style={styles.equippedWeaponsTextArea} />
+                    <Text style={styles.darkInputContainerTitle}>ARMAS E EQUIPAMENTOS EQUIPADOS</Text>
                 </View>
             </ScrollView>
         </View>
