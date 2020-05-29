@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import DefaultText from '../../Components/DefaultText'
 
 import { Feather } from '@expo/vector-icons'
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
@@ -90,8 +91,8 @@ export default function Home({ navigation }) {
                         >
                             <Image style={styles.characterImage} source={characterImg} />
                             <View style={styles.textContainer}>
-                                <Text numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</Text>
-                                <Text allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</Text>
+                                <DefaultText numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</DefaultText>
+                                <DefaultText allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</DefaultText>
                             </View>
                         </TouchableOpacity>
                     )

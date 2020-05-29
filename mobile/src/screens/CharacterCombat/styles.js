@@ -90,10 +90,9 @@ export default StyleSheet.create({
     },
 
     smallDarkInputText: {
-        flexShrink: 1,
-        width: '100%',
+        width: 140,
         color: '#FFF',
-        fontSize: 12,
+        fontSize: 11,
         textAlign: 'center'
     },
 
@@ -106,9 +105,10 @@ export default StyleSheet.create({
     },
 
     darkInputContainerTitle: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 13,
         color: '#FFF',
         textAlign: 'center',
-        fontWeight: 'bold',
         marginBottom: 5
     },
 
@@ -132,11 +132,11 @@ export default StyleSheet.create({
 
     inputText: {
         color: '#FFF',
-        fontSize: 13,
+        fontSize: 11,
         paddingLeft: 5
     },
 
     inputAdditionalText: {
-        fontStyle: 'italic'
+        fontFamily: 'Montserrat-ExtraLight-Italic'
     }
 })

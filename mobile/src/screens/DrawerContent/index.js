@@ -96,6 +96,7 @@ export default function CustomDrawer({ state, navigation }) {
                     </View>
                 )}
                 onPress={() => navigation.navigate('LogIn')}
+                labelStyle={{ fontFamily: 'Montserrat' }}
                 inactiveTintColor="#353535"
             />
         </View>

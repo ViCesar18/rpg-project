@@ -21,9 +21,9 @@ export default StyleSheet.create({
     },
 
     characterName: {
+        fontFamily: 'Montserrat-Bold',
         color: '#FFF',
         fontSize: 32,
-        fontWeight: 'bold',
         textAlign: 'center', 
     },
 
@@ -105,7 +105,7 @@ export default StyleSheet.create({
     },
 
     rectInputText: {
-        width: 100,
+        width: 112,
         fontSize: 14,
         textAlign: 'center'
     },
@@ -157,9 +157,9 @@ export default StyleSheet.create({
     },
 
     darkInputContainerTitle: {
+        fontFamily: 'Montserrat-Bold',
         color: '#FFF',
-        fontSize: 12,
-        fontWeight: 'bold',
+        fontSize: 11,
         textAlign: 'center',
     },
 
@@ -170,6 +170,7 @@ export default StyleSheet.create({
     },
 
     savesText: {
+        height: 20,
         width: 55,
         color: '#FFF',
         fontSize: 12,
@@ -188,7 +189,7 @@ export default StyleSheet.create({
 
     totalLifeDicesText: {
         color: '#FFF',
-        fontSize: 10
+        fontSize: 9
     },
 
     totalLifeDicesInput: {

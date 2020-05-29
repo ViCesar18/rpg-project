@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, ScrollView, TouchableHighlight, TextInput, KeyboardAvoidingView } from 'react-native'
+import DefaultText from '../../Components/DefaultText'
 import { CheckBox } from 'react-native-elements'
 
 import { Feather } from '@expo/vector-icons'
@@ -23,7 +24,7 @@ export default function CharacterCombat({ navigation }) {
                 <View style={{ flexShrink: 1 }}>
                     <View style={styles.attributesContainer}>
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Força</Text>
+                            <DefaultText style={styles.attributeTitle}>Força</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -33,7 +34,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
 
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Destreza</Text>
+                            <DefaultText style={styles.attributeTitle}>Destreza</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -43,7 +44,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
 
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Constituição</Text>
+                            <DefaultText style={styles.attributeTitle}>Constituição</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -53,7 +54,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
 
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Inteligência</Text>
+                            <DefaultText style={styles.attributeTitle}>Inteligência</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -63,7 +64,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
 
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Sabedoria</Text>
+                            <DefaultText style={styles.attributeTitle}>Sabedoria</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -73,7 +74,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
 
                         <View style={styles.attribute}>
-                            <Text style={styles.attributeTitle}>Carisma</Text>
+                            <DefaultText style={styles.attributeTitle}>Carisma</DefaultText>
                             <TextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
@@ -153,16 +154,16 @@ export default function CharacterCombat({ navigation }) {
                 <View style={styles.darkInputsGroup}>
                     <View style={styles.smallDarkInputContainer}>
                         <TextInput style={styles.smallDarkInput} />
-                        <Text style={styles.smallDarkInputText}>Inspiração</Text>
+                        <DefaultText style={styles.smallDarkInputText}>Inspiração</DefaultText>
                     </View>
 
                     <View style={styles.smallDarkInputContainer}>
                         <TextInput style={styles.smallDarkInput} />
-                        <Text style={styles.smallDarkInputText}>Bônus de Proficiência</Text>
+                        <DefaultText style={styles.smallDarkInputText}>Bônus de Proficiência</DefaultText>
                     </View>
 
                     <View style={[styles.darkInputContainer, { height: 150 }]}>
-                        <Text style={styles.darkInputContainerTitle}>Testes de Resistência</Text>
+                        <DefaultText style={styles.darkInputContainerTitle}>Testes de Resistência</DefaultText>
                         <ScrollView nestedScrollEnabled>
                             <View style={styles.inputContainer}>
                                 <CheckBox
@@ -178,7 +179,7 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Força</Text>
+                                <DefaultText style={styles.inputText}>Força</DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -195,7 +196,7 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Destreza</Text>
+                                <DefaultText style={styles.inputText}>Destreza</DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -212,7 +213,7 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Constituição</Text>
+                                <DefaultText style={styles.inputText}>Constituição</DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -229,7 +230,7 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Inteligência</Text>
+                                <DefaultText style={styles.inputText}>Inteligência</DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -246,7 +247,7 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Sabedoria</Text>
+                                <DefaultText style={styles.inputText}>Sabedoria</DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -263,13 +264,13 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>Carisma</Text>
+                                <DefaultText style={styles.inputText}>Carisma</DefaultText>
                             </View>
                         </ScrollView>
                     </View>
 
                     <View style={[styles.darkInputContainer, { height: 310 }]}>
-                        <Text style={styles.darkInputContainerTitle}>Perícias</Text>
+                        <DefaultText style={styles.darkInputContainerTitle}>Perícias</DefaultText>
                         <ScrollView nestedScrollEnabled>
                             <View style={styles.inputContainer}>
                                 <CheckBox
@@ -285,9 +286,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Acrobacia <Text style={styles.inputAdditionalText}>(Des)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -304,9 +305,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Arcanismo <Text style={styles.inputAdditionalText}>(Int)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -323,9 +324,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Atletismo <Text style={styles.inputAdditionalText}>(For)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -342,9 +343,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Atuação <Text style={styles.inputAdditionalText}>(Car)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -361,9 +362,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Blefar <Text style={styles.inputAdditionalText}>(Car)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -380,9 +381,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Furtividade <Text style={styles.inputAdditionalText}>(Des)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -399,9 +400,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     História <Text style={styles.inputAdditionalText}>(Int)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -418,9 +419,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Intimidação <Text style={styles.inputAdditionalText}>(Car)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -437,9 +438,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Intuição <Text style={styles.inputAdditionalText}>(Sab)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -456,9 +457,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Investigação <Text style={styles.inputAdditionalText}>(Int)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -476,8 +477,8 @@ export default function CharacterCombat({ navigation }) {
                                     selectionColor="#4A55A1"
                                 />
                                 <View>
-                                    <Text style={styles.inputText}>Lidar c/ Animais</Text>
-                                    <Text style={[styles.inputText, { fontStyle: 'italic' }]}>(Sab)</Text>
+                                    <DefaultText style={styles.inputText}>Lidar c/ Animais</DefaultText>
+                                    <DefaultText style={[styles.inputText, styles.inputAdditionalText]}>(Sab)</DefaultText>
                                 </View>
                             </View>
 
@@ -495,9 +496,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Medicina <Text style={styles.inputAdditionalText}>(Sab)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -514,9 +515,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Natureza <Text style={styles.inputAdditionalText}>(Int)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -533,9 +534,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Percepção <Text style={styles.inputAdditionalText}>(Sab)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -552,9 +553,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Persuasão <Text style={styles.inputAdditionalText}>(Car)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -572,8 +573,8 @@ export default function CharacterCombat({ navigation }) {
                                     selectionColor="#4A55A1"
                                 />
                                 <View>
-                                    <Text style={styles.inputText}>Prestigitação</Text>
-                                    <Text style={[styles.inputText, { fontStyle: 'italic' }]}>(Des)</Text>
+                                    <DefaultText style={styles.inputText}>Prestigitação</DefaultText>
+                                    <DefaultText style={[styles.inputText, styles.inputAdditionalText]}>(Des)</DefaultText>
                                 </View>
                             </View>
 
@@ -591,9 +592,9 @@ export default function CharacterCombat({ navigation }) {
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
-                                <Text style={styles.inputText}>
+                                <DefaultText style={styles.inputText}>
                                     Religião <Text style={styles.inputAdditionalText}>(Int)</Text>
-                                </Text>
+                                </DefaultText>
                             </View>
 
                             <View style={styles.inputContainer}>
@@ -611,8 +612,8 @@ export default function CharacterCombat({ navigation }) {
                                     selectionColor="#4A55A1"
                                 />
                                 <View>
-                                    <Text style={styles.inputText}>Sobrevivência</Text>
-                                    <Text style={[styles.inputText, { fontStyle: 'italic' }]}>(Sab)</Text>
+                                    <DefaultText style={styles.inputText}>Sobrevivência</DefaultText>
+                                    <DefaultText style={[styles.inputText, styles.inputAdditionalText]}>(Sab)</DefaultText>
                                 </View>
                             </View>
                         </ScrollView>
@@ -620,7 +621,7 @@ export default function CharacterCombat({ navigation }) {
 
                     <View style={styles.smallDarkInputContainer}>
                         <TextInput style={styles.smallDarkInput} />
-                        <Text style={styles.smallDarkInputText}>Sabedoria Passiva (Percepção)</Text>
+                        <DefaultText style={styles.smallDarkInputText}>Sabedoria Passiva (Percepção)</DefaultText>
                     </View>
                 </View>
             </ScrollView>

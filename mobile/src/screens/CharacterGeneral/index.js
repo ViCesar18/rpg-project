@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, TextInput, ScrollView, TouchableHighlight, Image } from 'react-native'
+import { View, TextInput, ScrollView, TouchableHighlight, Image } from 'react-native'
+import DefaultText from '../../Components/DefaultText'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
 
@@ -84,7 +85,7 @@ export default function CharacterGeneral({ navigation }) {
                             maxLength={2}
                             selectionColor="#4A55A1"
                         />
-                        <Text style={styles.rectInputText}>Classe de Armadura</Text>
+                        <DefaultText style={styles.rectInputText}>Classe de Armadura</DefaultText>
                     </View>
 
                     <View style={styles.rectInputContainer}>
@@ -94,7 +95,7 @@ export default function CharacterGeneral({ navigation }) {
                             maxLength={2}
                             selectionColor="#4A55A1"
                         />
-                        <Text style={styles.rectInputText}>Iniciativa</Text>
+                        <DefaultText style={styles.rectInputText}>Iniciativa</DefaultText>
                     </View>
 
                     <View style={styles.rectInputContainer}>
@@ -103,7 +104,7 @@ export default function CharacterGeneral({ navigation }) {
                             maxLength={16}
                             selectionColor="#4A55A1"
                         />
-                        <Text style={styles.rectInputText}>Deslocamento</Text>
+                        <DefaultText style={styles.rectInputText}>Deslocamento</DefaultText>
                     </View>
                 </View>
 
@@ -116,7 +117,7 @@ export default function CharacterGeneral({ navigation }) {
                             locations={[1, 1]}
                             colors={['#EF1146', '#E3E8E8']}
                         >
-                            <Text style={styles.hpText}>10/10</Text>
+                            <DefaultText style={styles.hpText}>10/10</DefaultText>
                         </LinearGradient>
                         
                         <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
@@ -129,7 +130,7 @@ export default function CharacterGeneral({ navigation }) {
                             locations={[0, 0]}
                             colors={['#EDE214', '#E3E8E8']}
                         >
-                            <Text style={styles.hpText}>0/0</Text>
+                            <DefaultText style={styles.hpText}>0/0</DefaultText>
                         </LinearGradient>
                         
                         <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
@@ -139,7 +140,7 @@ export default function CharacterGeneral({ navigation }) {
                 <View style={styles.darkInputsGroup}>
                     <View style={[styles.darkInputContainer, { width: '53%' }]}>
                         <View style={styles.savesContainer}>
-                            <Text style={styles.savesText}>Sucesso</Text>
+                            <DefaultText style={styles.savesText}>Sucesso</DefaultText>
                             <CheckBox
                                 size={30}
                                 checked={true}
@@ -164,7 +165,7 @@ export default function CharacterGeneral({ navigation }) {
                         </View>
 
                         <View style={styles.savesContainer}>
-                            <Text style={styles.savesText}>Falha</Text>
+                            <DefaultText style={styles.savesText}>Falha</DefaultText>
                             <CheckBox
                                 size={30}
                                 checked={true}
@@ -188,12 +189,12 @@ export default function CharacterGeneral({ navigation }) {
                             />
                         </View>
 
-                        <Text style={styles.darkInputContainerTitle}>TESTE CONTRA A MORTE</Text>
+                        <DefaultText style={styles.darkInputContainerTitle}>TESTE CONTRA A MORTE</DefaultText>
                     </View>
 
                     <View style={[styles.darkInputContainer, { width: '45%' }]}>
                         <View style={styles.totalLifeDicesContainer}>
-                            <Text style={styles.totalLifeDicesText}>Total de Dados</Text>
+                            <DefaultText style={styles.totalLifeDicesText}>Total de Dados</DefaultText>
                             <TextInput
                                 style={styles.totalLifeDicesInput}
                                 keyboardType="number-pad"
@@ -207,14 +208,14 @@ export default function CharacterGeneral({ navigation }) {
                             multiline={true}
                             selectionColor="#4A55A1"
                         />
-                        <Text style={styles.darkInputContainerTitle}>DADOS DE VIDA</Text>
+                        <DefaultText style={styles.darkInputContainerTitle}>DADOS DE VIDA</DefaultText>
                     </View>
                 </View>
 
                 <View style={styles.darkInputContainer}>
                     <View style={styles.equippedWeaponsContainer}>
                         <View style={styles.equippedWeaponsColumn}>
-                            <Text style={styles.equippedWeaponsColumnText}>Nome</Text>
+                            <DefaultText style={styles.equippedWeaponsColumnText}>Nome</DefaultText>
                             <TextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
@@ -232,7 +233,7 @@ export default function CharacterGeneral({ navigation }) {
                             />
                         </View>
                         <View style={styles.equippedWeaponsColumnBonus}>
-                            <Text style={styles.equippedWeaponsColumnText}>Bônus</Text>
+                            <DefaultText style={styles.equippedWeaponsColumnText}>Bônus</DefaultText>
                             <TextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 keyboardType="number-pad"
@@ -253,7 +254,7 @@ export default function CharacterGeneral({ navigation }) {
                             />
                         </View>
                         <View style={styles.equippedWeaponsColumn}>
-                            <Text style={styles.equippedWeaponsColumnText}>Dano/Tipo</Text>
+                            <DefaultText style={styles.equippedWeaponsColumnText}>Dano/Tipo</DefaultText>
                             <TextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
@@ -278,7 +279,7 @@ export default function CharacterGeneral({ navigation }) {
                         textAlignVertical="top"
                         selectionColor="#4A55A1"
                     />
-                    <Text style={styles.darkInputContainerTitle}>ARMAS E EQUIPAMENTOS EQUIPADOS</Text>
+                    <DefaultText style={styles.darkInputContainerTitle}>ARMAS E EQUIPAMENTOS EQUIPADOS</DefaultText>
                 </View>
             </ScrollView>
         </View>

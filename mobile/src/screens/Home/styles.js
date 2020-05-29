@@ -56,8 +56,8 @@ export default StyleSheet.create({
     },
 
     characterName: {
-        fontSize: 32,
-        fontWeight: 'bold',
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 29,
         color: '#353535'
     },
 
