@@ -22,10 +22,10 @@ export default StyleSheet.create({
     },
 
     attributesContainer: {
-        justifyContent: 'space-between',
         backgroundColor: '#4A55A1',
         marginRight: 50,
-        width: '35%',
+        width: '75%',
+        height: 635,
         paddingVertical: 10,
         paddingLeft: 5,
         paddingRight: 10,
@@ -35,9 +35,11 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFF',
-        paddingVertical: 5,
+        height: 98,
+        paddingBottom: 5,
         paddingLeft: 5,
         paddingRight: 15,
+        marginBottom: 5,
         borderTopRightRadius: 8,
         borderBottomRightRadius: 8
     },
@@ -47,25 +49,23 @@ export default StyleSheet.create({
     },
 
     attributeInput: {
+        height: '70%',
         backgroundColor: '#4A55A1',
         width: '100%',
-        height: 75,
+        color: '#FFF',
+        fontSize: 32,
+        textAlign: 'center'
     },
 
     attributeModifierInput: {
-        position: 'absolute',
-        left: '110%',
-        top: '28%',
-
         width: 50,
         height: 75,
         backgroundColor: '#4A55A1',
         borderRadius: 15,
-        elevation: 10
-    },
-
-    darkInputsGroup: {
-
+        elevation: 10,
+        color: '#FFF',
+        fontSize: 28,
+        textAlign: 'center'
     },
 
     smallDarkInputContainer: {
@@ -101,22 +101,15 @@ export default StyleSheet.create({
         backgroundColor: '#353535',
         borderRadius: 8,
         padding: 0,
-        elevation: 10
+        elevation: 10,
+        marginBottom: 10,
     },
 
     darkInputContainerTitle: {
         color: '#FFF',
         textAlign: 'center',
         fontWeight: 'bold',
-        marginBottom: 10
-    },
-
-    inputsGroup: {
-        flexDirection: 'row'
-    },
-
-    inputsColumn: {
-
+        marginBottom: 5
     },
 
     inputContainer: {
@@ -126,19 +119,24 @@ export default StyleSheet.create({
     },
 
     inputCheckbox: {
-        width: 20,
+        width: 24,
         padding: 0
     },
 
     mainInput: {
         backgroundColor: '#FFF',
-        width: 20,
-        height: 20
+        width: 25,
+        height: 25,
+        textAlign: 'center'
     },
 
     inputText: {
-        //backgroundColor: 'red',
         color: '#FFF',
-        fontSize: 10
+        fontSize: 13,
+        paddingLeft: 5
+    },
+
+    inputAdditionalText: {
+        fontStyle: 'italic'
     }
 })
