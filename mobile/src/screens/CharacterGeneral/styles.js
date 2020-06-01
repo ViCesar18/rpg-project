@@ -208,6 +208,7 @@ export default StyleSheet.create({
         height: 70,
         marginTop: 10,
         marginBottom: 10,
+        padding: 5,
         fontSize: 18,
         textAlign: 'center'
     },
@@ -245,6 +246,7 @@ export default StyleSheet.create({
         height: 150,
         marginTop: 10,
         marginBottom: 10,
+        padding: 5,
         fontSize: 20
     }
 })

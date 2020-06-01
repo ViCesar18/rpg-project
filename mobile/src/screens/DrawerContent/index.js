@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import { useRoute } from '@react-navigation/native'
 
 import { MaterialIcons, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'

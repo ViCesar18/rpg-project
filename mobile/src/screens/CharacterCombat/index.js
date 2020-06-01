@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, ScrollView, TouchableHighlight, TextInput, KeyboardAvoidingView } from 'react-native'
-import DefaultText from '../../Components/DefaultText'
+import { View, Text, ScrollView, TouchableHighlight } from 'react-native'
+import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 
 import { Feather } from '@expo/vector-icons'
@@ -25,7 +25,7 @@ export default function CharacterCombat({ navigation }) {
                     <View style={styles.attributesContainer}>
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Força</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -35,7 +35,7 @@ export default function CharacterCombat({ navigation }) {
 
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Destreza</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -45,7 +45,7 @@ export default function CharacterCombat({ navigation }) {
 
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Constituição</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -55,7 +55,7 @@ export default function CharacterCombat({ navigation }) {
 
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Inteligência</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -65,7 +65,7 @@ export default function CharacterCombat({ navigation }) {
 
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Sabedoria</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -75,7 +75,7 @@ export default function CharacterCombat({ navigation }) {
 
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Carisma</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.attributeInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
@@ -84,7 +84,7 @@ export default function CharacterCombat({ navigation }) {
                         </View>
                     </View>
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -95,7 +95,7 @@ export default function CharacterCombat({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -106,7 +106,7 @@ export default function CharacterCombat({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -117,7 +117,7 @@ export default function CharacterCombat({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -128,7 +128,7 @@ export default function CharacterCombat({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -139,7 +139,7 @@ export default function CharacterCombat({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={[styles.attributeModifierInput, {
                             position: 'absolute',
                             left: '65%',
@@ -153,12 +153,22 @@ export default function CharacterCombat({ navigation }) {
 
                 <View style={styles.darkInputsGroup}>
                     <View style={styles.smallDarkInputContainer}>
-                        <TextInput style={styles.smallDarkInput} />
+                        <DefaultTextInput
+                            style={styles.smallDarkInput}
+                            keyboardType="number-pad"
+                            maxLength={2}
+                            selectionColor="#4A55A1"
+                        />
                         <DefaultText style={styles.smallDarkInputText}>Inspiração</DefaultText>
                     </View>
 
                     <View style={styles.smallDarkInputContainer}>
-                        <TextInput style={styles.smallDarkInput} />
+                        <DefaultTextInput
+                            style={styles.smallDarkInput}
+                            keyboardType="number-pad"
+                            maxLength={2}
+                            selectionColor="#4A55A1"
+                        />
                         <DefaultText style={styles.smallDarkInputText}>Bônus de Proficiência</DefaultText>
                     </View>
 
@@ -173,7 +183,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -190,7 +200,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -207,7 +217,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -224,7 +234,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -241,7 +251,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -258,7 +268,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -280,7 +290,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -299,7 +309,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -318,7 +328,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -337,7 +347,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -356,7 +366,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -375,7 +385,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -394,7 +404,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -413,7 +423,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -432,7 +442,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -451,7 +461,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -470,7 +480,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -490,7 +500,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -509,7 +519,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -528,7 +538,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -547,7 +557,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -566,7 +576,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -586,7 +596,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -605,7 +615,7 @@ export default function CharacterCombat({ navigation }) {
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
                                 />
-                                <TextInput
+                                <DefaultTextInput
                                     style={styles.mainInput}
                                     keyboardType="number-pad"
                                     maxLength={3}
@@ -620,7 +630,12 @@ export default function CharacterCombat({ navigation }) {
                     </View>
 
                     <View style={styles.smallDarkInputContainer}>
-                        <TextInput style={styles.smallDarkInput} />
+                        <DefaultTextInput
+                            style={styles.smallDarkInput}
+                            keyboardType="number-pad"
+                            maxLength={2}
+                            selectionColor="#4A55A1"
+                        />
                         <DefaultText style={styles.smallDarkInputText}>Sabedoria Passiva (Percepção)</DefaultText>
                     </View>
                 </View>

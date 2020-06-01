@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
-import DefaultText from '../../Components/DefaultText'
+import { DefaultText } from '../../components'
 
 import { Feather } from '@expo/vector-icons'
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'

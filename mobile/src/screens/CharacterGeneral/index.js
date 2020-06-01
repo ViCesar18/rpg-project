@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, TextInput, ScrollView, TouchableHighlight, Image } from 'react-native'
-import DefaultText from '../../Components/DefaultText'
+import { View, ScrollView, TouchableHighlight, Image } from 'react-native'
+import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
 
@@ -20,7 +20,7 @@ export default function CharacterGeneral({ navigation }) {
                     <Feather name={'menu'} size={36} color={'#FFF'} />
                 </TouchableHighlight>
 
-                <TextInput
+                <DefaultTextInput
                     style={styles.characterName}
                     placeholder="Nome do Personagem" 
                     defaultValue="Edran Galanodel"
@@ -29,19 +29,19 @@ export default function CharacterGeneral({ navigation }) {
                 />
 
                 <View style={styles.headerInputsGroup1}>
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Raça"
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Classe"
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Antecedente"
                         maxLength={16}
@@ -50,7 +50,7 @@ export default function CharacterGeneral({ navigation }) {
                 </View>
                     
                 <View style={styles.headerInputsGroup2}>
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="XP"
                         keyboardType="number-pad"
@@ -59,7 +59,7 @@ export default function CharacterGeneral({ navigation }) {
                     />
                     
                     <Image style={styles.headerImage} source={require('../../assets/avatar/elf.png')} />
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerLevel}
                         placeholder="Nível"
                         keyboardType="number-pad"
@@ -67,7 +67,7 @@ export default function CharacterGeneral({ navigation }) {
                         selectionColor="#4A55A1"
                     />
 
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Tendência"
                         maxLength={16}
@@ -79,7 +79,7 @@ export default function CharacterGeneral({ navigation }) {
             <ScrollView style={styles.content}>
                 <View style={styles.rectInputsGroup}>
                     <View style={styles.rectInputContainer}>
-                        <TextInput
+                        <DefaultTextInput
                             style={styles.rectInput}
                             keyboardType="number-pad"
                             maxLength={2}
@@ -89,7 +89,7 @@ export default function CharacterGeneral({ navigation }) {
                     </View>
 
                     <View style={styles.rectInputContainer}>
-                        <TextInput
+                        <DefaultTextInput
                             style={styles.rectInput}
                             keyboardType="number-pad"
                             maxLength={2}
@@ -99,7 +99,7 @@ export default function CharacterGeneral({ navigation }) {
                     </View>
 
                     <View style={styles.rectInputContainer}>
-                        <TextInput
+                        <DefaultTextInput
                             style={styles.rectInput}
                             maxLength={16}
                             selectionColor="#4A55A1"
@@ -195,14 +195,14 @@ export default function CharacterGeneral({ navigation }) {
                     <View style={[styles.darkInputContainer, { width: '45%' }]}>
                         <View style={styles.totalLifeDicesContainer}>
                             <DefaultText style={styles.totalLifeDicesText}>Total de Dados</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.totalLifeDicesInput}
                                 keyboardType="number-pad"
                                 maxLength={2}
                                 selectionColor="#4A55A1"
                             />
                         </View>
-                        <TextInput
+                        <DefaultTextInput
                             style={styles.hpDicesTextArea}
                             maxLength={16}
                             multiline={true}
@@ -216,17 +216,17 @@ export default function CharacterGeneral({ navigation }) {
                     <View style={styles.equippedWeaponsContainer}>
                         <View style={styles.equippedWeaponsColumn}>
                             <DefaultText style={styles.equippedWeaponsColumnText}>Nome</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
@@ -234,19 +234,19 @@ export default function CharacterGeneral({ navigation }) {
                         </View>
                         <View style={styles.equippedWeaponsColumnBonus}>
                             <DefaultText style={styles.equippedWeaponsColumnText}>Bônus</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 keyboardType="number-pad"
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 keyboardType="number-pad"
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 keyboardType="number-pad"
                                 maxLength={3}
@@ -255,24 +255,24 @@ export default function CharacterGeneral({ navigation }) {
                         </View>
                         <View style={styles.equippedWeaponsColumn}>
                             <DefaultText style={styles.equippedWeaponsColumnText}>Dano/Tipo</DefaultText>
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
-                            <TextInput
+                            <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
                         </View>
                     </View>
-                    <TextInput
+                    <DefaultTextInput
                         style={styles.equippedWeaponsTextArea}
                         maxLength={256}
                         multiline

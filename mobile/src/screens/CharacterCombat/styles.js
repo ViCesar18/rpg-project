@@ -45,7 +45,9 @@ export default StyleSheet.create({
     },
 
     attributeTitle: {
-        color: '#4A55A1'
+        fontFamily: 'Montserrat-Bold',
+        color: '#4A55A1',
+        fontSize: 12
     },
 
     attributeInput: {
@@ -86,7 +88,9 @@ export default StyleSheet.create({
         borderRadius: 8,
         width: 50,
         height: 48,
-        elevation: 10
+        elevation: 10,
+        textAlign: 'center',
+        fontSize: 20
     },
 
     smallDarkInputText: {
