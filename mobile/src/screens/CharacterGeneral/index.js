@@ -274,7 +274,7 @@ export default function CharacterGeneral({ navigation }) {
                     </View>
                     <DefaultTextInput
                         style={styles.equippedWeaponsTextArea}
-                        maxLength={256}
+                        maxLength={255}
                         multiline
                         textAlignVertical="top"
                         selectionColor="#4A55A1"
