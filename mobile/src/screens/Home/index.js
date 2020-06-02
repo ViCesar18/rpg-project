@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
 import { DefaultText } from '../../components'
 
-import { Feather } from '@expo/vector-icons'
-import { createIconSetFromIcoMoon } from '@expo/vector-icons'
+import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
 const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
