@@ -17,19 +17,19 @@ export default function CharacterSpells({ navigation }) {
         },
         {
             spellLevel: "1",
-            data: ["magia legal", "magia chata"]
+            data: ["magia legal", "magia chata", "penis"]
         },
         {
             spellLevel: "2",
-            data: ["magia legal", "magia chata"]
+            data: ["magia legal"]
         },
         {
             spellLevel: "3",
-            data: ["magia legal", "magia chata"]
+            data: ["magia legal", "magia chata", "cu", "vagina"]
         },
         {
             spellLevel: "4",
-            data: ["magia legal", "magia chata"]
+            data: []
         },
         {
             spellLevel: "5",
@@ -67,7 +67,11 @@ export default function CharacterSpells({ navigation }) {
                 <View style={styles.headerInputGroup}>
                     <DefaultTextInput
                         style={styles.spellcastingClassInput}
+                        multiline
+                        numberOfLines={3}
+                        autoCapitalize="characters"
                         placeholder="Classe"
+                        placeholderTextColor="#88705F"
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
@@ -110,7 +114,7 @@ export default function CharacterSpells({ navigation }) {
                 renderSectionHeader={({ section: { spellLevel } }) => {
                     if(spellLevel === "0"){
                         return (
-                            <View style={styles.cantripsHeader}>
+                            <View style={[styles.spellsHeader, { flexDirection: 'row' }]}>
                                 <View style={{ width: '15%' }}>
                                     <DefaultText style={styles.spellLevel}>{spellLevel}</DefaultText>
                                 </View>
@@ -122,68 +126,68 @@ export default function CharacterSpells({ navigation }) {
                     }
                     
                     return (
-                        <View style={styles.spellsContainerHeader}>
-                            <View>
-                                <DefaultText style={styles.spellsContainerHeaderTitle}>Espaços Total</DefaultText>
-                                <DefaultText style={styles.spellsContainerHeaderTitle}>Espaços Usados</DefaultText>
+                        <View style={styles.spellsHeader}>
+                            <View style={styles.spellsHeaderTitleContainer}>
+                                <View style={{ width: '50%' }}>
+                                    <DefaultText style={styles.spellsHeaderTitle}>Espaços Total</DefaultText>
+                                </View>
+                                
+                                <View style={{ width: '50%' }}>
+                                    <DefaultText style={styles.spellsHeaderTitle}>Espaços Usados</DefaultText>
+                                </View>
                             </View>
-                            <View>
-                                <DefaultText style={styles.spellLevel}>{spellLevel}</DefaultText>
-                                <DefaultTextInput
-                                    style={styles.spellsContainerHeaderTotalSlotsInput}
-                                    keyboardType="number-pad"
-                                    maxLength={2}
-                                    selectionColor="#4A55A1"
-                                />
-                                <DefaultTextInput
-                                    style={styles.spellsContainerHeaderExpendedSlots}
-                                    keyboardType="number-pad"
-                                    maxLength={2}
-                                    selectionColor="#4A55A1"
-                                />
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: '15%' }}>
+                                    <DefaultText style={styles.spellLevel}>{spellLevel}</DefaultText>
+                                </View>
+                                <View style={{ width: '42.5%' }}>
+                                    <DefaultTextInput
+                                        style={styles.spellsHeaderSlotsInput}
+                                        keyboardType="number-pad"
+                                        maxLength={2}
+                                        selectionColor="#4A55A1"
+                                    />
+                                </View>
+                                <View style={{ width: '42.5%' }}>
+                                    <DefaultTextInput
+                                        style={styles.spellsHeaderSlotsInput}
+                                        keyboardType="number-pad"
+                                        maxLength={2}
+                                        selectionColor="#4A55A1"
+                                    />
+                                </View>
                             </View>
                         </View>
                     )
                 }}
                 renderItem={({ item: spell }) => (
                     <View style={styles.spellsList}>
-                        <View style={{ width: '100%', paddingBottom: 5, borderBottomWidth: 2, borderBottomColor: '#F4E7CE' }}>
+                        <View style={styles.spellContainer}>
                             <DefaultText style={styles.spellText}>{spell}</DefaultText>
+                            <TouchableOpacity
+                                onPress={() => {}}
+                            >
+                                <Feather name={'minus'} size={28} color={'#F4E7CE'} />
+                            </TouchableOpacity>
                         </View>
                     </View>
                 )}
                 renderSectionFooter={({ section: { spellLevel } }) => {
-                    if(spellLevel === "0"){
-                        return (
-                            <View style={styles.spellsContainerFooter}>
-                                <TouchableOpacity
-                                    onPress={() => {}}
-                                >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Icon
-                                            name="plus-circle"
-                                            size={24}
-                                            color="#F4E7CE"
-                                        />
-                                        <DefaultText style={styles.footerText}>Adicionar Truque</DefaultText>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    }
-
                     return (
                         <View style={styles.spellsContainerFooter}>
                             <TouchableOpacity
-                                sytle={styles.spellsContainerFotterButton}
                                 onPress={() => {}}
                             >
-                                <Icon
-                                    name="plus-circle"
-                                    size={20}
-                                    color="black"
-                                />
-                                <DefaultText>Adicionar Magia</DefaultText>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Icon
+                                        name="plus-circle"
+                                        size={24}
+                                        color="#F4E7CE"
+                                    />
+                                    <DefaultText style={styles.footerText}>
+                                        {spellLevel === "0" ? "Adicionar Truque" : "Adicionar Magia"}
+                                    </DefaultText>
+                                </View>
                             </TouchableOpacity>
                         </View>
                     )

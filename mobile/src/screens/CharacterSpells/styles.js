@@ -6,6 +6,7 @@ export default StyleSheet.create({
         flex: 1,
         paddingTop: Constants.statusBarHeight + 10,
         paddingHorizontal: 15,
+        marginLeft: -0.5
     },
     header: {
         marginBottom: 0
@@ -24,6 +25,7 @@ export default StyleSheet.create({
     },
 
     spellcastingClassInput: {
+        fontFamily: 'Montserrat-Bold',
         width: '30%',
         marginRight: 15,
         fontSize: 24,
@@ -48,6 +50,7 @@ export default StyleSheet.create({
     },
 
     headerSpellcastingInformationTitle: {
+        color: '#F4E7CE',
         fontSize: 10,
         textAlign: 'center'
     },
@@ -61,8 +64,7 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
-    cantripsHeader: {
-        flexDirection: 'row',
+    spellsHeader: {
         backgroundColor: '#402D1F',
         opacity: 0.82,
         padding: 10,
@@ -71,6 +73,28 @@ export default StyleSheet.create({
     },
 
     spellLevel: {
+        fontFamily: 'Montserrat-Bold',
+        borderWidth: 4,
+        borderColor: '#F4E7CE',
+        borderRadius: 8,
+        marginRight: 10,
+        textAlign: 'center',
+        fontSize: 28,
+        color: '#F4E7CE',
+    },
+
+    spellsHeaderTitleContainer: {
+        flexDirection: 'row',
+        marginLeft: '15%',
+    },
+
+    spellsHeaderTitle: {
+        color: '#F4E7CE',
+        textAlign: 'center',
+        marginRight: 10
+    },
+
+    spellsHeaderSlotsInput: {
         borderWidth: 4,
         borderColor: '#F4E7CE',
         borderRadius: 8,
@@ -85,6 +109,15 @@ export default StyleSheet.create({
         backgroundColor: '#402D1F',
         opacity: 0.82,
         padding: 10.5,
+    },
+
+    spellContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingBottom: 5,
+        borderBottomWidth: 2,
+        borderBottomColor: '#F4E7CE'
     },
 
     spellText: {
