@@ -18,6 +18,7 @@ export default StyleSheet.create({
     },
 
     itemText: {
+        fontFamily: 'Montserrat',
         fontSize: 20,
     }
 })

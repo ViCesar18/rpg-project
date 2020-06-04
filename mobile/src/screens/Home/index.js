@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { DefaultText } from '../../components'
 
-import { Feather } from '@expo/vector-icons'
-import { createIconSetFromIcoMoon } from '@expo/vector-icons'
+import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconMoonConfig from '../../selection.json'
 const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
@@ -86,12 +86,12 @@ export default function Home({ navigation }) {
                     return (
                         <TouchableOpacity 
                             style={styles.character}
-                            onPress={() => navigation.navigate('Character')}
+                            onPress={() => navigation.navigate('Tab')}
                         >
                             <Image style={styles.characterImage} source={characterImg} />
                             <View style={styles.textContainer}>
-                                <Text numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</Text>
-                                <Text allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</Text>
+                                <DefaultText numberOfLines={1} allowFontScaling={false} style={styles.characterName}>{character.character_name}</DefaultText>
+                                <DefaultText allowFontScaling={false} style={styles.characterDescription}>{character.race}/{character.class}</DefaultText>
                             </View>
                         </TouchableOpacity>
                     )
@@ -100,17 +100,7 @@ export default function Home({ navigation }) {
                 
             <TouchableOpacity
                 style={styles.createCharacter}
-                onPress={() => {
-                    const parentNavigation = navigation.dangerouslyGetParent()
-                    parentNavigation.setParams({
-                        homeIsFocused: false,
-                        dicesIsFocused: false,
-                        newSheetIsFocused: true,
-                        configIsFocused: false,
-                    })
-                    
-                    navigation.navigate('NewSheetScreen')
-                }}
+                onPress={() => navigation.navigate('NewSheetScreen')}
             >
                 <Icon name={'plus-circle'} size={50} color={'#FFF'} />
             </TouchableOpacity>
