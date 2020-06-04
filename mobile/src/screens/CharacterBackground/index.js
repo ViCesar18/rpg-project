@@ -75,9 +75,8 @@ export default function CharacterBackground({ navigation }) {
                     </View>
                 </View>
 
-                <View style={{ flexDirection: 'row'}}>
-                    <View style={{ marginRight: 10, width: '50%' }}>
-                        <View style={styles.darkInputContainer}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={[styles.darkInputContainer, { width: '48%' }]}>
                             <TouchableOpacity
                                 style={styles.traitsModalButton}
                                 onPress={() => {
@@ -147,6 +146,28 @@ export default function CharacterBackground({ navigation }) {
                             </TouchableOpacity>
                         </View>
 
+                        <View style={[styles.darkInputContainer, { width: '48%' }]}>
+                            <TouchableOpacity
+                                style={[styles.darkModalButton, { height: 500 }]}
+                                onPress={() => {
+                                    setModalVisible(true)
+                                    setModalTitle('História do Personagem')
+                                    setModalText('Eae')
+                                }}
+                            >
+                                <DefaultText
+                                    style={{ height: '100%', lineHeight: 22, fontSize: 16}}
+                                    numberOfLines={20}
+                                >
+                                    Eae
+                                </DefaultText>
+                            </TouchableOpacity>
+                            <DefaultText style={styles.darkInputTitle}>HISTÓRIA DO PERSONAGEM</DefaultText>
+                        </View>
+                </View>
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={{ width: '48%' }}>
                         <View style={styles.darkInputContainer}>
                             <TouchableOpacity
                                 style={[styles.darkModalButton, { height: 150 }]}
@@ -165,7 +186,7 @@ export default function CharacterBackground({ navigation }) {
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>CARACTERÍSTICAS E HABILIDADES</DefaultText>
                         </View>
-                        
+
                         <View style={styles.darkInputContainer}>
                             <TouchableOpacity
                                 style={[styles.darkModalButton, { height: 125 }]}
@@ -185,27 +206,8 @@ export default function CharacterBackground({ navigation }) {
                             <DefaultText style={styles.darkInputTitle}>IDIOMAS E OUTRAS PROFICIÊNCIAS</DefaultText>
                         </View>
                     </View>
-
-                    <View style={{ width: '47%' }}>
-                        <View style={styles.darkInputContainer}>
-                            <TouchableOpacity
-                                style={[styles.darkModalButton, { height: 504 }]}
-                                onPress={() => {
-                                    setModalVisible(true)
-                                    setModalTitle('História do Personagem')
-                                    setModalText('Eae')
-                                }}
-                            >
-                                <DefaultText
-                                    style={{ height: '100%', lineHeight: 22, fontSize: 16}}
-                                    numberOfLines={20}
-                                >
-                                    Eae
-                                </DefaultText>
-                            </TouchableOpacity>
-                            <DefaultText style={styles.darkInputTitle}>HISTÓRIA DO PERSONAGEM</DefaultText>
-                        </View>
-
+                    
+                    <View style={{ width: '48%' }}>
                         <View style={styles.darkInputContainer}>
                             <TouchableOpacity
                                 style={[styles.darkModalButton, { height: 72 }]}

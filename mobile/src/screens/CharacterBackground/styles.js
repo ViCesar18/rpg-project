@@ -23,7 +23,7 @@ export default StyleSheet.create({
         paddingVertical: 5,
         backgroundColor: '#353535',
         borderRadius: 8,
-        elevation: 2
+        elevation: 3
     },
 
     physicalCharacteristicsInput: {
