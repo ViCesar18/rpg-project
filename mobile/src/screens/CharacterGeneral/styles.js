@@ -247,6 +247,43 @@ export default StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         padding: 5,
-        fontSize: 20
+    },
+
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+
+    modalView: {
+        margin: 20,
+        backgroundColor: "#FFF",
+        borderRadius: 20,
+        paddingBottom: 35,
+        paddingLeft: 35,
+        elevation: 5,
+        flexGrow: 0
+    },
+
+    modalCloseButton: {
+        alignSelf: 'flex-end',
+        paddingRight: 10,
+        paddingTop: 10
+    },
+
+    modalTitle: {
+        marginRight: 35,
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 25
+    },
+
+    modalInput: {
+        backgroundColor: '#E3E8E8',
+        borderRadius: 8,
+        marginRight: 35,
+        height: 500,
+        marginTop: 10,
+        padding: 5,
+        fontSize: 18
     }
 })

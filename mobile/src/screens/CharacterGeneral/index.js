@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, ScrollView, TouchableHighlight, Image } from 'react-native'
+import React, { useState } from 'react'
+import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -9,6 +9,11 @@ import { Feather } from '@expo/vector-icons'
 import styles from './styles'
 
 export default function CharacterGeneral({ navigation }) {
+    const [modalVisible, setModalVisible] = useState(false)
+    const [modalTitle, setModalTitle] = useState('')
+    const [modalText, setModalText] = useState('')
+    const [modalInputFunction, setModalInputCunftion] = useState({})
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -272,16 +277,45 @@ export default function CharacterGeneral({ navigation }) {
                             />
                         </View>
                     </View>
-                    <DefaultTextInput
+                    <TouchableOpacity
                         style={styles.equippedWeaponsTextArea}
-                        maxLength={255}
-                        multiline
-                        textAlignVertical="top"
-                        selectionColor="#4A55A1"
-                    />
-                    <DefaultText style={styles.darkInputContainerTitle}>ARMAS E EQUIPAMENTOS EQUIPADOS</DefaultText>
+                        onPress={() => {
+                            setModalVisible(true)
+                            setModalTitle('Ataques e Magias')
+                            setModalText('Eae')
+                        }}
+                    >
+                        <DefaultText>Eae</DefaultText>
+                    </TouchableOpacity>
+                    <DefaultText style={styles.darkInputContainerTitle}>ATAQUES E MAGIAS</DefaultText>
                 </View>
             </ScrollView>
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <ScrollView style={styles.modalView}>
+                        <TouchableHighlight
+                            style={styles.modalCloseButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Feather name="x" size={20} color="#C2C2C2" />
+                        </TouchableHighlight>
+                        <DefaultText style={styles.modalTitle}>{modalTitle}</DefaultText>
+                        <DefaultTextInput
+                            style={styles.modalInput}
+                            defaultValue={modalText}
+                            maxLength={255}
+                            multiline
+                            textAlignVertical="top"
+                            selectionColor="#4A55A1"
+                        />
+                    </ScrollView>
+                </View>
+            </Modal>
         </View>
     )
 }

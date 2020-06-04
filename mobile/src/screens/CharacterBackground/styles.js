@@ -33,14 +33,14 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
-    traitsInputBox: {
+    traitsModalButton: {
         backgroundColor: '#FFF',
         marginBottom: 10,
         borderRadius: 8
     },
 
-    traitsInput: {
-        height: 100,
+    traitsText: {
+        height: 105,
         padding: 5
     },
 
@@ -50,10 +50,11 @@ export default StyleSheet.create({
         textAlign: 'center',
     },
 
-    darkInput: {
+    darkModalButton: {
         backgroundColor: '#FFF',
         borderRadius: 8,
-        marginBottom: 5
+        marginBottom: 5,
+        padding: 5
     },
 
     darkInputTitle: {
@@ -61,5 +62,43 @@ export default StyleSheet.create({
         color: '#FFF',
         fontSize: 10,
         textAlign: 'center'
+    },
+
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+
+    modalView: {
+        margin: 20,
+        backgroundColor: "#FFF",
+        borderRadius: 20,
+        paddingBottom: 35,
+        paddingLeft: 35,
+        elevation: 5,
+        flexGrow: 0
+    },
+
+    modalCloseButton: {
+        alignSelf: 'flex-end',
+        paddingRight: 10,
+        paddingTop: 10
+    },
+
+    modalTitle: {
+        marginRight: 35,
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 25
+    },
+
+    modalInput: {
+        backgroundColor: '#E3E8E8',
+        borderRadius: 8,
+        marginRight: 35,
+        height: 500,
+        marginTop: 10,
+        padding: 5,
+        fontSize: 18
     }
 })
