@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal } from 'react-native'
+import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -13,6 +13,9 @@ export default function CharacterGeneral({ navigation }) {
     const [modalTitle, setModalTitle] = useState('')
     const [modalText, setModalText] = useState('')
     const [modalInputFunction, setModalInputCunftion] = useState({})
+
+    const [LifeModalVisible, setLifeModalVisible] = useState(false)
+    const [lifeModalIcon, setLifeModalIcon] = useState()
 
     return (
         <View style={styles.container}>
@@ -96,7 +99,6 @@ export default function CharacterGeneral({ navigation }) {
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput
                             style={styles.rectInput}
-                            keyboardType="number-pad"
                             maxLength={2}
                             selectionColor="#4A55A1"
                         />
@@ -125,7 +127,12 @@ export default function CharacterGeneral({ navigation }) {
                             <DefaultText style={styles.hpText}>10/10</DefaultText>
                         </LinearGradient>
                         
-                        <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
+                        <TouchableOpacity onPress={() => {
+                            setLifeModalVisible(true)
+                            setLifeModalIcon(require('../../assets/hpIcons/hp.png'))
+                        }}>
+                            <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.hp}>
                         <LinearGradient
@@ -138,7 +145,12 @@ export default function CharacterGeneral({ navigation }) {
                             <DefaultText style={styles.hpText}>0/0</DefaultText>
                         </LinearGradient>
                         
-                        <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
+                        <TouchableOpacity onPress={() => {
+                            setLifeModalVisible(true)
+                            setLifeModalIcon(require('../../assets/hpIcons/temporary-hp.png'))
+                        }}>
+                            <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
+                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -241,19 +253,16 @@ export default function CharacterGeneral({ navigation }) {
                             <DefaultText style={styles.equippedWeaponsColumnText}>Bônus</DefaultText>
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
-                                keyboardType="number-pad"
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
-                                keyboardType="number-pad"
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
-                                keyboardType="number-pad"
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
@@ -313,7 +322,57 @@ export default function CharacterGeneral({ navigation }) {
                             textAlignVertical="top"
                             selectionColor="#4A55A1"
                         />
+                        <View style={styles.modalConfirmButton}>
+                            <Button
+                                title="OK"
+                                color="#4A55A1"
+                                onPress={() => {}}
+                            />
+                        </View>
                     </ScrollView>
+                </View>
+            </Modal>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={LifeModalVisible}
+                onRequestClose={() => setLifeModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalView}>
+                        <TouchableHighlight
+                            style={styles.modalCloseButton}
+                            onPress={() => setLifeModalVisible(false)}
+                        >
+                            <Feather name="x" size={20} color="#C2C2C2" />
+                        </TouchableHighlight>
+                        
+                        <DefaultText style={styles.modalTitle}>Altere seu HP:</DefaultText>
+                        <View style={styles.lifeModalView}>
+                            <Image style={styles.hpImage} source={lifeModalIcon} />
+                            <DefaultTextInput
+                                style={[styles.lifeModalInput, { marginLeft: 15 }]}
+                                keyboardType="number-pad"
+                                maxLength={4}
+                                selectionColor="#4A55A1"
+                            />
+                            <DefaultText style={styles.lifeModalText}> / </DefaultText>
+                            <DefaultTextInput
+                                style={styles.lifeModalInput}
+                                keyboardType="number-pad"
+                                maxLength={4}
+                                selectionColor="#4A55A1"
+                            />
+                        </View>
+                        <View style={styles.modalConfirmButton}>
+                            <Button
+                                title="OK"
+                                color="#4A55A1"
+                                onPress={() => {}}
+                            />
+                        </View>
+                    </View>
                 </View>
             </Modal>
         </View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, TouchableHighlight, Modal, TouchableOpacity } from 'react-native'
+import { View, ScrollView, TouchableHighlight, Modal, TouchableOpacity, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 
 import { Feather } from '@expo/vector-icons'
@@ -291,6 +291,13 @@ export default function CharacterBackground({ navigation }) {
                             textAlignVertical="top"
                             selectionColor="#4A55A1"
                         />
+                        <View style={styles.modalConfirmButton}>
+                            <Button
+                                title="OK"
+                                color="#4A55A1"
+                                onPress={() => {}}
+                            />
+                        </View>
                     </ScrollView>
                 </View>
             </Modal>

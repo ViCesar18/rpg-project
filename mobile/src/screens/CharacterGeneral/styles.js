@@ -259,8 +259,8 @@ export default StyleSheet.create({
         margin: 20,
         backgroundColor: "#FFF",
         borderRadius: 20,
-        paddingBottom: 35,
-        paddingLeft: 35,
+        paddingBottom: 25,
+        paddingLeft: 25,
         elevation: 5,
         flexGrow: 0
     },
@@ -272,7 +272,7 @@ export default StyleSheet.create({
     },
 
     modalTitle: {
-        marginRight: 35,
+        marginRight: 25,
         fontFamily: 'Montserrat-Bold',
         fontSize: 25
     },
@@ -280,10 +280,38 @@ export default StyleSheet.create({
     modalInput: {
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
-        marginRight: 35,
+        marginRight: 25,
         height: 500,
         marginTop: 10,
         padding: 5,
         fontSize: 18
+    },
+
+    modalConfirmButton: {
+        alignSelf: 'flex-end',
+        marginRight: 25,
+        marginTop: 15,
+        width: 50
+    },
+
+    lifeModalView: {
+        flexDirection: 'row',
+        marginTop: 15,
+        marginRight: 25,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    lifeModalInput: {
+        minWidth: 50,
+        backgroundColor: '#E3E8E8',
+        borderRadius: 8,
+        padding: 5,
+        fontSize: 25,
+        textAlign: 'center',
+    },
+
+    lifeModalText: {
+        fontSize: 25
     }
 })
