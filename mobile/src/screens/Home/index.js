@@ -86,7 +86,7 @@ export default function Home({ navigation }) {
                     return (
                         <TouchableOpacity 
                             style={styles.character}
-                            onPress={() => navigation.navigate('Tab')}
+                            onPress={() => navigation.navigate('Tab', { character })}
                         >
                             <Image style={styles.characterImage} source={characterImg} />
                             <View style={styles.textContainer}>

@@ -7,7 +7,7 @@ import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export default function CharacterCombat({ navigation }) {
+export default function CharacterCombat({ route, navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>

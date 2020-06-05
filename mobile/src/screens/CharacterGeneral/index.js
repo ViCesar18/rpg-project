@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
 
+import { CharacterContext } from '../../contexts/character'
+
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export default function CharacterGeneral({ navigation }) {
+export default function CharacterGeneral({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
     const [modalText, setModalText] = useState('')
@@ -16,6 +18,8 @@ export default function CharacterGeneral({ navigation }) {
 
     const [LifeModalVisible, setLifeModalVisible] = useState(false)
     const [lifeModalIcon, setLifeModalIcon] = useState()
+
+    const character = useContext(CharacterContext)
 
     return (
         <View style={styles.container}>

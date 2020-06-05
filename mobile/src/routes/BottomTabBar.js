@@ -2,6 +2,8 @@ import React from 'react'
 import { Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+import { CharacterContext } from '../contexts/character'
+
 import CharacterGeneral from '../screens/CharacterGeneral'
 import CharacterCombat from '../screens/CharacterCombat'
 import CharacterBag from '../screens/CharacterBag'
@@ -53,91 +55,96 @@ function BottomTabBar({ route }) {
             tabOpacity5 = 1
         }
     }
-    
+
+    const { character } = route.params
+
     return (
-        <AppTab.Navigator
-            initialRouteName="CharacterGeneral"
-            tabBarOptions={{
-                showLabel: false,
-                tabStyle: {
-                    backgroundColor: '#272D54',
-                },
-                style: {
-                    height: 65
-                }
-            }}
-        >
-            <AppTab.Screen
-                name="CharacterGeneral"
-                component={CharacterGeneral}
-                options={{
-                    tabBarIcon: () => <Image
-                        style={{
-                            height: 50,
-                            width: 50,
-                            opacity: tabOpacity1
-                        }}
-                        source={require('../assets/bottomTabIcons/character-general.png')}
-                    />
+        <CharacterContext.Provider value={character}>
+            <AppTab.Navigator
+                initialRouteName="CharacterGeneral"
+                tabBarOptions={{
+                    showLabel: false,
+                    tabStyle: {
+                        backgroundColor: '#272D54',
+                    },
+                    style: {
+                        height: 65
+                    }
                 }}
-            />
-            <AppTab.Screen
-                name="CharacterCombat"
-                component={CharacterCombat}
-                options={{
-                    tabBarIcon: () => <Image
+            >
+                <AppTab.Screen
+                    name="CharacterGeneral"
+                    component={CharacterGeneral}
+                    initialParams={route}
+                    options={{
+                        tabBarIcon: () => <Image
                             style={{
-                            height: 50,
-                            width: 50,
-                            opacity: tabOpacity2
-                        }}
-                        source={require('../assets/bottomTabIcons/character-combat.png')}
-                    />
-                }}
-            />
-            <AppTab.Screen
-                name="CharacterBag"
-                component={CharacterBag}
-                options={{
-                    tabBarIcon: () => <Image
-                        style={{
-                            height: 50,
-                            width: 50,
-                            opacity: tabOpacity3
-                        }}
-                        source={require('../assets/bottomTabIcons/character-bag.png')}
-                    />
-                }}
-            />
-            <AppTab.Screen
-                name="CharacterBackground"
-                component={CharacterBackground}
-                options={{
-                    tabBarIcon: () => <Image
-                        style={{
-                            height: 50,
-                            width: 50,
-                            opacity: tabOpacity4
-                        }}
-                        source={require('../assets/bottomTabIcons/character-background.png')}
-                    />
-                }}
-            />
-            <AppTab.Screen
-                name="CharacterSpells"
-                component={CharacterSpells}
-                options={{
-                    tabBarIcon: () => <Image
-                        style={{
-                            height: 50,
-                            width: 50,
-                            opacity: tabOpacity5
-                        }}
-                        source={require('../assets/bottomTabIcons/character-spells.png')}
-                    />
-                }}
-            />
-        </AppTab.Navigator>
+                                height: 50,
+                                width: 50,
+                                opacity: tabOpacity1
+                            }}
+                            source={require('../assets/bottomTabIcons/character-general.png')}
+                        />
+                    }}
+                />
+                <AppTab.Screen
+                    name="CharacterCombat"
+                    component={CharacterCombat}
+                    options={{
+                        tabBarIcon: () => <Image
+                                style={{
+                                height: 50,
+                                width: 50,
+                                opacity: tabOpacity2
+                            }}
+                            source={require('../assets/bottomTabIcons/character-combat.png')}
+                        />
+                    }}
+                />
+                <AppTab.Screen
+                    name="CharacterBag"
+                    component={CharacterBag}
+                    options={{
+                        tabBarIcon: () => <Image
+                            style={{
+                                height: 50,
+                                width: 50,
+                                opacity: tabOpacity3
+                            }}
+                            source={require('../assets/bottomTabIcons/character-bag.png')}
+                        />
+                    }}
+                />
+                <AppTab.Screen
+                    name="CharacterBackground"
+                    component={CharacterBackground}
+                    options={{
+                        tabBarIcon: () => <Image
+                            style={{
+                                height: 50,
+                                width: 50,
+                                opacity: tabOpacity4
+                            }}
+                            source={require('../assets/bottomTabIcons/character-background.png')}
+                        />
+                    }}
+                />
+                <AppTab.Screen
+                    name="CharacterSpells"
+                    component={CharacterSpells}
+                    options={{
+                        tabBarIcon: () => <Image
+                            style={{
+                                height: 50,
+                                width: 50,
+                                opacity: tabOpacity5
+                            }}
+                            source={require('../assets/bottomTabIcons/character-spells.png')}
+                        />
+                    }}
+                />
+            </AppTab.Navigator>
+        </CharacterContext.Provider>
     )
 }
 
