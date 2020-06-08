@@ -116,25 +116,30 @@ exports.up = function(knex) {
       table.string('speed', 16).notNullable()
       table.integer('hp_max').unsigned().notNullable()
       table.integer('hp_current').unsigned().notNullable()
-      table.integer('hp_temporary').unsigned()
+      table.integer('temporary_hp_current').unsigned()
+      table.integer('temporary_hp_max').unsigned()
 
       table.integer('hp_dice_total').unsigned().notNullable()
       table.string('hp_dice', 16).notNullable()
 
-      table.integer('successes_death_saves').unsigned()
-      table.integer('failures_death_saves').unsigned()
+      table.boolean('death_saves_successes_1').notNullable()
+      table.boolean('death_saves_successes_2').notNullable()
+      table.boolean('death_saves_successes_3').notNullable()
+      table.boolean('death_saves_failures_1').notNullable()
+      table.boolean('death_saves_failures_2').notNullable()
+      table.boolean('death_saves_failures_3').notNullable()
 
       //Ataques e magias
       table.string('atk_name_1', 20)
-      table.integer('atk_bonus_1').unsigned()
+      table.string('atk_bonus_1', 3)
       table.string('atk_damage_and_type_1', 20)
 
       table.string('atk_name_2', 20)
-      table.integer('atk_bonus_2').unsigned()
+      table.string('atk_bonus_2', 3)
       table.string('atk_damage_and_type_2', 20)
 
       table.string('atk_name_3', 20)
-      table.integer('atk_bonus_3').unsigned()
+      table.string('atk_bonus_3', 3)
       table.string('atk_damage_and_type_3', 20)
 
       table.text('atk_description')

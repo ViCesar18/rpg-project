@@ -61,26 +61,27 @@ export default function Home({ navigation }) {
                 renderItem={({ item: character }) => {
                     var characterImg
 
-                    if(character.race === 'Humano'){
-                        if(character.class === 'Mago')
-                            characterImg = require('../../assets/avatar/human-mage.png')
-                        else if(character.class === 'Ladino')
-                            characterImg = require('../../assets/avatar/human-rogue.png')
-                        else
+                    switch(character.character_img) {
+                        case 'dwarf.png':
+                            characterImg = require('../../assets/avatar/dwarf.png')
+                            break
+                        case 'elf.png':
+                            characterImg = require('../../assets/avatar/elf.png')
+                            break
+                        case 'human-fighter.png':
                             characterImg = require('../../assets/avatar/human-fighter.png')
-                    }
-                    else if(character.race === 'Anao da Montanha' || character.race === 'Anao da Colina') {
-                        characterImg = require('../../assets/avatar/dwarf.png')
-                    }
-                    else if(character.race === 'Alto Elfo'
-                     || character.race  === 'Elfo da Floresta' || character.race === 'Elfo Negro') {
-                        characterImg = require('../../assets/avatar/elf.png')
-                    }
-                    else if(character.race === 'Meio-Orc') {
-                        characterImg = require('../../assets/avatar/orc.png')
-                    }
-                    else {
-                        characterImg = require('../../assets/avatar/human-fighter.png')
+                            break
+                        case 'human-mage.png':
+                            characterImg = require('../../assets/avatar/human-mage.png')
+                            break
+                        case 'human-rogue.png':
+                            characterImg = require('../../assets/avatar/human-rogue.png')
+                            break
+                        case 'orc.png':
+                            characterImg = require('../../assets/avatar/orc.png')
+                        default:
+                            characterImg = require('../../assets/avatar/human-fighter.png')
+                            break
                     }
 
                     return (

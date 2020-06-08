@@ -124,25 +124,30 @@ module.exports = {
                 speed: Joi.string().max(16).required(),
                 hp_max: Joi.number().integer().min(0).required(),
                 hp_current: Joi.number().integer().min(0).required(),
-                hp_temporary: Joi.number().integer().min(0).allow(null),
+                temporary_hp_current: Joi.number().integer().min(0).allow(null),
+                temporary_hp_max: Joi.number().integer().min(0).allow(null),
 
                 hp_dice_total: Joi.number().integer().min(0).required(),
                 hp_dice: Joi.string().max(16).required(),
 
-                successes_death_saves: Joi.number().integer().min(0).max(3).allow(null),
-                failures_death_saves: Joi.number().integer().min(0).max(3).allow(null),
+                death_saves_successes_1: Joi.boolean().required(),
+                death_saves_successes_2: Joi.boolean().required(),
+                death_saves_successes_3: Joi.boolean().required(),
+                death_saves_failures_1: Joi.boolean().required(),
+                death_saves_failures_2: Joi.boolean().required(),
+                death_saves_failures_3: Joi.boolean().required(),
 
                 //Ataques e magias
                 atk_name_1: Joi.string().max(20).allow(null),
-                atk_bonus_1: Joi.number().integer().min(0).allow(null),
+                atk_bonus_1: Joi.string().max(3).allow(null),
                 atk_damage_and_type_1: Joi.string().max(20).allow(null),
 
                 atk_name_2: Joi.string().max(20).allow(null),
-                atk_bonus_2: Joi.number().integer().min(0).allow(null),
+                atk_bonus_2: Joi.string().max(3).allow(null),
                 atk_damage_and_type_2: Joi.string().max(20).allow(null),
 
                 atk_name_3: Joi.string().max(20).allow(null),
-                atk_bonus_3: Joi.number().integer().min(0).allow(null),
+                atk_bonus_3: Joi.string().max(3).allow(null),
                 atk_damage_and_type_3: Joi.string().max(20).allow(null),
 
                 atk_description: Joi.string().allow(null),

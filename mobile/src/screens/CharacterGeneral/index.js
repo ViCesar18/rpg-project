@@ -10,7 +10,9 @@ import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export default function CharacterGeneral({ route, navigation }) {
+export default function CharacterGeneral({ navigation }) {
+    const character = useContext(CharacterContext)
+
     const [modalVisible, setModalVisible] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
     const [modalText, setModalText] = useState('')
@@ -18,8 +20,40 @@ export default function CharacterGeneral({ route, navigation }) {
 
     const [LifeModalVisible, setLifeModalVisible] = useState(false)
     const [lifeModalIcon, setLifeModalIcon] = useState()
+    const [lifeModalCurrentHpText, setLifeModalCurrentHpText] = useState('')
+    const [lifeModalMaxHpText, setLifeModalMaxHpText] = useState('')
 
-    const character = useContext(CharacterContext)
+    const [succes1, setSucces1] = useState(Boolean(character.death_saves_successes_1))
+    const [succes2, setSucces2] = useState(Boolean(character.death_saves_successes_2))
+    const [succes3, setSucces3] = useState(Boolean(character.death_saves_successes_3))
+    const [failure1, setFailure1] = useState(Boolean(character.death_saves_failures_1))
+    const [failure2, setFailure2] = useState(Boolean(character.death_saves_failures_1))
+    const [failure3, setFailure3] = useState(Boolean(character.death_saves_failures_1))
+
+    var characterImg
+
+    switch(character.character_img) {
+        case 'dwarf.png':
+            characterImg = require('../../assets/avatar/dwarf.png')
+            break
+        case 'elf.png':
+            characterImg = require('../../assets/avatar/elf.png')
+            break
+        case 'human-fighter.png':
+            characterImg = require('../../assets/avatar/human-fighter.png')
+            break
+        case 'human-mage.png':
+            characterImg = require('../../assets/avatar/human-mage.png')
+            break
+        case 'human-rogue.png':
+            characterImg = require('../../assets/avatar/human-rogue.png')
+            break
+        case 'orc.png':
+            characterImg = require('../../assets/avatar/orc.png')
+        default:
+            characterImg = require('../../assets/avatar/human-fighter.png')
+            break
+    }
 
     return (
         <View style={styles.container}>
@@ -35,7 +69,7 @@ export default function CharacterGeneral({ route, navigation }) {
                 <DefaultTextInput
                     style={styles.characterName}
                     placeholder="Nome do Personagem" 
-                    defaultValue="Edran Galanodel"
+                    defaultValue={character.character_name}
                     maxLength={24}
                     selectionColor="#4A55A1"
                 />
@@ -44,18 +78,21 @@ export default function CharacterGeneral({ route, navigation }) {
                     <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Raça"
+                        defaultValue={character.race}
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
                     <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Classe"
+                        defaultValue={character.class}
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
                     <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Antecedente"
+                        defaultValue={character.background}
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
@@ -65,15 +102,17 @@ export default function CharacterGeneral({ route, navigation }) {
                     <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="XP"
+                        defaultValue={String(character.xp_points)}
                         keyboardType="number-pad"
                         maxLength={10}
                         selectionColor="#4A55A1"
                     />
                     
-                    <Image style={styles.headerImage} source={require('../../assets/avatar/elf.png')} />
+                    <Image style={styles.headerImage} source={characterImg} />
                     <DefaultTextInput
                         style={styles.headerLevel}
                         placeholder="Nível"
+                        defaultValue={String(character.level)}
                         keyboardType="number-pad"
                         maxLength={2}
                         selectionColor="#4A55A1"
@@ -82,6 +121,7 @@ export default function CharacterGeneral({ route, navigation }) {
                     <DefaultTextInput
                         style={styles.headerInput}
                         placeholder="Tendência"
+                        defaultValue={character.alignment}
                         maxLength={16}
                         selectionColor="#4A55A1"
                     />
@@ -93,6 +133,7 @@ export default function CharacterGeneral({ route, navigation }) {
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput
                             style={styles.rectInput}
+                            defaultValue={String(character.armor_class)}
                             keyboardType="number-pad"
                             maxLength={2}
                             selectionColor="#4A55A1"
@@ -103,6 +144,7 @@ export default function CharacterGeneral({ route, navigation }) {
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput
                             style={styles.rectInput}
+                            defaultValue={String(character.initiative)}
                             maxLength={2}
                             selectionColor="#4A55A1"
                         />
@@ -112,6 +154,7 @@ export default function CharacterGeneral({ route, navigation }) {
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput
                             style={styles.rectInput}
+                            defaultValue={character.speed}
                             maxLength={16}
                             selectionColor="#4A55A1"
                         />
@@ -125,15 +168,17 @@ export default function CharacterGeneral({ route, navigation }) {
                             style={styles.hpGradient}
                             start={[0, 0]}
                             end={[1, 0]}
-                            locations={[1, 1]}
-                            colors={['#EF1146', '#E3E8E8']}
+                            locations={[character.hp_current / character.hp_max, character.hp_current / character.hp_max]}
+                            colors={['#EF1146', 'transparent']}
                         >
-                            <DefaultText style={styles.hpText}>10/10</DefaultText>
+                            <DefaultText style={styles.hpText}>{character.hp_current}/{character.hp_max}</DefaultText>
                         </LinearGradient>
                         
                         <TouchableOpacity onPress={() => {
                             setLifeModalVisible(true)
                             setLifeModalIcon(require('../../assets/hpIcons/hp.png'))
+                            setLifeModalCurrentHpText(String(character.hp_current))
+                            setLifeModalMaxHpText(String(character.hp_max))
                         }}>
                             <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
                         </TouchableOpacity>
@@ -143,15 +188,20 @@ export default function CharacterGeneral({ route, navigation }) {
                             style={styles.hpGradient}
                             start={[0, 0]}
                             end={[1, 0]}
-                            locations={[0, 0]}
-                            colors={['#EDE214', '#E3E8E8']}
+                            locations={[character.temporary_hp_max === null ? 0 : character.temporary_hp_current / character.temporary_hp_max,
+                                character.temporary_hp_max === null ? 0 : character.temporary_hp_current / character.temporary_hp_max]}
+                            colors={['#EDE214', 'transparent']}
                         >
-                            <DefaultText style={styles.hpText}>0/0</DefaultText>
+                            <DefaultText style={styles.hpText}>
+                                {character.temporary_hp_current === null ? 0 : character.temporary_hp_current}/{character.temporary_hp_max === null ? 0 : character.temporary_hp_max}
+                            </DefaultText>
                         </LinearGradient>
                         
                         <TouchableOpacity onPress={() => {
                             setLifeModalVisible(true)
                             setLifeModalIcon(require('../../assets/hpIcons/temporary-hp.png'))
+                            setLifeModalCurrentHpText(character.temporary_hp_current === null ? '0' : String(character.temporary_hp_current))
+                            setLifeModalMaxHpText(character.temporary_hp_max === null ? '0' : String(character.temporary_hp_max))
                         }}>
                             <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
                         </TouchableOpacity>
@@ -164,24 +214,33 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.savesText}>Sucesso</DefaultText>
                             <CheckBox
                                 size={30}
-                                checked={true}
+                                checked={succes1}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setSucces1(!succes1)
+                                }}
                             />
                             <CheckBox
                                 size={30}
-                                checked={false}
+                                checked={succes2}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setSucces2(!succes2)
+                                }}
                             />
                             <CheckBox
                                 size={30}
-                                checked={false}
+                                checked={succes3}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setSucces3(!succes3)
+                                }}
                             />
                         </View>
 
@@ -189,24 +248,33 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.savesText}>Falha</DefaultText>
                             <CheckBox
                                 size={30}
-                                checked={true}
+                                checked={failure1}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setFailure1(!failure1)
+                                }}
                             />
                             <CheckBox
                                 size={30}
-                                checked={true}
+                                checked={failure2}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setFailure2(!failure2)
+                                }}
                             />
                             <CheckBox
                                 size={30}
-                                checked={true}
+                                checked={failure3}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
+                                onPress={() => {
+                                    setFailure3(!failure3)
+                                }}
                             />
                         </View>
 
@@ -218,6 +286,7 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.totalLifeDicesText}>Total de Dados</DefaultText>
                             <DefaultTextInput
                                 style={styles.totalLifeDicesInput}
+                                defaultValue={String(character.hp_dice_total)}
                                 keyboardType="number-pad"
                                 maxLength={2}
                                 selectionColor="#4A55A1"
@@ -225,6 +294,7 @@ export default function CharacterGeneral({ route, navigation }) {
                         </View>
                         <DefaultTextInput
                             style={styles.hpDicesTextArea}
+                            defaultValue={character.hp_dice}
                             maxLength={16}
                             multiline={true}
                             selectionColor="#4A55A1"
@@ -239,16 +309,19 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.equippedWeaponsColumnText}>Nome</DefaultText>
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_name_1}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_name_2}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_name_3}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
@@ -257,16 +330,19 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.equippedWeaponsColumnText}>Bônus</DefaultText>
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_bonus_1}
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_bonus_2}
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_bonus_3}
                                 maxLength={3}
                                 selectionColor="#4A55A1"
                             />
@@ -275,16 +351,19 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.equippedWeaponsColumnText}>Dano/Tipo</DefaultText>
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_damage_and_type_1}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_damage_and_type_2}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
                             <DefaultTextInput
                                 style={styles.equippedWeaponsColumnInput}
+                                defaultValue={character.atk_damage_and_type_3}
                                 maxLength={20}
                                 selectionColor="#4A55A1"
                             />
@@ -295,10 +374,10 @@ export default function CharacterGeneral({ route, navigation }) {
                         onPress={() => {
                             setModalVisible(true)
                             setModalTitle('Ataques e Magias')
-                            setModalText('Eae')
+                            setModalText(character.atk_description)
                         }}
                     >
-                        <DefaultText>Eae</DefaultText>
+                        <DefaultText>{character.atk_description}</DefaultText>
                     </TouchableOpacity>
                     <DefaultText style={styles.darkInputContainerTitle}>ATAQUES E MAGIAS</DefaultText>
                 </View>
@@ -357,6 +436,7 @@ export default function CharacterGeneral({ route, navigation }) {
                             <Image style={styles.hpImage} source={lifeModalIcon} />
                             <DefaultTextInput
                                 style={[styles.lifeModalInput, { marginLeft: 15 }]}
+                                defaultValue={lifeModalCurrentHpText}
                                 keyboardType="number-pad"
                                 maxLength={4}
                                 selectionColor="#4A55A1"
@@ -364,6 +444,7 @@ export default function CharacterGeneral({ route, navigation }) {
                             <DefaultText style={styles.lifeModalText}> / </DefaultText>
                             <DefaultTextInput
                                 style={styles.lifeModalInput}
+                                defaultValue={lifeModalMaxHpText}
                                 keyboardType="number-pad"
                                 maxLength={4}
                                 selectionColor="#4A55A1"

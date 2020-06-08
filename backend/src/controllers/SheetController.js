@@ -119,13 +119,18 @@ module.exports = {
             speed: body.speed,
             hp_max: body.hp_max,
             hp_current: body.hp_current,
-            hp_temporary: body.hp_temporary,
+            temporary_hp_current: body.temporary_hp_current,
+            temporary_hp_max: body.temporary_hp_current,
 
             hp_dice_total: body.hp_dice_total,
             hp_dice: body.hp_dice,
 
-            successes_death_saves: body.successes_death_saves,
-            failures_death_saves: body.failures_death_saves,
+            death_saves_successes_1: body.death_saves_successes_1,
+            death_saves_successes_2: body.death_saves_successes_2,
+            death_saves_successes_3: body.death_saves_successes_3,
+            death_saves_failures_1: body.death_saves_failures_1,
+            death_saves_failures_2: body.death_saves_failures_2,
+            death_saves_failures_3: body.death_saves_failures_3,
 
             //Ataques e magias
             atk_name_1: body.atk_name_1,
