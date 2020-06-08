@@ -24,98 +24,101 @@ module.exports = {
                 xp_points: Joi.number().integer().min(0).required(),
 
                 //Atributos
-                inspiration: Joi.string().max(4),
-                proficiency_bonus: Joi.number().integer().required(),
+                inspiration: Joi.string().max(3),
+                proficiency_bonus: Joi.string().max(2).required(),
 
                 strength: Joi.number().integer().positive().required(),
-                strength_modifier: Joi.number().integer().required(),
+                strength_modifier: Joi.string().max(3).required(),
 
                 dexterity: Joi.number().integer().positive().required(),
-                dexterity_modifier: Joi.number().integer().required(),
+                dexterity_modifier: Joi.string().max(3).required(),
 
                 constitution: Joi.number().integer().positive().required(),
-                constitution_modifier: Joi.number().integer().required(),
+                constitution_modifier: Joi.string().max(3).required(),
 
                 intelligence: Joi.number().integer().positive().required(),
-                intelligence_modifier: Joi.number().integer().required(),
+                intelligence_modifier: Joi.string().max(3).required(),
 
                 wisdom: Joi.number().integer().positive().required(),
-                wisdom_modifier: Joi.number().integer().required(),
+                wisdom_modifier: Joi.string().max(3).required(),
 
                 charisma: Joi.number().integer().positive().required(),
-                charisma_modifier: Joi.number().integer().required(),
+                charisma_modifier:Joi.string().max(3).required(),
 
                 passive_wisdom: Joi.number().integer().required(),
 
                 //Saving Throws
-                str_saving_throw: Joi.number().integer().required(),
+                str_saving_throw: Joi.string().max(3).required(),
                 str_st_is_proficient: Joi.boolean().required(),
 
-                dex_saving_throw: Joi.number().integer().required(),
+                dex_saving_throw: Joi.string().max(3).required(),
                 dex_st_is_proficient: Joi.boolean().required(),
 
-                con_saving_throw: Joi.number().integer().required(),
+                con_saving_throw: Joi.string().max(3).required(),
                 con_st_is_proficient: Joi.boolean().required(),
 
-                int_saving_throw: Joi.number().integer().required(),
+                int_saving_throw: Joi.string().max(3).required(),
                 int_st_is_proficient: Joi.boolean().required(),
 
-                wis_saving_throw: Joi.number().integer().required(),
+                wis_saving_throw: Joi.string().max(3).required(),
                 wis_st_is_proficient: Joi.boolean().required(),
                 
-                cha_saving_throw: Joi.number().integer().required(),
+                cha_saving_throw: Joi.string().max(3).required(),
                 cha_st_is_proficient: Joi.boolean().required(),
 
                 //Skiils
-                acrobatics: Joi.number().integer().required(),
+                acrobatics: Joi.string().max(3).required(),
                 acr_is_proficient: Joi.boolean().required(),
 
-                animal_handling: Joi.number().integer().required(),
+                animal_handling: Joi.string().max(3).required(),
                 anh_is_proficient: Joi.boolean().required(),
 
-                arcana: Joi.number().integer().required(),
+                arcana: Joi.string().max(3).required(),
                 arc_is_proficient: Joi.boolean().required(),
 
-                athletics: Joi.number().integer().required(),
+                athletics: Joi.string().max(3).required(),
                 ath_is_proficient: Joi.boolean().required(),
 
-                deception: Joi.number().integer().required(),
+                deception: Joi.string().max(3).required(),
                 dec_is_proficient: Joi.boolean().required(),
 
-                history: Joi.number().integer().required(),
+                history: Joi.string().max(3).required(),
                 his_is_proficient: Joi.boolean().required(),
 
-                insight: Joi.number().integer().required(),
+                insight: Joi.string().max(3).required(),
                 ins_is_proficient: Joi.boolean().required(),
 
-                intimidation: Joi.number().integer().required(),
+                intimidation: Joi.string().max(3).required(),
                 itm_is_proficient: Joi.boolean().required(),
 
-                investigation: Joi.number().integer().required(),
+                investigation: Joi.string().max(3).required(),
                 inv_is_proficient: Joi.boolean().required(),
 
-                medicine: Joi.number().integer().required(),
+                medicine: Joi.string().max(3).required(),
                 med_is_proficient: Joi.boolean().required(),
 
-                nature: Joi.number().integer().required(),
+                nature: Joi.string().max(3).required(),
                 nat_is_proficient: Joi.boolean().required(),
 
-                perception: Joi.number().integer().required(),
+                perception: Joi.string().max(3).required(),
                 perc_is_proficient: Joi.boolean().required(),
 
-                persuasion: Joi.number().integer().required(),
+                performance: Joi.string().max(3).required(),
+                perf_is_proficient: Joi.boolean().required(),
+
+                persuasion: Joi.string().max(3).required(),
                 pers_is_proficient: Joi.boolean().required(),
 
-                religion: Joi.number().integer().required(),
+                religion: Joi.string().max(3).required(),
                 rel_is_proficient: Joi.boolean().required(),
 
-                sleight_of_hand: Joi.number().integer().required(),
+                sleight_of_hand: Joi.string().max(3).required(),
                 sle_is_proficient: Joi.boolean().required(),
 
-                stealth: Joi.number().integer().required(),
+                stealth: Joi.string().max(3).required(),
                 ste_is_proficient: Joi.boolean().required(),
 
-                survival: Joi.number().integer().required(),
+                survival: Joi.string().max(3).required(),
                 sur_is_proficient: Joi.boolean().required(),
 
                 //Informações de combate

@@ -98,6 +98,9 @@ module.exports = {
             perception: body.perception,
             perc_is_proficient: body.perc_is_proficient,
 
+            performance: body.perception,
+            perf_is_proficient: body.perc_is_proficient,
+
             persuasion: body.persuasion,
             pers_is_proficient: body.pers_is_proficient,
 

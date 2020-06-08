@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, ScrollView, TouchableHighlight } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
+
+import { CharacterContext } from '../../contexts/character'
 
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterCombat({ route, navigation }) {
+    const character = useContext(CharacterContext)
+
+    //Estados de proficiência em Testes de Resistência
+    const [strIsPro, setStrIsPro] = useState(Boolean(character.str_st_is_proficient))
+    const [dexIsPro, setDexIsPro] = useState(Boolean(character.dex_st_is_proficient))
+    const [conIsPro, setConIsPro] = useState(Boolean(character.con_st_is_proficient))
+    const [intIsPro, setIntIsPro] = useState(Boolean(character.int_st_is_proficient))
+    const [wisIsPro, setWisIsPro] = useState(Boolean(character.wis_st_is_proficient))
+    const [chaIsPro, setChaIsPro] = useState(Boolean(character.cha_st_is_proficient))
+
+    //Estados de proficiência em Perícias
+    const [acrIsPro, setAcrIsPro] = useState(Boolean(character.acr_is_proficient))
+    const [anhIsPro, setAnhIsPro] = useState(Boolean(character.anh_is_proficient))
+    const [arcIsPro, setArcIsPro] = useState(Boolean(character.arc_is_proficient))
+    const [athIsPro, setAthIsPro] = useState(Boolean(character.ath_is_proficient))
+    const [decIsPro, setDecIsPro] = useState(Boolean(character.dec_is_proficient))
+    const [hisIsPro, setHisIsPro] = useState(Boolean(character.his_is_proficient))
+    const [insIsPro, setInsIsPro] = useState(Boolean(character.ins_is_proficient))
+    const [itmIsPro, setItmIsPro] = useState(Boolean(character.itm_is_proficient))
+    const [invIsPro, setInvIsPro] = useState(Boolean(character.inv_is_proficient))
+    const [medIsPro, setMedIsPro] = useState(Boolean(character.med_is_proficient))
+    const [natIsPro, setNatIsPro] = useState(Boolean(character.nat_is_proficient))
+    const [percIsPro, setPercIsPro] = useState(Boolean(character.perc_is_proficient))
+    const [perfIsPro, setPerfIsPro] = useState(Boolean(character.perf_is_proficient))
+    const [persIsPro, setPersIsPro] = useState(Boolean(character.pers_is_proficient))
+    const [relIsPro, setRelIsPro] = useState(Boolean(character.rel_is_proficient))
+    const [sleIsPro, setSleIsPro] = useState(Boolean(character.sle_is_proficient))
+    const [steIsPro, setSteIsPro] = useState(Boolean(character.ste_is_proficient))
+    const [surIsPro, setSurIsPro] = useState(Boolean(character.sur_is_proficient))
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -26,9 +58,9 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Força</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.strength_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
@@ -36,9 +68,9 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Destreza</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.dexterity_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
@@ -46,9 +78,9 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Constituição</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.constitution_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
@@ -56,9 +88,9 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Inteligência</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.intelligence_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
@@ -66,9 +98,9 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Sabedoria</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.wisdom_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
@@ -76,77 +108,83 @@ export default function CharacterCombat({ route, navigation }) {
                         <View style={styles.attribute}>
                             <DefaultText style={styles.attributeTitle}>Carisma</DefaultText>
                             <DefaultTextInput
-                                style={styles.attributeInput}
-                                keyboardType="number-pad"
-                                maxLength={2}
+                                style={styles.attributeModifierInput}
+                                defaultValue={character.charisma_modifier}
+                                maxLength={3}
                                 selectionColor="#4A55A1"
                             />
                         </View>
                     </View>
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '5%',
                         }]}
+                        defaultValue={String(character.strength)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '21%',
                         }]}
+                        defaultValue={String(character.dexterity)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '37%',
                         }]}
+                        defaultValue={String(character.constitution)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '53%',
                         }]}
+                        defaultValue={String(character.intelligence)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '69%',
                         }]}
+                        defaultValue={String(character.wisdom)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
 
                     <DefaultTextInput
-                        style={[styles.attributeModifierInput, {
+                        style={[styles.attributeInput, {
                             position: 'absolute',
                             left: '65%',
                             top: '85%',
                         }]}
+                        defaultValue={String(character.charisma)}
                         keyboardType="number-pad"
-                        maxLength={3}
+                        maxLength={2}
                         selectionColor="#4A55A1"
                     />
                 </View>
@@ -155,8 +193,8 @@ export default function CharacterCombat({ route, navigation }) {
                     <View style={styles.smallDarkInputContainer}>
                         <DefaultTextInput
                             style={styles.smallDarkInput}
-                            keyboardType="number-pad"
-                            maxLength={2}
+                            defaultValue={character.inspiration}
+                            maxLength={3}
                             selectionColor="#4A55A1"
                         />
                         <DefaultText style={styles.smallDarkInputText}>Inspiração</DefaultText>
@@ -165,7 +203,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <View style={styles.smallDarkInputContainer}>
                         <DefaultTextInput
                             style={styles.smallDarkInput}
-                            keyboardType="number-pad"
+                            defaultValue={character.proficiency_bonus}
                             maxLength={2}
                             selectionColor="#4A55A1"
                         />
@@ -178,14 +216,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={strIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setStrIsPro(!strIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.str_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -195,14 +236,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={dexIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setDexIsPro(!dexIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.dex_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -212,14 +256,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={conIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setConIsPro(!conIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.con_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -229,14 +276,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={intIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setIntIsPro(!intIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.int_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -246,14 +296,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={wisIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setWisIsPro(!wisIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.wis_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -263,14 +316,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={chaIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setChaIsPro(!chaIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.cha_saving_throw}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -285,14 +341,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={acrIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setAcrIsPro(!acrIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.acrobatics}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -304,14 +363,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={arcIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setArcIsPro(!arcIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.arcana}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -323,14 +385,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={athIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setAthIsPro(!athIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.athletics}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -342,14 +407,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={perfIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setPerfIsPro(!perfIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.performance}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -361,14 +429,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={decIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setDecIsPro(!decIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.deception}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -380,14 +451,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={steIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setSteIsPro(!steIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.stealth}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -399,14 +473,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={hisIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setHisIsPro(!hisIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.history}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -418,14 +495,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={itmIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setItmIsPro(!itmIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.intimidation}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -437,14 +517,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={insIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setInsIsPro(!insIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.insight}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -456,14 +539,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={invIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setInvIsPro(!invIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.investigation}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -475,14 +561,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={anhIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setAnhIsPro(!anhIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.animal_handling}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -495,14 +584,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={medIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setMedIsPro(!medIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.medicine}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -514,14 +606,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={natIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setNatIsPro(!natIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.nature}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -533,14 +628,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={percIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setPercIsPro(!percIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.perception}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -552,14 +650,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={persIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setPersIsPro(!persIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.persuasion}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -571,19 +672,22 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={sleIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setSleIsPro(!sleIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.sleight_of_hand}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
                                 <View>
-                                    <DefaultText style={styles.inputText}>Prestigitação</DefaultText>
+                                    <DefaultText style={styles.inputText}>Prestidigitação</DefaultText>
                                     <DefaultText style={[styles.inputText, styles.inputAdditionalText]}>(Des)</DefaultText>
                                 </View>
                             </View>
@@ -591,14 +695,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={relIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setRelIsPro(!relIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.religion}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -610,14 +717,17 @@ export default function CharacterCombat({ route, navigation }) {
                             <View style={styles.inputContainer}>
                                 <CheckBox
                                     size={25}
-                                    checked={true}
+                                    checked={surIsPro}
                                     checkedColor="#FFF"
                                     uncheckedColor="#FFF"
                                     containerStyle={styles.inputCheckbox}
+                                    onPress={() => {
+                                        setSurIsPro(!surIsPro)
+                                    }}
                                 />
                                 <DefaultTextInput
                                     style={styles.mainInput}
-                                    keyboardType="number-pad"
+                                    defaultValue={character.survival}
                                     maxLength={3}
                                     selectionColor="#4A55A1"
                                 />
@@ -632,6 +742,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <View style={styles.smallDarkInputContainer}>
                         <DefaultTextInput
                             style={styles.smallDarkInput}
+                            defaultValue={String(character.passive_wisdom)}
                             keyboardType="number-pad"
                             maxLength={2}
                             selectionColor="#4A55A1"

@@ -50,7 +50,7 @@ export default StyleSheet.create({
         fontSize: 12
     },
 
-    attributeInput: {
+    attributeModifierInput: {
         height: '70%',
         backgroundColor: '#4A55A1',
         width: '100%',
@@ -59,7 +59,7 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
-    attributeModifierInput: {
+    attributeInput: {
         width: 50,
         height: 75,
         backgroundColor: '#4A55A1',
