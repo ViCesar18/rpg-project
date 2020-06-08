@@ -10,6 +10,7 @@ module.exports = {
 
             //Geral
             character_name: body.character_name,
+            character_img: body.character_img,
             class: body.class,
             level: body.level,
             background: body.background,

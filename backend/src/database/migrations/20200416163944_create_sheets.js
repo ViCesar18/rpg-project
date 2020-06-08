@@ -7,6 +7,7 @@ exports.up = function(knex) {
 
       //Geral
       table.string('character_name', 24).notNullable()
+      table.string('character_img').notNullable()
       table.string('class', 16).notNullable()
       table.integer('level').unsigned().notNullable()
       table.string('background', 16).notNullable()

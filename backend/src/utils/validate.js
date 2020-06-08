@@ -15,6 +15,7 @@ module.exports = {
             [ Segments.BODY ]: Joi.object().keys({
                 //Geral
                 character_name: Joi.string().max(24).required(),
+                character_img: Joi.string().required(),
                 class: Joi.string().max(16).required(),
                 level: Joi.number().integer().positive().required(),
                 background: Joi.string().max(16).required(),
