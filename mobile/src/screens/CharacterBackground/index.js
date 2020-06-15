@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, ScrollView, TouchableHighlight, Modal, TouchableOpacity, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
+
+import { CharacterContext } from '../../contexts/character'
 
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterBackground({ navigation }) {
+    const character = useContext(CharacterContext)
+
     const [modalVisible, setModalVisible] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
     const [modalText, setModalText] = useState('')
@@ -30,6 +34,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Idade"
+                            defaultValue={String(character.age)}
                             keyboardType="number-pad"
                             maxLength={5}
                             selectionColor="#4A55A1"
@@ -38,6 +43,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Altura"
+                            defaultValue={String(character.height)}
                             keyboardType="decimal-pad"
                             maxLength={5}
                             selectionColor="#4A55A1"
@@ -46,6 +52,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Peso"
+                            defaultValue={String(character.weight)}
                             keyboardType="decimal-pad"
                             maxLength={5}
                             selectionColor="#4A55A1"
@@ -55,6 +62,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Olhos"
+                            defaultValue={character.eyes}
                             maxLength={12}
                             selectionColor="#4A55A1"
                         />
@@ -62,6 +70,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Pele"
+                            defaultValue={character.skin}
                             maxLength={12}
                             selectionColor="#4A55A1"
                         />
@@ -69,6 +78,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput 
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Cabelos"
+                            defaultValue={character.hair}
                             maxLength={12}
                             selectionColor="#4A55A1"
                         />
@@ -82,14 +92,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Traços de Personalidade')
-                                    setModalText('Eae')
+                                    setModalText(character.personality_traits)
                                 }}
                             >
                                 <DefaultText
                                     style={styles.traitsText}
                                     numberOfLines={5}
                                 >
-                                    Eae
+                                    {character.personality_traits}
                                 </DefaultText>
                                 <DefaultText style={styles.traitsTitle}>TRAÇOS DE PERSONALIDADE</DefaultText>
                             </TouchableOpacity>
@@ -99,14 +109,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Ideais')
-                                    setModalText('Eae')
+                                    setModalText(character.ideals)
                                 }}
                             >
                                 <DefaultText
                                     style={styles.traitsText}
                                     numberOfLines={5}
                                 >
-                                    Eae
+                                    {character.ideals}
                                 </DefaultText>
                                 <DefaultText style={styles.traitsTitle}>IDEAIS</DefaultText>
                             </TouchableOpacity>
@@ -116,14 +126,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Ligações')
-                                    setModalText('Eae')
+                                    setModalText(character.bonds)
                                 }}
                             >
                                 <DefaultText
                                     style={styles.traitsText}
                                     numberOfLines={5}
                                 >
-                                    Eae
+                                    {character.bonds}
                                 </DefaultText>
                                 <DefaultText style={styles.traitsTitle}>LIGAÇÕES</DefaultText>
                             </TouchableOpacity>
@@ -133,14 +143,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Defeitos')
-                                    setModalText('Eae')
+                                    setModalText(character.flaws)
                                 }}
                             >
                                 <DefaultText
                                     style={styles.traitsText}
                                     numberOfLines={5}
                                 >
-                                    Eae
+                                    {character.flaws}
                                 </DefaultText>
                                 <DefaultText style={styles.traitsTitle}>DEFEITOS</DefaultText>
                             </TouchableOpacity>
@@ -152,14 +162,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('História do Personagem')
-                                    setModalText('Eae')
+                                    setModalText(character.character_backstory)
                                 }}
                             >
                                 <DefaultText
                                     style={{ height: '100%', lineHeight: 22, fontSize: 16}}
                                     numberOfLines={20}
                                 >
-                                    Eae
+                                    {character.character_backstory}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>HISTÓRIA DO PERSONAGEM</DefaultText>
@@ -174,14 +184,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Características e Habilidades')
-                                    setModalText('Eae')
+                                    setModalText(character.features_traits)
                                 }}
                             >
                                 <DefaultText
                                     style={{ height: '100%' }}
                                     numberOfLines={7}
                                 >
-                                    Eae
+                                    {character.features_traits}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>CARACTERÍSTICAS E HABILIDADES</DefaultText>
@@ -193,14 +203,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Idiomas e Outras Proficiências')
-                                    setModalText('Eae')
+                                    setModalText(character.languages_and_proficiencies)
                                 }}
                             >
                                 <DefaultText
                                     style={{ height: '100%' }}
                                     numberOfLines={6}
                                 >
-                                    Eae
+                                    {character.languages_and_proficiencies}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>IDIOMAS E OUTRAS PROFICIÊNCIAS</DefaultText>
@@ -214,14 +224,13 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Aliados e Organizações')
-                                    setModalText('Eae')
+                                    setModalText(`Nome: ${character.allies_name}\n\n${character.allies_description}`)
                                 }}
                             >
                                 <DefaultText
-                                    style={{ height: '100%' }}
-                                    numberOfLines={3}
+                                    style={{ height: '100%', fontSize: 16, textAlign: 'center', textAlignVertical: 'center' }}
                                 >
-                                    Eae
+                                    {character.allies_name}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>ALIADOS E ORGANIZAÇÕES</DefaultText>
@@ -233,14 +242,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Outras Características e Habilidades')
-                                    setModalText('Eae')
+                                    setModalText(character.additional_features)
                                 }}
                             >
                                 <DefaultText
                                     style={{ height: '100%' }}
                                     numberOfLines={3}
                                 >
-                                    Eae
+                                    {character.additional_features}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>OUTRAS CARACTERÍSTICAS E HABILIDADES</DefaultText>
@@ -252,14 +261,14 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Tesouro')
-                                    setModalText('Eae')
+                                    setModalText(character.treasure)
                                 }}
                             >
                                 <DefaultText
                                     style={{ height: '100%' }}
                                     numberOfLines={3}
                                 >
-                                    Eae
+                                    {character.treasure}
                                 </DefaultText>
                             </TouchableOpacity>
                             <DefaultText style={styles.darkInputTitle}>TESOURO</DefaultText>
