@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, ScrollView, TouchableHighlight, Image } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
+
+import { CharacterContext } from '../../contexts/character'
 
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterBag({ navigation }) {
+    const character = useContext(CharacterContext)
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -37,6 +41,7 @@ export default function CharacterBag({ navigation }) {
                             top: '4%',
                             left: '40%'
                         }]}
+                        defaultValue={String(character.cp)}
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
@@ -48,6 +53,7 @@ export default function CharacterBag({ navigation }) {
                             top: '18%',
                             left: '40%'
                         }]}
+                        defaultValue={String(character.sp)}
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
@@ -59,6 +65,7 @@ export default function CharacterBag({ navigation }) {
                             top: '33%',
                             left: '40%'
                         }]}
+                        defaultValue={String(character.ep)}
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
@@ -70,6 +77,7 @@ export default function CharacterBag({ navigation }) {
                             top: '47%',
                             left: '40%'
                         }]}
+                        defaultValue={String(character.gp)}
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
@@ -81,6 +89,7 @@ export default function CharacterBag({ navigation }) {
                             top: '61%',
                             left: '40%'
                         }]}
+                        defaultValue={String(character.pp)}
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
@@ -89,6 +98,7 @@ export default function CharacterBag({ navigation }) {
 
                 <DefaultTextInput
                     style={styles.bagInput}
+                    defaultValue={character.equipment}
                     multiline
                     textAlignVertical="top"
                     selectionColor="#4A55A1"
