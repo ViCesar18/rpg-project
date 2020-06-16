@@ -25,7 +25,7 @@ export default function CharacterBag({ navigation }) {
 
             <DefaultText style={styles.title}>Inventário</DefaultText>
 
-            <ScrollView contentContainerStyle={styles.bagContainer}>
+            <ScrollView contentContainerStyle={styles.bagContainer} showsVerticalScrollIndicator={false}>
                 <View>
                     <View style={styles.coinContainer}>
                         <DefaultText style={styles.coinTitle}>PC</DefaultText>

@@ -108,7 +108,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#402D1F',
         opacity: 0.82,
-        padding: 10.5,
+        padding: 9.5,
     },
 
     spellContainer: {
@@ -118,6 +118,11 @@ export default StyleSheet.create({
         paddingBottom: 5,
         borderBottomWidth: 2,
         borderBottomColor: '#F4E7CE'
+    },
+
+    spellCheckbox: {
+        width: 24,
+        padding: 0
     },
 
     spellText: {

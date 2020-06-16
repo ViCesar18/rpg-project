@@ -128,7 +128,7 @@ export default function CharacterGeneral({ navigation }) {
                 </View>
             </View>
 
-            <ScrollView style={styles.content}>
+            <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={styles.rectInputsGroup}>
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput

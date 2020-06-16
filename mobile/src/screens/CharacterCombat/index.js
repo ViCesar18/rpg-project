@@ -52,7 +52,7 @@ export default function CharacterCombat({ route, navigation }) {
                 </TouchableHighlight>
             </View>
 
-            <ScrollView contentContainerStyle={styles.content}>
+            <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={{ flexShrink: 1 }}>
                     <View style={styles.attributesContainer}>
                         <View style={styles.attribute}>

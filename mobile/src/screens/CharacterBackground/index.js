@@ -28,7 +28,7 @@ export default function CharacterBackground({ navigation }) {
                 </TouchableHighlight>
             </View>
 
-            <ScrollView style={styles.content}>
+            <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={styles.darkInputContainer}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: 10 }}>
                         <DefaultTextInput 
