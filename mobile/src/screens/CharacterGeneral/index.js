@@ -50,6 +50,7 @@ export default function CharacterGeneral({ navigation }) {
             break
         case 'orc.png':
             characterImg = require('../../assets/avatar/orc.png')
+            break
         default:
             characterImg = require('../../assets/avatar/human-fighter.png')
             break
@@ -377,7 +378,10 @@ export default function CharacterGeneral({ navigation }) {
                             setModalText(character.atk_description)
                         }}
                     >
-                        <DefaultText>{character.atk_description}</DefaultText>
+                        <DefaultText
+                            numberOfLines={7}
+                            style={{ height: 140 }}
+                        >{character.atk_description}</DefaultText>
                     </TouchableOpacity>
                     <DefaultText style={styles.darkInputContainerTitle}>ATAQUES E MAGIAS</DefaultText>
                 </View>
@@ -400,7 +404,7 @@ export default function CharacterGeneral({ navigation }) {
                         <DefaultTextInput
                             style={styles.modalInput}
                             defaultValue={modalText}
-                            maxLength={255}
+                            maxLength={2048}
                             multiline
                             textAlignVertical="top"
                             selectionColor="#4A55A1"

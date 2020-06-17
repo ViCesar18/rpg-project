@@ -79,6 +79,7 @@ export default function Home({ navigation }) {
                             break
                         case 'orc.png':
                             characterImg = require('../../assets/avatar/orc.png')
+                            break
                         default:
                             characterImg = require('../../assets/avatar/human-fighter.png')
                             break

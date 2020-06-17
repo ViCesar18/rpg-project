@@ -177,10 +177,8 @@ module.exports = {
             skin: body.skin,
             hair: body.hair,
 
-            appearance_img: body.appearance_img,
             allies_name: body.allies_name,
             allies_description: body.allies_description,
-            allies_img: body.allies_img,
 
             character_backstory: body.character_backstory,
             additional_features: body.additional_features,

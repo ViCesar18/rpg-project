@@ -119,7 +119,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '5%',
                         }]}
                         defaultValue={String(character.strength)}
@@ -131,7 +131,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '21%',
                         }]}
                         defaultValue={String(character.dexterity)}
@@ -143,7 +143,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '37%',
                         }]}
                         defaultValue={String(character.constitution)}
@@ -155,7 +155,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '53%',
                         }]}
                         defaultValue={String(character.intelligence)}
@@ -167,7 +167,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '69%',
                         }]}
                         defaultValue={String(character.wisdom)}
@@ -179,7 +179,7 @@ export default function CharacterCombat({ route, navigation }) {
                     <DefaultTextInput
                         style={[styles.attributeInput, {
                             position: 'absolute',
-                            left: '65%',
+                            left: '85%',
                             top: '85%',
                         }]}
                         defaultValue={String(character.charisma)}

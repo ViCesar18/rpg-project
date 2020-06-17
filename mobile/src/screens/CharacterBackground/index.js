@@ -44,8 +44,7 @@ export default function CharacterBackground({ navigation }) {
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Altura"
                             defaultValue={String(character.height)}
-                            keyboardType="decimal-pad"
-                            maxLength={5}
+                            maxLength={6}
                             selectionColor="#4A55A1"
                         />
 
@@ -53,8 +52,7 @@ export default function CharacterBackground({ navigation }) {
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Peso"
                             defaultValue={String(character.weight)}
-                            keyboardType="decimal-pad"
-                            maxLength={5}
+                            maxLength={6}
                             selectionColor="#4A55A1"
                         />
                     </View>
@@ -71,7 +69,7 @@ export default function CharacterBackground({ navigation }) {
                             style={styles.physicalCharacteristicsInput}
                             placeholder="Pele"
                             defaultValue={character.skin}
-                            maxLength={12}
+                            maxLength={20}
                             selectionColor="#4A55A1"
                         />
 
@@ -224,7 +222,11 @@ export default function CharacterBackground({ navigation }) {
                                 onPress={() => {
                                     setModalVisible(true)
                                     setModalTitle('Aliados e Organizações')
-                                    setModalText(`Nome: ${character.allies_name}\n\n${character.allies_description}`)
+                                    setModalText(
+                                        character.allies_name === null || character.allies_description === null ?
+                                        null
+                                        : `Nome: ${character.allies_name}\n\n${character.allies_description}`
+                                    )
                                 }}
                             >
                                 <DefaultText
@@ -295,7 +297,7 @@ export default function CharacterBackground({ navigation }) {
                         <DefaultTextInput
                             style={styles.modalInput}
                             defaultValue={modalText}
-                            maxLength={255}
+                            maxLength={2048}
                             multiline
                             textAlignVertical="top"
                             selectionColor="#4A55A1"

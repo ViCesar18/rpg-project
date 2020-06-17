@@ -168,16 +168,14 @@ exports.up = function(knex) {
 
       //Descrições detalhadas
       table.integer('age').unsigned()
-      table.float('height').unsigned()
-      table.float('weight').unsigned()
+      table.string('height', 6)
+      table.string('weight', 6)
       table.string('eyes', 12)
-      table.string('skin', 12)
+      table.string('skin', 20)
       table.string('hair', 12)
 
-      table.string('appearance_img')
       table.string('allies_name', 16)
       table.text('allies_description')
-      table.string('allies_img')
 
       table.text('character_backstory')
       table.text('additional_features')

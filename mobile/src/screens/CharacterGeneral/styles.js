@@ -97,6 +97,7 @@ export default StyleSheet.create({
     rectInput: {
         width: 55,
         height: 55,
+        padding: 5,
         borderWidth: 3,
         borderRadius: 8,
         borderColor: '#353535',

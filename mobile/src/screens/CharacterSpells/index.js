@@ -198,7 +198,7 @@ export default function CharacterSpells({ navigation }) {
                             <DefaultText style={[styles.headerSpellcastingInformationTitle, { lineHeight: 28 }]}>CD do TR</DefaultText>
                             <DefaultTextInput
                                 style={styles.headerSpellcastingInformationInput}
-                                defaultValue={String(character.spell_save_dc)}
+                                defaultValue={character.spell_save_dc === null ? null : String(character.spell_save_dc)}
                                 keyboardType="number-pad"
                                 maxLength={2}
                                 selectionColor="#4A55A1"
@@ -209,7 +209,7 @@ export default function CharacterSpells({ navigation }) {
                             <DefaultText style={styles.headerSpellcastingInformationTitle}>Bônus de Ataque</DefaultText>
                             <DefaultTextInput
                                 style={styles.headerSpellcastingInformationInput}
-                                defaultValue={String(character.spell_attack_bonus)}
+                                defaultValue={character.spell_attack_bonus === null ? null : String(character.spell_attack_bonus)}
                                 keyboardType="number-pad"
                                 maxLength={2}
                                 selectionColor="#4A55A1"
@@ -255,7 +255,7 @@ export default function CharacterSpells({ navigation }) {
                                 <View style={{ width: '42.5%' }}>
                                     <DefaultTextInput
                                         style={styles.spellsHeaderSlotsInput}
-                                        defaultValue={slotsTotal === null ? "0" : String(slotsTotal)}
+                                        defaultValue={slotsTotal === null ? null : String(slotsTotal)}
                                         keyboardType="number-pad"
                                         maxLength={2}
                                         selectionColor="#4A55A1"
@@ -264,7 +264,7 @@ export default function CharacterSpells({ navigation }) {
                                 <View style={{ width: '42.5%' }}>
                                     <DefaultTextInput
                                         style={styles.spellsHeaderSlotsInput}
-                                        defaultValue={slotsExpended === null ? "0" : String(slotsExpended)}
+                                        defaultValue={slotsExpended === null ? null : String(slotsExpended)}
                                         keyboardType="number-pad"
                                         maxLength={2}
                                         selectionColor="#4A55A1"

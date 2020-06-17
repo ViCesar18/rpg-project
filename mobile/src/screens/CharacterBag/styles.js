@@ -42,7 +42,7 @@ export default StyleSheet.create({
         height: '75%',
         width: 100,
         padding: 10,
-        elevation: 9
+        elevation: 9,
     },
     
     coinTitle: {
@@ -68,6 +68,6 @@ export default StyleSheet.create({
         height: 550,
         marginLeft: 25,
         padding: 5,
-        fontSize: 20
+        fontSize: 18
     }
 })

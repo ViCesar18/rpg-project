@@ -19,12 +19,12 @@ export default StyleSheet.create({
 
     content: {
         flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     attributesContainer: {
         backgroundColor: '#4A55A1',
-        marginRight: 50,
-        width: '75%',
+        width: 130,
         height: 635,
         paddingVertical: 10,
         paddingLeft: 5,

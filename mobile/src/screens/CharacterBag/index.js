@@ -99,19 +99,26 @@ export default function CharacterBag({ navigation }) {
                 <DefaultTextInput
                     style={styles.bagInput}
                     defaultValue={character.equipment}
+                    maxLength={2048}
                     multiline
                     textAlignVertical="top"
                     selectionColor="#4A55A1"
                 />
 
-                <Image style={{
+                <View style={{
                     position: 'absolute',
                     bottom: '0%',
-                    left: '22%',
-
-                    width: 100,
-                    height: 158
-                }} source={require('../../assets/potion/potion.png')} />
+                    left: '8%',
+                    elevation: 10
+                }}>
+                    <Image
+                        style={{
+                            width: 110,
+                            height: 168
+                        }}
+                        source={require('../../assets/potion/potion.png')}
+                    />
+                </View>
             </ScrollView>
         </View>
     )

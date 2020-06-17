@@ -24,7 +24,7 @@ module.exports = {
                 xp_points: Joi.number().integer().min(0).required(),
 
                 //Atributos
-                inspiration: Joi.string().max(3),
+                inspiration: Joi.string().max(3).allow(null),
                 proficiency_bonus: Joi.string().max(2).required(),
 
                 strength: Joi.number().integer().positive().required(),
@@ -176,16 +176,14 @@ module.exports = {
 
                 //Descrições detalhadas
                 age: Joi.number().integer().min(0).allow(null),
-                height: Joi.number().min(0).allow(null),
-                weight: Joi.number().min(0).allow(null),
+                height: Joi.string().max(6).allow(null),
+                weight: Joi.string().max(6).allow(null),
                 eyes: Joi.string().max(12).allow(null),
-                skin: Joi.string().max(12).allow(null),
+                skin: Joi.string().max(20).allow(null),
                 hair: Joi.string().max(12).allow(null),
 
-                appearance_img: Joi.string().allow(null),
                 allies_name: Joi.string().max(16).allow(null),
                 allies_description: Joi.string().allow(null),
-                allies_img: Joi.string().allow(null),
 
                 character_backstory: Joi.string().allow(null),
                 additional_features: Joi.string().allow(null),
