@@ -1,4 +1,5 @@
 const connection = require('../database/connection')
+const { update } = require('../database/connection')
 
 module.exports = {
     async create(request, response) {
@@ -261,6 +262,30 @@ module.exports = {
 
         await connection('spells').where('sheet_id', sheet_id).delete()
         await connection('sheets').where('sheet_id', sheet_id).delete()
+
+        return response.status(204).send()
+    },
+
+    async update(request, response) {
+        const user_id = request.headers.authorization
+        const { sheet_id, ...updated_fields} = request.body
+
+        const sheet = await connection('sheets')
+         .where({ sheet_id })
+         .select('user_id')
+         .first()
+
+        if(sheet === undefined){
+            return response.status(400).json({ error: 'Ficha não encontrada!' })
+        }
+
+        if(sheet.user_id != user_id){
+            return response.status(401).json({ error: 'Operação não permitida.' })
+        }
+
+        await connection('sheets')
+         .where({ sheet_id })
+         .update(updated_fields)
 
         return response.status(204).send()
     }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
@@ -6,12 +6,17 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 import { CharacterContext } from '../../contexts/character'
 
+import api from '../../services/api'
+
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterGeneral({ navigation }) {
     const character = useContext(CharacterContext)
+
+    const [updatedFields, setUpdatedFields] = useState({ sheet_id: character.sheet_id })
+    const [saveButtonDisabled, setSaveButtonDisabled] = useState(true)
 
     const [modalVisible, setModalVisible] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
@@ -56,16 +61,52 @@ export default function CharacterGeneral({ navigation }) {
             break
     }
 
+    function objectSize(obj) {
+        var size = 0
+        for(key in obj){
+            size++
+        }
+
+        return size
+    }
+
+    async function handleUpdateSheet() {
+        try {
+            await api.put('sheet/update-sheet', updatedFields, {
+                headers: {
+                    Authorization: character.user_id
+                }
+            })
+        }
+        catch(err) {
+            alert('Erro ao salvar, tente novamente.')
+        }
+
+        setUpdatedFields({ sheet_id: character.sheet_id })
+        setSaveButtonDisabled(true)
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableHighlight
-                    style={styles.headerButton}
-                    onPress={navigation.openDrawer}
-                    underlayColor="transparent"
-                >
-                    <Feather name={'menu'} size={36} color={'#FFF'} />
-                </TouchableHighlight>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <TouchableHighlight
+                        style={styles.headerButton}
+                        onPress={navigation.openDrawer}
+                        underlayColor="transparent"
+                    >
+                        <Feather name={'menu'} size={36} color={'#FFF'} />
+                    </TouchableHighlight>
+
+                    <View style={styles.saveButton}>
+                        <Button
+                            title="SALVAR"
+                            disabled={saveButtonDisabled}
+                            color="green"
+                            onPress={handleUpdateSheet}
+                        />
+                    </View>
+                </View>
 
                 <DefaultTextInput
                     style={styles.characterName}
@@ -73,6 +114,22 @@ export default function CharacterGeneral({ navigation }) {
                     defaultValue={character.character_name}
                     maxLength={24}
                     selectionColor="#4A55A1"
+                    onEndEditing={({ nativeEvent: { text } }) => {
+                        if(text !== character.character_name) {
+                            updatedFields.character_name = text
+                            setUpdatedFields(updatedFields)
+                            if(saveButtonDisabled) {
+                                setSaveButtonDisabled(false)
+                            }
+                        }
+                        else {
+                            delete updatedFields.character_name
+                            setUpdatedFields(updatedFields)
+                            if(objectSize(updatedFields) === 1){
+                                setSaveButtonDisabled(true)
+                            }
+                        }
+                    }}
                 />
 
                 <View style={styles.headerInputsGroup1}>

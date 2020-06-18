@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native';
 import { DefaultText } from '../../components'
 
 import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
@@ -34,9 +35,11 @@ export default function Home({ navigation }) {
         setLoading(false)
     }
 
-    useEffect(() => {
-        loadCharacters()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            loadCharacters()
+        }, [])
+    )
 
     return (
         <View style={styles.container}>

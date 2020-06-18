@@ -25,6 +25,8 @@ routes.post('/sheet/create-sheet', Validate.createSheet(), SheetController.creat
 
 routes.delete('/sheet/delete-sheet/:sheet_id', Validate.deleteSheet(), SheetController.delete)
 
+routes.put('/sheet/update-sheet', SheetController.update)
+
 //Magias
 routes.get('/spell/index-spells', SpellController.index)
 
