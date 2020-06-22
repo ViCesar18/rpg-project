@@ -75,7 +75,6 @@ function BottomTabBar({ route }) {
                 <AppTab.Screen
                     name="CharacterGeneral"
                     component={CharacterGeneral}
-                    initialParams={route}
                     options={{
                         tabBarIcon: () => <Image
                             style={{

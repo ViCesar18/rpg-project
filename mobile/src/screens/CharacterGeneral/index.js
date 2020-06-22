@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -34,7 +35,7 @@ export default function CharacterGeneral({ navigation }) {
     const [failure1, setFailure1] = useState(Boolean(character.death_saves_failures_1))
     const [failure2, setFailure2] = useState(Boolean(character.death_saves_failures_1))
     const [failure3, setFailure3] = useState(Boolean(character.death_saves_failures_1))
-
+    
     var characterImg
 
     switch(character.character_img) {

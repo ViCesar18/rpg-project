@@ -17,6 +17,8 @@ export default function Home({ navigation }) {
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
 
+    const [listRefresh, setListRefresh] = useState(false)
+
     async function loadCharacters() {
         if(loading || total > 0 && characters.length === total){
             return
@@ -55,6 +57,12 @@ export default function Home({ navigation }) {
             </View>
 
             <FlatList
+                refreshing={listRefresh}
+                onRefresh={() => {
+                    setListRefresh(true)
+                    loadCharacters()
+                    setListRefresh(false)
+                }}
                 style={styles.characterList}
                 data={characters}
                 keyExtractor={character => String(character.sheet_id)}
@@ -91,7 +99,7 @@ export default function Home({ navigation }) {
                     return (
                         <TouchableOpacity 
                             style={styles.character}
-                            onPress={() => navigation.navigate('Tab', { character })}
+                            onPress={() => navigation.push('Tab', { character })}
                         >
                             <Image style={styles.characterImage} source={characterImg} />
                             <View style={styles.textContainer}>

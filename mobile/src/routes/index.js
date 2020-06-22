@@ -11,30 +11,29 @@ import Dices from '../screens/Dices'
 import NewCharacterScreen from '../screens/NewCharacter'
 import ConfigScreen from '../screens/ConfigScreen'
 
-const AppDrawer = createDrawerNavigator()
-const Drawer = () => (
-    <AppDrawer.Navigator
-        initialRouteName="Home"
-        drawerContent={(props) => <DrawerContent {...props}/>}
-    >
-        <AppDrawer.Screen name="Home" component={Home} />
-        <AppDrawer.Screen name="Dices" component={Dices} />
-        <AppDrawer.Screen name="NewSheetScreen" component={NewCharacterScreen} />
-        <AppDrawer.Screen name="Configuration" component={ConfigScreen} />
-        <AppDrawer.Screen name="Tab" component={BottomTabBar} />
-    </AppDrawer.Navigator>
+const AppStack = createStackNavigator()
+const MainStack = () => (
+    <AppStack.Navigator screenOptions={{ headerShown: false }}>
+        <AppStack.Screen name="Home" component={Home} />
+        <AppStack.Screen name="Dices" component={Dices} />
+        <AppStack.Screen name="NewSheetScreen" component={NewCharacterScreen} />
+        <AppStack.Screen name="Configuration" component={ConfigScreen} />
+
+        <AppStack.Screen name="LogIn" component={LogIn} />
+        <AppStack.Screen name="Tab" component={BottomTabBar} />
+    </AppStack.Navigator>
 )
 
-const AppStack = createStackNavigator()
+const AppDrawer = createDrawerNavigator()
 export default function Routes() {
     return (
         <NavigationContainer>
-            <AppStack.Navigator>
-                <AppStack.Screen name="Drawer" component={Drawer} options={{
-                    headerShown: false
-                }}/>
-                <AppStack.Screen name="LogIn" component={LogIn} />
-            </AppStack.Navigator>
+            <AppDrawer.Navigator
+                initialRouteName="MainStack"
+                drawerContent={(props) => <DrawerContent {...props}/>}
+            >
+                <AppDrawer.Screen name="MainStack" component={MainStack} />
+            </AppDrawer.Navigator>
         </NavigationContainer>
     )
 }
