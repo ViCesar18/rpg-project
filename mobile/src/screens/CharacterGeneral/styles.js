@@ -318,5 +318,13 @@ export default StyleSheet.create({
 
     lifeModalText: {
         fontSize: 25
+    },
+
+    errMessage: {
+        alignSelf: 'center',
+        marginTop: 15,
+        marginRight: 25,
+        color: 'red',
+        textAlign: 'center'
     }
 })
