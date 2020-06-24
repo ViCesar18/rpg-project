@@ -17,6 +17,10 @@ export default StyleSheet.create({
         width: 36
     },
 
+    saveButton: {
+        width: 100
+    },
+
     content: {
         flexDirection: 'row',
         justifyContent: 'space-between'

@@ -115,7 +115,7 @@ exports.up = function(knex) {
 
       //Informações de combate
       table.integer('armor_class').unsigned().notNullable()
-      table.integer('initiative').unsigned().notNullable()
+      table.string('initiative', 3).notNullable()
       table.string('speed', 16).notNullable()
       table.integer('hp_max').unsigned().notNullable()
       table.integer('hp_current').unsigned().notNullable()

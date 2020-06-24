@@ -123,7 +123,7 @@ module.exports = {
 
                 //Informações de combate
                 armor_class: Joi.number().integer().min(0).required(),
-                initiative: Joi.number().integer().min(0).required(),
+                initiative: Joi.string().max(3).required(),
                 speed: Joi.string().max(16).required(),
                 hp_max: Joi.number().integer().min(0).required(),
                 hp_current: Joi.number().integer().min(0).required(),

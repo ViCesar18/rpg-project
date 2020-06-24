@@ -1,6 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
 import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
-import { useFocusEffect } from '@react-navigation/native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -9,13 +8,15 @@ import { CharacterContext } from '../../contexts/character'
 
 import api from '../../services/api'
 
+import { objectSize } from '../../utils/additionalFunctions'
+
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterGeneral({ navigation }) {
-    const c = useContext(CharacterContext)
-    const [character, setCharacter] = useState(c)
+    const characterBase = useContext(CharacterContext)
+    const [character, setCharacter] = useState(characterBase)
 
     const [currentHp, setCurrentHp] = useState(character.hp_current)
     const [maxHp, setMaxHp] = useState(character.hp_max)
@@ -70,15 +71,6 @@ export default function CharacterGeneral({ navigation }) {
             break
     }
 
-    function objectSize(obj) {
-        var size = 0
-        for(key in obj){
-            size++
-        }
-
-        return size
-    }
-
     async function handleUpdateSheet() {
         try {
             await api.put('sheet/update-sheet', updatedFields, {
@@ -86,14 +78,14 @@ export default function CharacterGeneral({ navigation }) {
                     Authorization: character.user_id
                 }
             })
+
+            setCharacter({...character, ...updatedFields})
+            setUpdatedFields({ sheet_id: character.sheet_id })
+            setSaveButtonDisabled(true)
         }
         catch(err) {
             alert('Erro ao salvar, tente novamente.')
         }
-
-        setCharacter({...character, ...updatedFields})
-        setUpdatedFields({ sheet_id: character.sheet_id })
-        setSaveButtonDisabled(true)
     }
 
     return (
@@ -223,8 +215,8 @@ export default function CharacterGeneral({ navigation }) {
                         maxLength={10}
                         selectionColor="#4A55A1"
                         onEndEditing={({ nativeEvent: { text } }) => {
-                            if(text !== character.xp_points) {
-                                updatedFields.xp_points = text
+                            if(text != character.xp_points) {
+                                updatedFields.xp_points = Number(text)
                                 setUpdatedFields(updatedFields)
                                 if(saveButtonDisabled) {
                                     setSaveButtonDisabled(false)
@@ -249,8 +241,8 @@ export default function CharacterGeneral({ navigation }) {
                         maxLength={2}
                         selectionColor="#4A55A1"
                         onEndEditing={({ nativeEvent: { text } }) => {
-                            if(text !== character.level) {
-                                updatedFields.level = text
+                            if(text != character.level) {
+                                updatedFields.level = Number(text)
                                 setUpdatedFields(updatedFields)
                                 if(saveButtonDisabled) {
                                     setSaveButtonDisabled(false)
@@ -302,8 +294,8 @@ export default function CharacterGeneral({ navigation }) {
                             maxLength={2}
                             selectionColor="#4A55A1"
                             onEndEditing={({ nativeEvent: { text } }) => {
-                                if(text !== character.armor_class) {
-                                    updatedFields.armor_class = text
+                                if(text != character.armor_class) {
+                                    updatedFields.armor_class = Number(text)
                                     setUpdatedFields(updatedFields)
                                     if(saveButtonDisabled) {
                                         setSaveButtonDisabled(false)
@@ -324,8 +316,8 @@ export default function CharacterGeneral({ navigation }) {
                     <View style={styles.rectInputContainer}>
                         <DefaultTextInput
                             style={styles.rectInput}
-                            defaultValue={String(character.initiative)}
-                            maxLength={2}
+                            defaultValue={character.initiative}
+                            maxLength={3}
                             selectionColor="#4A55A1"
                             onEndEditing={({ nativeEvent: { text } }) => {
                                 if(text !== character.initiative) {
@@ -432,7 +424,7 @@ export default function CharacterGeneral({ navigation }) {
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
                                 containerStyle={styles.savesCheckBox}
-                                onPress={(eae) => {
+                                onPress={() => {
                                     setSucces1(!succes1)
                                     
                                     //A partir daqui succes1 está invertido pelo atraso na atualização do estado logo acima
@@ -601,8 +593,8 @@ export default function CharacterGeneral({ navigation }) {
                                 maxLength={2}
                                 selectionColor="#4A55A1"
                                 onEndEditing={({ nativeEvent: { text } }) => {
-                                    if(text !== character.hp_dice_total) {
-                                        updatedFields.hp_dice_total = text
+                                    if(text != character.hp_dice_total) {
+                                        updatedFields.hp_dice_total = Number(text)
                                         setUpdatedFields(updatedFields)
                                         if(saveButtonDisabled) {
                                             setSaveButtonDisabled(false)
@@ -988,7 +980,7 @@ export default function CharacterGeneral({ navigation }) {
                                     }
 
                                     if(lifeModalCurrentHpText !== character[lifeModalUpdateInput[0]]) {
-                                        updatedFields[lifeModalUpdateInput[0]] = lifeModalCurrentHpText
+                                        updatedFields[lifeModalUpdateInput[0]] = Number(lifeModalCurrentHpText)
                                         setUpdatedFields(updatedFields)
                                         if(saveButtonDisabled) {
                                             setSaveButtonDisabled(false)
@@ -1003,7 +995,7 @@ export default function CharacterGeneral({ navigation }) {
                                     }
 
                                     if(lifeModalMaxHpText !== character[lifeModalUpdateInput[1]]) {
-                                        updatedFields[lifeModalUpdateInput[1]] = lifeModalMaxHpText
+                                        updatedFields[lifeModalUpdateInput[1]] = Number(lifeModalMaxHpText)
                                         setUpdatedFields(updatedFields)
                                         if(saveButtonDisabled) {
                                             setSaveButtonDisabled(false)
