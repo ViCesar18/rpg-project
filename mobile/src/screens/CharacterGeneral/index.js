@@ -18,17 +18,20 @@ export default function CharacterGeneral({ navigation }) {
     const characterBase = useContext(CharacterContext)
     const [character, setCharacter] = useState(characterBase)
 
-    const [currentHp, setCurrentHp] = useState(character.hp_current)
-    const [maxHp, setMaxHp] = useState(character.hp_max)
-    const [temporaryCurrentHp, setTemporaryCurrentHp] = useState(character.temporary_hp_current)
-    const [temporaryMaxHp, setTemporaryMaxHp] = useState(character.temporary_hp_max)
     const [succes1, setSucces1] = useState(Boolean(character.death_saves_successes_1))
     const [succes2, setSucces2] = useState(Boolean(character.death_saves_successes_2))
     const [succes3, setSucces3] = useState(Boolean(character.death_saves_successes_3))
     const [failure1, setFailure1] = useState(Boolean(character.death_saves_failures_1))
     const [failure2, setFailure2] = useState(Boolean(character.death_saves_failures_1))
     const [failure3, setFailure3] = useState(Boolean(character.death_saves_failures_1))
-    const [atkDescriptionText, setAtkDescriptionText] = useState(character.atk_description)
+    
+    const textStates = {
+        atk_description: useState(character.atk_description),
+        hp_current: useState(character.hp_current),
+        hp_max: useState(character.hp_max),
+        temporary_hp_current: useState(character.temporary_hp_current),
+        temporary_hp_max: useState(character.temporary_hp_max)
+    }
 
     const [updatedFields, setUpdatedFields] = useState({ sheet_id: character.sheet_id })
     const [saveButtonDisabled, setSaveButtonDisabled] = useState(true)
@@ -40,8 +43,8 @@ export default function CharacterGeneral({ navigation }) {
 
     const [lifeModalVisible, setLifeModalVisible] = useState(false)
     const [lifeModalIcon, setLifeModalIcon] = useState()
-    const [lifeModalCurrentHpText, setLifeModalCurrentHpText] = useState('')
-    const [lifeModalMaxHpText, setLifeModalMaxHpText] = useState('')
+    const [lifeModalCurrentHp, setLifeModalCurrentHp] = useState('')
+    const [lifeModalMaxHp, setLifeModalMaxHp] = useState('')
     const [lifeModalUpdateInput, setLifeModalUpdateInput] = useState([])
     const [lifeModalErrMessage, setLifeModalErrMessage] = useState(null)
     
@@ -372,17 +375,24 @@ export default function CharacterGeneral({ navigation }) {
                             style={styles.hpGradient}
                             start={[0, 0]}
                             end={[1, 0]}
-                            locations={[maxHp === 0 ? 0 : currentHp / maxHp, maxHp === 0 ? 0 : currentHp / maxHp]}
+                            locations={[
+                                textStates['hp_max'][0] === 0 ?
+                                0 :
+                                textStates['hp_current'][0] / textStates['hp_max'][0],
+                                textStates['hp_max'][0] === 0 ?
+                                0 :
+                                textStates['hp_current'][0] / textStates['hp_max'][0]
+                            ]}
                             colors={['#EF1146', 'transparent']}
                         >
-                            <DefaultText style={styles.hpText}>{currentHp}/{maxHp}</DefaultText>
+                            <DefaultText style={styles.hpText}>{textStates['hp_current'][0]}/{textStates['hp_max'][0]}</DefaultText>
                         </LinearGradient>
                         
                         <TouchableOpacity onPress={() => {
                             setLifeModalVisible(true)
                             setLifeModalIcon(require('../../assets/hpIcons/hp.png'))
-                            setLifeModalCurrentHpText(String(currentHp))
-                            setLifeModalMaxHpText(String(maxHp))
+                            setLifeModalCurrentHp(String(textStates['hp_current'][0]))
+                            setLifeModalMaxHp(String(textStates['hp_max'][0]))
                             setLifeModalUpdateInput(['hp_current', 'hp_max'])
                         }}>
                             <Image style={styles.hpImage} source={require('../../assets/hpIcons/hp.png')} />
@@ -393,20 +403,35 @@ export default function CharacterGeneral({ navigation }) {
                             style={styles.hpGradient}
                             start={[0, 0]}
                             end={[1, 0]}
-                            locations={[temporaryMaxHp === null || temporaryMaxHp === 0 ? 0 : temporaryCurrentHp / temporaryMaxHp,
-                                temporaryMaxHp === null || temporaryMaxHp === 0 ? 0 : temporaryCurrentHp / temporaryMaxHp]}
+                            locations={[
+                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] === 0 ?
+                                0 :
+                                textStates['temporary_hp_current'][0] / textStates['temporary_hp_max'][0],
+                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] === 0 ?
+                                0 :
+                                textStates['temporary_hp_current'][0] / textStates['temporary_hp_max'][0]
+                            ]}
                             colors={['#EDE214', 'transparent']}
                         >
                             <DefaultText style={styles.hpText}>
-                                {temporaryCurrentHp === null ? 0 : temporaryCurrentHp}/{temporaryMaxHp === null ? 0 : temporaryMaxHp}
+                                {
+                                    textStates['temporary_hp_current'][0] === null ?
+                                    0 :
+                                    textStates['temporary_hp_current'][0]
+                                }/
+                                {
+                                    textStates['temporary_hp_max'][0] === null ?
+                                    0 :
+                                    textStates['temporary_hp_max'][0]
+                                }
                             </DefaultText>
                         </LinearGradient>
                         
                         <TouchableOpacity onPress={() => {
                             setLifeModalVisible(true)
                             setLifeModalIcon(require('../../assets/hpIcons/temporary-hp.png'))
-                            setLifeModalCurrentHpText(temporaryCurrentHp === null ? '0' : String(temporaryCurrentHp))
-                            setLifeModalMaxHpText(temporaryMaxHp === null ? '0' : String(temporaryMaxHp))
+                            setLifeModalCurrentHp(textStates['temporary_hp_current'][0] === null ? '0' : String(textStates['temporary_hp_current'][0]))
+                            setLifeModalMaxHp(textStates['temporary_hp_max'][0] === null ? '0' : String(textStates['temporary_hp_max'][0]))
                             setLifeModalUpdateInput(['temporary_hp_current', 'temporary_hp_max'])
                         }}>
                             <Image style={styles.hpImage} source={require('../../assets/hpIcons/temporary-hp.png')} />
@@ -852,14 +877,14 @@ export default function CharacterGeneral({ navigation }) {
                         onPress={() => {
                             setModalVisible(true)
                             setModalTitle('Ataques e Magias')
-                            setModalText(atkDescriptionText)
+                            setModalText(textStates['atk_description'][0])
                             setModalUpdateInput('atk_description')
                         }}
                     >
                         <DefaultText
                             numberOfLines={7}
                             style={{ height: 140 }}
-                        >{atkDescriptionText}</DefaultText>
+                        >{textStates['atk_description'][0]}</DefaultText>
                     </TouchableOpacity>
                     <DefaultText style={styles.darkInputContainerTitle}>ATAQUES E MAGIAS</DefaultText>
                 </View>
@@ -894,7 +919,7 @@ export default function CharacterGeneral({ navigation }) {
                                 title="OK"
                                 color="#4A55A1"
                                 onPress={() => {
-                                    setAtkDescriptionText(modalText)
+                                    textStates['atk_description'][1](modalText)
 
                                     if(modalText !== character[modalUpdateInput]) {
                                         updatedFields[modalUpdateInput] = modalText
@@ -943,20 +968,20 @@ export default function CharacterGeneral({ navigation }) {
                             <Image style={styles.hpImage} source={lifeModalIcon} />
                             <DefaultTextInput
                                 style={[styles.lifeModalInput, { marginLeft: 15 }]}
-                                value={lifeModalCurrentHpText}
+                                value={lifeModalCurrentHp}
                                 keyboardType="number-pad"
                                 maxLength={4}
                                 selectionColor="#4A55A1"
-                                onChangeText={text => setLifeModalCurrentHpText(text)}
+                                onChangeText={text => setLifeModalCurrentHp(text)}
                             />
                             <DefaultText style={styles.lifeModalText}> / </DefaultText>
                             <DefaultTextInput
                                 style={styles.lifeModalInput}
-                                value={lifeModalMaxHpText}
+                                value={lifeModalMaxHp}
                                 keyboardType="number-pad"
                                 maxLength={4}
                                 selectionColor="#4A55A1"
-                                onChangeText={text => setLifeModalMaxHpText(text)}
+                                onChangeText={text => setLifeModalMaxHp(text)}
                             />
                         </View>
                         {lifeModalErrMessage !== null ? <DefaultText style={styles.errMessage}>{lifeModalErrMessage}</DefaultText> : <View></View>}
@@ -965,22 +990,16 @@ export default function CharacterGeneral({ navigation }) {
                                 title="OK"
                                 color="#4A55A1"
                                 onPress={() => {
-                                    if(Number(lifeModalCurrentHpText) > Number(lifeModalMaxHpText)) {
+                                    if(Number(lifeModalCurrentHp) > Number(lifeModalMaxHp)) {
                                         setLifeModalErrMessage('Você colocou mais HP que o máximo do seu personagem!')
                                         return
                                     }
 
-                                    if(lifeModalUpdateInput[0] === 'hp_current') {
-                                        setCurrentHp(Number(lifeModalCurrentHpText))
-                                        setMaxHp(Number(lifeModalMaxHpText))
-                                    }
-                                    else if(lifeModalUpdateInput[0] === 'temporary_hp_current') {
-                                        setTemporaryCurrentHp(Number(lifeModalCurrentHpText))
-                                        setTemporaryMaxHp(Number(lifeModalMaxHpText))
-                                    }
+                                    textStates[lifeModalUpdateInput[0]][1](lifeModalCurrentHp)
+                                    textStates[lifeModalUpdateInput[1]][1](lifeModalMaxHp)
 
-                                    if(lifeModalCurrentHpText !== character[lifeModalUpdateInput[0]]) {
-                                        updatedFields[lifeModalUpdateInput[0]] = Number(lifeModalCurrentHpText)
+                                    if(lifeModalCurrentHp !== character[lifeModalUpdateInput[0]]) {
+                                        updatedFields[lifeModalUpdateInput[0]] = Number(lifeModalCurrentHp)
                                         setUpdatedFields(updatedFields)
                                         if(saveButtonDisabled) {
                                             setSaveButtonDisabled(false)
@@ -994,8 +1013,8 @@ export default function CharacterGeneral({ navigation }) {
                                         }
                                     }
 
-                                    if(lifeModalMaxHpText !== character[lifeModalUpdateInput[1]]) {
-                                        updatedFields[lifeModalUpdateInput[1]] = Number(lifeModalMaxHpText)
+                                    if(lifeModalMaxHp !== character[lifeModalUpdateInput[1]]) {
+                                        updatedFields[lifeModalUpdateInput[1]] = Number(lifeModalMaxHp)
                                         setUpdatedFields(updatedFields)
                                         if(saveButtonDisabled) {
                                             setSaveButtonDisabled(false)

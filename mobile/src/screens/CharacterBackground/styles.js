@@ -9,11 +9,15 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
     },
     header: {
-        marginBottom: 0
+        marginBottom: 15
     },
 
     headerButton: {
         width: 36
+    },
+
+    saveButton: {
+        width: 100
     },
 
     darkInputContainer: {

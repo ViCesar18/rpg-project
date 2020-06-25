@@ -31,7 +31,6 @@ export default StyleSheet.create({
     },
 
     bagContainer: {
-        //alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#FFF',
         padding: 10,
