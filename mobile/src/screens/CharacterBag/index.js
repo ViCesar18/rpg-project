@@ -1,26 +1,63 @@
-import React, { useContext } from 'react'
-import { View, ScrollView, TouchableHighlight, Image } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { View, ScrollView, TouchableHighlight, Image, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 
 import { CharacterContext } from '../../contexts/character'
+
+import api from '../../services/api'
+
+import { objectSize } from '../../utils/additionalFunctions'
 
 import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
 export default function CharacterBag({ navigation }) {
-    const character = useContext(CharacterContext)
+    const characterBase = useContext(CharacterContext)
+    const [character, setCharacter] = useState(characterBase)
+
+    const [updatedFields, setUpdatedFields] = useState({ sheet_id: character.sheet_id })
+    const [saveButtonDisabled, setSaveButtonDisabled] = useState(true)
+
+    async function handleUpdateSheet() {
+        try {
+            await api.put('sheet/update-sheet', updatedFields, {
+                headers: {
+                    Authorization: character.user_id
+                }
+            })
+
+            setCharacter({...character, ...updatedFields})
+            setUpdatedFields({ sheet_id: character.sheet_id })
+            setSaveButtonDisabled(true)
+        }
+        catch(err) {
+            console.log(err)
+            alert('Erro ao salvar, tente novamente.')
+        }
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableHighlight
-                    style={styles.headerButton}
-                    onPress={navigation.openDrawer}
-                    underlayColor="transparent"
-                >
-                    <Feather name={'menu'} size={36} color={'#C2C2C2'} />
-                </TouchableHighlight>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <TouchableHighlight
+                        style={styles.headerButton}
+                        onPress={navigation.openDrawer}
+                        underlayColor="transparent"
+                    >
+                        <Feather name={'menu'} size={36} color={'#C2C2C2'} />
+                    </TouchableHighlight>
+
+                    <View style={styles.saveButton}>
+                        <Button
+                            title="SALVAR"
+                            disabled={saveButtonDisabled}
+                            color="green"
+                            onPress={handleUpdateSheet}
+                        />
+                    </View>
+                </View>
             </View>
 
             <DefaultText style={styles.title}>Inventário</DefaultText>
@@ -45,6 +82,22 @@ export default function CharacterBag({ navigation }) {
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text != character.cp) {
+                                updatedFields.cp = Number(text)
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
+                            }
+                            else {
+                                delete updatedFields.cp
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
+                            }
+                        }}
                     />
 
                     <DefaultTextInput
@@ -57,6 +110,22 @@ export default function CharacterBag({ navigation }) {
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text != character.sp) {
+                                updatedFields.sp = Number(text)
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
+                            }
+                            else {
+                                delete updatedFields.sp
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
+                            }
+                        }}
                     />
 
                     <DefaultTextInput
@@ -69,6 +138,22 @@ export default function CharacterBag({ navigation }) {
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text != character.ep) {
+                                updatedFields.ep = Number(text)
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
+                            }
+                            else {
+                                delete updatedFields.ep
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
+                            }
+                        }}
                     />
 
                     <DefaultTextInput
@@ -81,6 +166,22 @@ export default function CharacterBag({ navigation }) {
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text != character.gp) {
+                                updatedFields.gp = Number(text)
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
+                            }
+                            else {
+                                delete updatedFields.gp
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
+                            }
+                        }}
                     />
 
                     <DefaultTextInput
@@ -93,6 +194,22 @@ export default function CharacterBag({ navigation }) {
                         keyboardType="number-pad"
                         maxLength={5}
                         selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text != character.pp) {
+                                updatedFields.pp = Number(text)
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
+                            }
+                            else {
+                                delete updatedFields.pp
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
+                            }
+                        }}
                     />
                 </View>
 
@@ -103,6 +220,22 @@ export default function CharacterBag({ navigation }) {
                     multiline
                     textAlignVertical="top"
                     selectionColor="#4A55A1"
+                    onEndEditing={({ nativeEvent: { text } }) => {
+                        if(text !== character.equipment) {
+                            updatedFields.equipment = text
+                            setUpdatedFields(updatedFields)
+                            if(saveButtonDisabled) {
+                                setSaveButtonDisabled(false)
+                            }
+                        }
+                        else {
+                            delete updatedFields.equipment
+                            setUpdatedFields(updatedFields)
+                            if(objectSize(updatedFields) === 1){
+                                setSaveButtonDisabled(true)
+                            }
+                        }
+                    }}
                 />
 
                 <View style={{

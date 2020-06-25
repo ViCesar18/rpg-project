@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { View, Text, ScrollView, TouchableHighlight, Button, FlatList } from 'react-native'
+import { View, Text, ScrollView, TouchableHighlight, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 
