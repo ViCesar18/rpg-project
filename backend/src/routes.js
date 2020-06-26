@@ -36,4 +36,6 @@ routes.post('/sheet/:sheet_id/create-spell', Validate.createSpell(), SpellContro
 
 routes.delete('/sheet/:sheet_id/delete-spell/:spell_id', Validate.deleteSpell(), SpellController.delete)
 
+routes.put('/sheet/:sheet_id/update-spell', SpellController.update)
+
 module.exports = routes

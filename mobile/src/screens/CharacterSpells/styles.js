@@ -16,6 +16,10 @@ export default StyleSheet.create({
         width: 36
     },
 
+    saveButton: {
+        width: 100
+    },
+
     headerInputGroup: {
         flexDirection: 'row',
         borderBottomWidth: 2,
@@ -108,14 +112,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#402D1F',
         opacity: 0.82,
-        padding: 9.5,
+        padding: 10,
     },
 
     spellContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        paddingBottom: 5,
+        //padding: 10,
         borderBottomWidth: 2,
         borderBottomColor: '#F4E7CE'
     },
@@ -126,6 +130,7 @@ export default StyleSheet.create({
     },
 
     spellText: {
+        marginVertical: 3,
         color: '#F4E7CE',
         fontSize: 20,
         textAlign: 'center',

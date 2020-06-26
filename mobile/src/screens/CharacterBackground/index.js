@@ -64,7 +64,7 @@ export default function CharacterBackground({ navigation }) {
                         onPress={navigation.openDrawer}
                         underlayColor="transparent"
                     >
-                        <Feather name={'menu'} size={36} color={'#FFF'} />
+                        <Feather name={'menu'} size={36} color={'#C2C2C2'} />
                     </TouchableHighlight>
 
                     <View style={styles.saveButton}>

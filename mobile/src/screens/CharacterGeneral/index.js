@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
@@ -376,16 +376,16 @@ export default function CharacterGeneral({ navigation }) {
                             start={[0, 0]}
                             end={[1, 0]}
                             locations={[
-                                textStates['hp_max'][0] === 0 ?
+                                textStates['hp_max'][0] == 0 ?
                                 0 :
                                 textStates['hp_current'][0] / textStates['hp_max'][0],
-                                textStates['hp_max'][0] === 0 ?
+                                textStates['hp_max'][0] == 0 ?
                                 0 :
                                 textStates['hp_current'][0] / textStates['hp_max'][0]
                             ]}
                             colors={['#EF1146', 'transparent']}
                         >
-                            <DefaultText style={styles.hpText}>{textStates['hp_current'][0]}/{textStates['hp_max'][0]}</DefaultText>
+                            <DefaultText style={styles.hpText}>{Number(textStates['hp_current'][0])}/{Number(textStates['hp_max'][0])}</DefaultText>
                         </LinearGradient>
                         
                         <TouchableOpacity onPress={() => {
@@ -404,10 +404,10 @@ export default function CharacterGeneral({ navigation }) {
                             start={[0, 0]}
                             end={[1, 0]}
                             locations={[
-                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] === 0 ?
+                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] == 0 ?
                                 0 :
                                 textStates['temporary_hp_current'][0] / textStates['temporary_hp_max'][0],
-                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] === 0 ?
+                                textStates['temporary_hp_max'][0] === null || textStates['temporary_hp_max'][0] == 0 ?
                                 0 :
                                 textStates['temporary_hp_current'][0] / textStates['temporary_hp_max'][0]
                             ]}
@@ -417,12 +417,12 @@ export default function CharacterGeneral({ navigation }) {
                                 {
                                     textStates['temporary_hp_current'][0] === null ?
                                     0 :
-                                    textStates['temporary_hp_current'][0]
+                                    Number(textStates['temporary_hp_current'][0])
                                 }/
                                 {
                                     textStates['temporary_hp_max'][0] === null ?
                                     0 :
-                                    textStates['temporary_hp_max'][0]
+                                    Number(textStates['temporary_hp_max'][0])
                                 }
                             </DefaultText>
                         </LinearGradient>
