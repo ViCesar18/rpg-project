@@ -6,3 +6,6 @@ Aplicação para auxiliar os jogadores de RPG na organização de suas partidas.
     
 ## Para subir o servidor back-end:
     npm run start
+
+## Para subir o mobile:
+    expo start
