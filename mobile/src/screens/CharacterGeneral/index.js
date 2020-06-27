@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react'
-import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button } from 'react-native'
+import React, { useState, useContext, useEffect } from 'react'
+import { View, ScrollView, TouchableHighlight, Image, TouchableOpacity, Modal, Button, Alert } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
 import { CheckBox } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useIsFocused } from '@react-navigation/native';
 
 import { CharacterContext } from '../../contexts/character'
 
@@ -87,9 +88,14 @@ export default function CharacterGeneral({ navigation }) {
             setSaveButtonDisabled(true)
         }
         catch(err) {
-            alert('Erro ao salvar, tente novamente.')
+            Alert.alert('Erro ao Salvar', 'Tente novamente.')
         }
     }
+
+    /*const isFocused = useIsFocused()
+    if(!isFocused && !saveButtonDisabled) {
+        handleUpdateSheet()
+    }*/
 
     return (
         <View style={styles.container}>

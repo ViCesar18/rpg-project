@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { View, TouchableHighlight, SectionList, ImageBackground, Button, Modal, ScrollView } from 'react-native'
+import { View, TouchableHighlight, SectionList, ImageBackground, Button } from 'react-native'
 import { DefaultText, DefaultTextInput } from '../../components'
-import { CheckBox } from 'react-native-elements'
+import RenderSpells from './RenderSpells'
 
 import { CharacterContext } from '../../contexts/character'
 
@@ -15,156 +15,6 @@ const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 
 import styles from './styles'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
-function RenderSpells({ user_id, sheet_id, spell, spells, setSpells }) {
-    const [isPrepared, setIsPrepared] = useState(Boolean(spell.is_prepared))
-
-    const [updatedFields, setUpdatedFields] = useState({ spell_id: spell.spell_id })
-    const [saveButton, setSaveButton] = useState(false)
-
-    async function handleUpdateSpell() {
-        try {
-            await api.put(`sheet/${sheet_id}/update-spell`, updatedFields, {
-                headers: {
-                    Authorization: user_id
-                }
-            })
-
-            setUpdatedFields({ spell_id: spell.spell_id })
-            setSaveButton(false)
-        }
-        catch(err) {
-            alert('Erro ao salvar magia, tente novamente.')
-        }
-    }
-
-    async function handleDeleteSpell() {
-        try {
-            await api.delete(`sheet/${sheet_id}/delete-spell/${spell.spell_id}`, {
-                headers: {
-                    Authorization: user_id
-                }
-            })
-
-            setSpells(spells.filter(item => item.spell_id !== spell.spell_id))
-        }
-        catch(err) {
-            alert('Erro ao deletar magia, tente novamente.')
-        }
-    }
-
-    if(spell.spell_level === 0) {
-        return (
-            <View style={styles.spellsList}>
-                <View style={styles.spellContainer}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <DefaultTextInput
-                            style={styles.spellText}
-                            defaultValue={spell.spell_name}
-                            onEndEditing={({ nativeEvent: { text } }) => {
-                                if(text !== spell.spell_name) {
-                                    updatedFields.spell_name = text
-                                    setUpdatedFields(updatedFields)
-                                    if(!saveButton) {
-                                        setSaveButton(true)
-                                    }
-                                }
-                                else {
-                                    delete updatedFields.spell_name
-                                    setUpdatedFields(updatedFields)
-                                    if(objectSize(updatedFields) === 1){
-                                        setSaveButton(false)
-                                    }
-                                }
-                            }}
-                        />
-                    </View>
-                    {
-                        saveButton ?
-                        <TouchableOpacity
-                            onPress={handleUpdateSpell}
-                        >
-                            <Feather name={'check'} size={28} color={'#F4E7CE'} />
-                        </TouchableOpacity> :
-                        <TouchableOpacity
-                            onPress={handleDeleteSpell}
-                        >
-                            <Feather name={'minus'} size={28} color={'#F4E7CE'} />
-                        </TouchableOpacity>
-                    }
-                </View>
-            </View>
-        )
-    }
-
-    return (
-        <View style={styles.spellsList}>
-            <View style={styles.spellContainer}>
-                <View style={{ flexDirection: 'row' }}>
-                    <CheckBox
-                        size={25}
-                        checked={isPrepared}
-                        checkedColor="#F4E7CE"
-                        uncheckedColor="#F4E7CE"
-                        containerStyle={styles.spellCheckbox}
-                        onPress={() => {
-                            setIsPrepared(!isPrepared)
-
-                            //A partir daqui isPrepared está invertido pelo atraso na atualização do estado logo acima
-                            if(!isPrepared != spell.is_prepared) {
-                                updatedFields.is_prepared = !isPrepared
-                                setUpdatedFields(updatedFields)
-                                if(!saveButton) {
-                                    setSaveButton(true)
-                                }
-                            }
-                            else{
-                                delete updatedFields.is_prepared
-                                setUpdatedFields(updatedFields)
-                                if(objectSize(updatedFields) === 1) {
-                                    setSaveButton(false)
-                                }
-                            }
-                        }}
-                    />
-                    <DefaultTextInput
-                        style={styles.spellText}
-                        defaultValue={spell.spell_name}
-                        onEndEditing={({ nativeEvent: { text } }) => {
-                            if(text !== spell.spell_name) {
-                                updatedFields.spell_name = text
-                                setUpdatedFields(updatedFields)
-                                if(!saveButton) {
-                                    setSaveButton(true)
-                                }
-                            }
-                            else {
-                                delete updatedFields.spell_name
-                                setUpdatedFields(updatedFields)
-                                if(objectSize(updatedFields) === 1){
-                                    setSaveButton(false)
-                                }
-                            }
-                        }}
-                    />
-                </View>
-                {
-                    saveButton ?
-                    <TouchableOpacity
-                        onPress={handleUpdateSpell}
-                    >
-                        <Feather name={'check'} size={28} color={'#F4E7CE'} />
-                    </TouchableOpacity> :
-                    <TouchableOpacity
-                        onPress={handleDeleteSpell}
-                    >
-                        <Feather name={'minus'} size={28} color={'#F4E7CE'} />
-                    </TouchableOpacity>
-                }
-            </View>
-        </View>
-    )
-}
 
 export default function CharacterSpells({ navigation }) {
     const characterBase = useContext(CharacterContext)
@@ -272,10 +122,6 @@ export default function CharacterSpells({ navigation }) {
         },
     ]
 
-    useEffect(() => {
-        loadSpells()
-    }, [])
-
     async function loadSpells() {
         const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
 
@@ -291,77 +137,61 @@ export default function CharacterSpells({ navigation }) {
         setLv9_spells(filterSpells(spells.data, 9))
     }
 
-    async function loadSpells0() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv0_spells(filterSpells(spells.data, 0))
-    }
-
-    async function loadSpells1() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv1_spells(filterSpells(spells.data, 1))
-    }
-
-    async function loadSpells2() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv2_spells(filterSpells(spells.data, 2))
-    }
-
-    async function loadSpells3() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv3_spells(filterSpells(spells.data, 3))
-    }
-
-    async function loadSpells4() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv4_spells(filterSpells(spells.data, 4))
-    }
-
-    async function loadSpells5() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv5_spells(filterSpells(spells.data, 5))
-    }
-
-    async function loadSpells6() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv6_spells(filterSpells(spells.data, 6))
-    }
-
-    async function loadSpells7() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv7_spells(filterSpells(spells.data, 7))
-    }
-
-    async function loadSpells8() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv8_spells(filterSpells(spells.data, 8))
-    }
-
-    async function loadSpells9() {
-        const spells = await api.get(`sheet/${character.sheet_id}/index-spells`)
-
-        setLv9_spells(filterSpells(spells.data, 9))
-    }
-
     function filterSpells(spells, level) {
         return spells.filter(spell => spell.spell_level === level)
     }
 
     async function handleCreateSpell(newSpell) {
         try {
-            await api.post(`sheet/${character.sheet_id}/create-spell`, newSpell, {
+            const newSpellId = await api.post(`sheet/${character.sheet_id}/create-spell`, newSpell, {
                 headers: {
                     Authorization: character.user_id
                 }
             })
+
+            newSpell.spell_id = newSpellId.data
+            switch(newSpell.spell_level) {
+                case 0:
+                    lv0_spells.push(newSpell)
+                    setLv0_spells(lv0_spells)
+                    break;
+                case 1:
+                    lv1_spells.push(newSpell)
+                    setLv1_spells(lv1_spells)
+                    break;
+                case 2:
+                    lv2_spells.push(newSpell)
+                    setLv2_spells(lv2_spells)
+                    break;
+                case 3:
+                    lv3_spells.push(newSpell)
+                    setLv3_spells(lv3_spells)
+                    break;
+                case 4:
+                    lv4_spells.push(newSpell)
+                    setLv4_spells(lv4_spells)
+                    break;
+                case 5:
+                    lv5_spells.push(newSpell)
+                    setLv5_spells(lv5_spells)
+                    break;
+                case 6:
+                    lv6_spells.push(newSpell)
+                    setLv6_spells(lv6_spells)
+                    break;
+                case 7:
+                    lv7_spells.push(newSpell)
+                    setLv7_spells(lv7_spells)
+                    break;
+                case 8:
+                    lv8_spells.push(newSpell)
+                    setLv8_spells(lv8_spells)
+                    break;
+                case 9:
+                    lv9_spells.push(newSpell)
+                    setLv9_spells(lv9_spells)
+                    break;
+            }
         }
         catch (err) {
             alert('Erro ao criar nova magia, tente novamente.')
@@ -384,6 +214,10 @@ export default function CharacterSpells({ navigation }) {
             alert('Erro ao salvar, tente novamente.')
         }
     }
+
+    useEffect(() => {
+        loadSpells()
+    }, [])
 
     return (
         <ImageBackground style={styles.container} source={require('../../assets/spellsBackground/spellsPaperBackground.png')}>
@@ -688,7 +522,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells0()
                                                 setShowNewSpell0(false)
                                             }
                                         }}
@@ -714,7 +547,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells1()
                                                 setShowNewSpell1(false)
                                             }
                                         }}
@@ -740,7 +572,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells2()
                                                 setShowNewSpell2(false)
                                             }
                                         }}
@@ -766,7 +597,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells3()
                                                 setShowNewSpell3(false)
                                             }
                                         }}
@@ -792,7 +622,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells4()
                                                 setShowNewSpell4(false)
                                             }
                                         }}
@@ -818,7 +647,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells5()
                                                 setShowNewSpell5(false)
                                             }
                                         }}
@@ -844,7 +672,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells6()
                                                 setShowNewSpell6(false)
                                             }
                                         }}
@@ -870,7 +697,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells7()
                                                 setShowNewSpell7(false)
                                             }
                                         }}
@@ -896,7 +722,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells8()
                                                 setShowNewSpell8(false)
                                             }
                                         }}
@@ -922,7 +747,6 @@ export default function CharacterSpells({ navigation }) {
                                                     spell_name: text,
                                                     is_prepared: false,
                                                 })
-                                                loadSpells9()
                                                 setShowNewSpell9(false)
                                             }
                                         }}
@@ -981,61 +805,6 @@ export default function CharacterSpells({ navigation }) {
                     )
                 }}
             />
-
-            <Modal
-                animationType="fade"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => setModalVisible(false)}
-            >
-                <View style={styles.modalContainer}>
-                    <ScrollView style={styles.modalView}>
-                        <TouchableHighlight
-                            style={styles.modalCloseButton}
-                            underlayColor="transparent"
-                            onPress={() => setModalVisible(false)}
-                        >
-                            <Feather name="x" size={20} color="#C2C2C2" />
-                        </TouchableHighlight>
-                        <DefaultText style={styles.modalTitle}>{modalTitle}</DefaultText>
-                        <DefaultTextInput
-                            style={styles.modalInput}
-                            value={modalText}
-                            maxLength={2048}
-                            multiline
-                            textAlignVertical="top"
-                            selectionColor="#4A55A1"
-                            onChangeText={text => setModalText(text)}
-                        />
-                        <View style={styles.modalConfirmButton}>
-                            <Button
-                                title="OK"
-                                color="#4A55A1"
-                                onPress={() => {
-                                    textStates['atk_description'][1](modalText)
-
-                                    if(modalText !== character[modalUpdateInput]) {
-                                        updatedFields[modalUpdateInput] = modalText
-                                        setUpdatedFields(updatedFields)
-                                        if(saveButtonDisabled) {
-                                            setSaveButtonDisabled(false)
-                                        }
-                                    }
-                                    else {
-                                        delete updatedFields[modalUpdateInput]
-                                        setUpdatedFields(updatedFields)
-                                        if(objectSize(updatedFields) === 1) {
-                                            setSaveButtonDisabled(true)
-                                        }
-                                    }
-
-                                    setModalVisible(false)
-                                }}
-                            />
-                        </View>
-                    </ScrollView>
-                </View>
-            </Modal>
         </ImageBackground>
     )
 }
