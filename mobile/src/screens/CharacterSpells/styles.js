@@ -49,7 +49,7 @@ export default StyleSheet.create({
 
     headerSpellcastingInformation: {
         justifyContent: 'space-between',
-        width: 70,
+        width: '30%',
         height: 100
     },
 
@@ -119,7 +119,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        //padding: 10,
         borderBottomWidth: 2,
         borderBottomColor: '#F4E7CE'
     },

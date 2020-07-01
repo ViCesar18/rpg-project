@@ -368,7 +368,7 @@ export default function CharacterBackground({ navigation }) {
                         </View>
                     </View>
                     
-                    <View style={{ width: '48%' }}>
+                    <View style={{ width: '48%', justifyContent: 'space-between' }}>
                         <View style={styles.darkInputContainer}>
                             <TouchableOpacity
                                 style={[styles.darkModalButton, { height: 72 }]}
@@ -380,7 +380,7 @@ export default function CharacterBackground({ navigation }) {
                                 }}
                             >
                                 <DefaultText
-                                    style={{ height: '100%', fontSize: 16, textAlign: 'center', textAlignVertical: 'center' }}
+                                    style={{ height: '100%', fontSize: 18, textAlign: 'center', textAlignVertical: 'center' }}
                                 >
                                     {textStates['allies_name'][0]}
                                 </DefaultText>
@@ -438,7 +438,7 @@ export default function CharacterBackground({ navigation }) {
                 onRequestClose={() => setModalVisible(false)}
             >
                 <View style={styles.modalContainer}>
-                    <ScrollView style={styles.modalView}>
+                    <View style={styles.modalView}>
                         <TouchableHighlight
                             style={styles.modalCloseButton}
                             onPress={() => setModalVisible(false)}
@@ -511,7 +511,7 @@ export default function CharacterBackground({ navigation }) {
                                 }}
                             />
                         </View>
-                    </ScrollView>
+                    </View>
                 </View>
             </Modal>
         </View>

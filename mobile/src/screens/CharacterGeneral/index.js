@@ -446,11 +446,11 @@ export default function CharacterGeneral({ navigation }) {
                 </View>
 
                 <View style={styles.darkInputsGroup}>
-                    <View style={[styles.darkInputContainer, { width: '53%' }]}>
+                    <View style={[styles.darkInputContainer, { width: '60%' }]}>
                         <View style={styles.savesContainer}>
                             <DefaultText style={styles.savesText}>Sucesso</DefaultText>
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={succes1}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -476,7 +476,7 @@ export default function CharacterGeneral({ navigation }) {
                                 }}
                             />
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={succes2}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -502,7 +502,7 @@ export default function CharacterGeneral({ navigation }) {
                                 }}
                             />
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={succes3}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -532,7 +532,7 @@ export default function CharacterGeneral({ navigation }) {
                         <View style={styles.savesContainer}>
                             <DefaultText style={styles.savesText}>Falha</DefaultText>
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={failure1}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -558,7 +558,7 @@ export default function CharacterGeneral({ navigation }) {
                                 }}
                             />
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={failure2}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -584,7 +584,7 @@ export default function CharacterGeneral({ navigation }) {
                                 }}
                             />
                             <CheckBox
-                                size={30}
+                                size={28}
                                 checked={failure3}
                                 checkedColor="#FFF"
                                 uncheckedColor="#FFF"
@@ -614,7 +614,7 @@ export default function CharacterGeneral({ navigation }) {
                         <DefaultText style={styles.darkInputContainerTitle}>TESTE CONTRA A MORTE</DefaultText>
                     </View>
 
-                    <View style={[styles.darkInputContainer, { width: '45%' }]}>
+                    <View style={[styles.darkInputContainer, { width: '38%' }]}>
                         <View style={styles.totalLifeDicesContainer}>
                             <DefaultText style={styles.totalLifeDicesText}>Total de Dados</DefaultText>
                             <DefaultTextInput
@@ -902,7 +902,7 @@ export default function CharacterGeneral({ navigation }) {
                 onRequestClose={() => setModalVisible(false)}
             >
                 <View style={styles.modalContainer}>
-                    <ScrollView style={styles.modalView}>
+                    <View style={[styles.modalView, { height: '85%' }]}>
                         <TouchableHighlight
                             style={styles.modalCloseButton}
                             underlayColor="transparent"
@@ -946,7 +946,7 @@ export default function CharacterGeneral({ navigation }) {
                                 }}
                             />
                         </View>
-                    </ScrollView>
+                    </View>
                 </View>
             </Modal>
 

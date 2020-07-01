@@ -13,7 +13,7 @@ import { Feather } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export default function CharacterCombat({ route, navigation }) {
+export default function CharacterCombat({ navigation }) {
     const characterBase = useContext(CharacterContext)
     const [character, setCharacter] = useState(characterBase)
 
@@ -582,7 +582,9 @@ export default function CharacterCombat({ route, navigation }) {
                                 }
                             }}
                         />
-                        <DefaultText style={styles.smallDarkInputText}>Inspiração</DefaultText>
+                        <View style={{ width: '70%' }}>
+                            <DefaultText style={styles.smallDarkInputText}>Inspiração</DefaultText>
+                        </View>
                     </View>
 
                     <View style={styles.smallDarkInputContainer}>
@@ -608,7 +610,9 @@ export default function CharacterCombat({ route, navigation }) {
                                 }
                             }}
                         />
-                        <DefaultText style={styles.smallDarkInputText}>Bônus de Proficiência</DefaultText>
+                        <View style={{ width: '70%' }}>
+                            <DefaultText style={styles.smallDarkInputText}>Bônus de Proficiência</DefaultText>
+                        </View>
                     </View>
 
                     <View style={[styles.darkInputContainer, { height: 150 }]}>
@@ -642,29 +646,33 @@ export default function CharacterCombat({ route, navigation }) {
                                             }
                                         }}
                                     />
-                                    <DefaultTextInput
-                                        style={styles.mainInput}
-                                        defaultValue={character[item.inputObj]}
-                                        maxLength={3}
-                                        selectionColor="#4A55A1"
-                                        onEndEditing={({ nativeEvent: { text } }) => {
-                                            if(text !== character[item.inputObj]) {
-                                                updatedFields[item.inputObj] = text
-                                                setUpdatedFields(updatedFields)
-                                                if(saveButtonDisabled) {
-                                                    setSaveButtonDisabled(false)
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <DefaultTextInput
+                                            style={styles.mainInput}
+                                            defaultValue={character[item.inputObj]}
+                                            maxLength={3}
+                                            selectionColor="#4A55A1"
+                                            onEndEditing={({ nativeEvent: { text } }) => {
+                                                if(text !== character[item.inputObj]) {
+                                                    updatedFields[item.inputObj] = text
+                                                    setUpdatedFields(updatedFields)
+                                                    if(saveButtonDisabled) {
+                                                        setSaveButtonDisabled(false)
+                                                    }
                                                 }
-                                            }
-                                            else {
-                                                delete updatedFields[item.inputObj]
-                                                setUpdatedFields(updatedFields)
-                                                if(objectSize(updatedFields) === 1){
-                                                    setSaveButtonDisabled(true)
+                                                else {
+                                                    delete updatedFields[item.inputObj]
+                                                    setUpdatedFields(updatedFields)
+                                                    if(objectSize(updatedFields) === 1){
+                                                        setSaveButtonDisabled(true)
+                                                    }
                                                 }
-                                            }
-                                        }}
-                                    />
-                                    <DefaultText style={styles.inputText}>{item.name}</DefaultText>
+                                            }}
+                                        />
+                                        <View style={{ width: '70%' }}>
+                                            <DefaultText style={styles.inputText}>{item.name}</DefaultText>
+                                        </View>
+                                    </View>
                                 </View>
                             ))}
                         </ScrollView>
@@ -701,37 +709,35 @@ export default function CharacterCombat({ route, navigation }) {
                                             }
                                         }}
                                     />
-                                    <DefaultTextInput
-                                        style={styles.mainInput}
-                                        defaultValue={character[item.inputObj]}
-                                        maxLength={3}
-                                        selectionColor="#4A55A1"
-                                        onEndEditing={({ nativeEvent: { text } }) => {
-                                            if(text !== character[item.inputObj]) {
-                                                updatedFields[item.inputObj] = text
-                                                setUpdatedFields(updatedFields)
-                                                if(saveButtonDisabled) {
-                                                    setSaveButtonDisabled(false)
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <DefaultTextInput
+                                            style={styles.mainInput}
+                                            defaultValue={character[item.inputObj]}
+                                            maxLength={3}
+                                            selectionColor="#4A55A1"
+                                            onEndEditing={({ nativeEvent: { text } }) => {
+                                                if(text !== character[item.inputObj]) {
+                                                    updatedFields[item.inputObj] = text
+                                                    setUpdatedFields(updatedFields)
+                                                    if(saveButtonDisabled) {
+                                                        setSaveButtonDisabled(false)
+                                                    }
                                                 }
-                                            }
-                                            else {
-                                                delete updatedFields[item.inputObj]
-                                                setUpdatedFields(updatedFields)
-                                                if(objectSize(updatedFields) === 1){
-                                                    setSaveButtonDisabled(true)
+                                                else {
+                                                    delete updatedFields[item.inputObj]
+                                                    setUpdatedFields(updatedFields)
+                                                    if(objectSize(updatedFields) === 1){
+                                                        setSaveButtonDisabled(true)
+                                                    }
                                                 }
-                                            }
-                                        }}
-                                    />
-                                    {item.name !== 'Lidar com Animais' && item.name !== 'Prestidigitação' && item.name !== 'Sobrevivência' ?
-                                    <DefaultText style={styles.inputText}>
-                                        {item.name} <Text style={styles.inputAdditionalText}>{item.attribute}</Text>
-                                    </DefaultText> :
-                                    <View>
-                                        <DefaultText style={styles.inputText}>{item.name}</DefaultText>
-                                        <DefaultText style={[styles.inputText, styles.inputAdditionalText]}>{item.attribute}</DefaultText>
+                                            }}
+                                        />
+                                        <View style={{  width: '70%' }}>
+                                            <DefaultText style={styles.inputText}>
+                                                {item.name} <Text style={styles.inputAdditionalText}>{item.attribute}</Text>
+                                            </DefaultText>
+                                        </View>
                                     </View>
-                                    }
                                 </View>
                             ))}
                         </ScrollView>
@@ -761,7 +767,9 @@ export default function CharacterCombat({ route, navigation }) {
                                 }
                             }}
                         />
-                        <DefaultText style={styles.smallDarkInputText}>Sabedoria Passiva (Percepção)</DefaultText>
+                        <View style={{ width: '70%' }}>
+                            <DefaultText style={styles.smallDarkInputText}>Sabedoria Passiva (Percepção)</DefaultText>
+                        </View>
                     </View>
                 </View>
             </ScrollView>

@@ -28,7 +28,7 @@ export default StyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         color: '#FFF',
         fontSize: 32,
-        textAlign: 'center', 
+        textAlign: 'center',
     },
 
     headerInput: {
@@ -59,8 +59,8 @@ export default StyleSheet.create({
         left: '34.5%',
         top: '20%',
 
-        width: 120,
-        height: 120,
+        width: '32%',
+        height: '300%',
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
         borderColor: '#353535',
@@ -85,7 +85,7 @@ export default StyleSheet.create({
 
     content: {
         marginTop: 50,
-        paddingHorizontal: 25,
+        paddingHorizontal: 15,
     },
 
     rectInputsGroup: {
@@ -117,6 +117,7 @@ export default StyleSheet.create({
 
     lifeContainer: {
         marginBottom: 10,
+        alignItems: 'center'
     },
 
     hp: {
@@ -128,7 +129,7 @@ export default StyleSheet.create({
     hpGradient: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: '85%',
+        width: '80%',
         height: 40,
         borderWidth: 3,
         borderRadius: 20,
@@ -171,6 +172,7 @@ export default StyleSheet.create({
     savesContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         marginBottom: 10,
     },
 
@@ -179,7 +181,7 @@ export default StyleSheet.create({
         width: 55,
         color: '#FFF',
         fontSize: 12,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     savesCheckBox: {
@@ -189,7 +191,8 @@ export default StyleSheet.create({
 
     totalLifeDicesContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
 
     totalLifeDicesText: {
@@ -200,7 +203,7 @@ export default StyleSheet.create({
     totalLifeDicesInput: {
         backgroundColor: '#FFF',
         borderRadius: 8,
-        width: 60,
+        width: '25%',
         marginLeft: 5,
         fontSize: 12,
         textAlign: 'center'
@@ -283,10 +286,11 @@ export default StyleSheet.create({
     },
 
     modalInput: {
+        flex: 1,
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
         marginRight: 25,
-        height: 500,
+        height: '100%',
         marginTop: 10,
         padding: 5,
         fontSize: 18

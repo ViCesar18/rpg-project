@@ -57,7 +57,6 @@ export default StyleSheet.create({
     darkModalButton: {
         backgroundColor: '#FFF',
         borderRadius: 8,
-        marginBottom: 5,
         padding: 5
     },
 
@@ -75,6 +74,7 @@ export default StyleSheet.create({
     },
 
     modalView: {
+        height: '85%',
         margin: 20,
         backgroundColor: "#FFF",
         borderRadius: 20,
@@ -97,10 +97,11 @@ export default StyleSheet.create({
     },
 
     modalInput: {
+        flex: 1,
+        height: '100%',
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
         marginRight: 25,
-        height: 500,
         marginTop: 10,
         padding: 5,
         fontSize: 18

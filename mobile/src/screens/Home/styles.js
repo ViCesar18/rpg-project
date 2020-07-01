@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
 
     header: {
-        marginLeft: 15
+        marginHorizontal: 15,
     },
 
     headerButton: {

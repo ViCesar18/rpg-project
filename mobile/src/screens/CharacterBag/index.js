@@ -63,7 +63,7 @@ export default function CharacterBag({ navigation }) {
             <DefaultText style={styles.title}>Inventário</DefaultText>
 
             <ScrollView contentContainerStyle={styles.bagContainer} showsVerticalScrollIndicator={false}>
-                <View>
+                <View style={{ width: '30%' }}>
                     <View style={styles.coinContainer}>
                         <DefaultText style={styles.coinTitle}>PC</DefaultText>
                         <DefaultText style={styles.coinTitle}>PP</DefaultText>
@@ -213,30 +213,32 @@ export default function CharacterBag({ navigation }) {
                     />
                 </View>
 
-                <DefaultTextInput
-                    style={styles.bagInput}
-                    defaultValue={character.equipment}
-                    maxLength={2048}
-                    multiline
-                    textAlignVertical="top"
-                    selectionColor="#4A55A1"
-                    onEndEditing={({ nativeEvent: { text } }) => {
-                        if(text !== character.equipment) {
-                            updatedFields.equipment = text
-                            setUpdatedFields(updatedFields)
-                            if(saveButtonDisabled) {
-                                setSaveButtonDisabled(false)
+                <View style={{ width: '70%', }}>
+                    <DefaultTextInput
+                        style={styles.bagInput}
+                        defaultValue={character.equipment}
+                        maxLength={2048}
+                        multiline
+                        textAlignVertical="top"
+                        selectionColor="#4A55A1"
+                        onEndEditing={({ nativeEvent: { text } }) => {
+                            if(text !== character.equipment) {
+                                updatedFields.equipment = text
+                                setUpdatedFields(updatedFields)
+                                if(saveButtonDisabled) {
+                                    setSaveButtonDisabled(false)
+                                }
                             }
-                        }
-                        else {
-                            delete updatedFields.equipment
-                            setUpdatedFields(updatedFields)
-                            if(objectSize(updatedFields) === 1){
-                                setSaveButtonDisabled(true)
+                            else {
+                                delete updatedFields.equipment
+                                setUpdatedFields(updatedFields)
+                                if(objectSize(updatedFields) === 1){
+                                    setSaveButtonDisabled(true)
+                                }
                             }
-                        }
-                    }}
-                />
+                        }}
+                    />
+                </View>
 
                 <View style={{
                     position: 'absolute',
