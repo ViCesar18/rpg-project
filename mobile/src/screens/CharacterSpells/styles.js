@@ -16,6 +16,10 @@ export default StyleSheet.create({
         width: 36
     },
 
+    saveButton: {
+        width: 100
+    },
+
     headerInputGroup: {
         flexDirection: 'row',
         borderBottomWidth: 2,
@@ -45,7 +49,7 @@ export default StyleSheet.create({
 
     headerSpellcastingInformation: {
         justifyContent: 'space-between',
-        width: 70,
+        width: '30%',
         height: 100
     },
 
@@ -108,19 +112,24 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#402D1F',
         opacity: 0.82,
-        padding: 10.5,
+        padding: 10,
     },
 
     spellContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        paddingBottom: 5,
         borderBottomWidth: 2,
         borderBottomColor: '#F4E7CE'
     },
 
+    spellCheckbox: {
+        width: 24,
+        padding: 0
+    },
+
     spellText: {
+        marginVertical: 3,
         color: '#F4E7CE',
         fontSize: 20,
         textAlign: 'center',

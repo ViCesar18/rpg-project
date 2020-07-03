@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { View, Image, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native';
 import { DefaultText } from '../../components'
 
 import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
@@ -15,6 +16,8 @@ export default function Home({ navigation }) {
     const [loading, setLoading] = useState(false)
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
+
+    const [listRefresh, setListRefresh] = useState(false)
 
     async function loadCharacters() {
         if(loading || total > 0 && characters.length === total){
@@ -34,9 +37,11 @@ export default function Home({ navigation }) {
         setLoading(false)
     }
 
-    useEffect(() => {
-        loadCharacters()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            loadCharacters()
+        }, [])
+    )
 
     return (
         <View style={styles.container}>
@@ -52,6 +57,12 @@ export default function Home({ navigation }) {
             </View>
 
             <FlatList
+                refreshing={listRefresh}
+                onRefresh={() => {
+                    setListRefresh(true)
+                    loadCharacters()
+                    setListRefresh(false)
+                }}
                 style={styles.characterList}
                 data={characters}
                 keyExtractor={character => String(character.sheet_id)}
@@ -61,32 +72,34 @@ export default function Home({ navigation }) {
                 renderItem={({ item: character }) => {
                     var characterImg
 
-                    if(character.race === 'Humano'){
-                        if(character.class === 'Mago')
-                            characterImg = require('../../assets/avatar/human-mage.png')
-                        else if(character.class === 'Ladino')
-                            characterImg = require('../../assets/avatar/human-rogue.png')
-                        else
+                    switch(character.character_img) {
+                        case 'dwarf.png':
+                            characterImg = require('../../assets/avatar/dwarf.png')
+                            break
+                        case 'elf.png':
+                            characterImg = require('../../assets/avatar/elf.png')
+                            break
+                        case 'human-fighter.png':
                             characterImg = require('../../assets/avatar/human-fighter.png')
-                    }
-                    else if(character.race === 'Anao da Montanha' || character.race === 'Anao da Colina') {
-                        characterImg = require('../../assets/avatar/dwarf.png')
-                    }
-                    else if(character.race === 'Alto Elfo'
-                     || character.race  === 'Elfo da Floresta' || character.race === 'Elfo Negro') {
-                        characterImg = require('../../assets/avatar/elf.png')
-                    }
-                    else if(character.race === 'Meio-Orc') {
-                        characterImg = require('../../assets/avatar/orc.png')
-                    }
-                    else {
-                        characterImg = require('../../assets/avatar/human-fighter.png')
+                            break
+                        case 'human-mage.png':
+                            characterImg = require('../../assets/avatar/human-mage.png')
+                            break
+                        case 'human-rogue.png':
+                            characterImg = require('../../assets/avatar/human-rogue.png')
+                            break
+                        case 'orc.png':
+                            characterImg = require('../../assets/avatar/orc.png')
+                            break
+                        default:
+                            characterImg = require('../../assets/avatar/human-fighter.png')
+                            break
                     }
 
                     return (
                         <TouchableOpacity 
                             style={styles.character}
-                            onPress={() => navigation.navigate('Tab')}
+                            onPress={() => navigation.push('Tab', { character })}
                         >
                             <Image style={styles.characterImage} source={characterImg} />
                             <View style={styles.textContainer}>

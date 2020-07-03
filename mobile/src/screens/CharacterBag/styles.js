@@ -7,6 +7,7 @@ export default StyleSheet.create({
         backgroundColor: '#E3E8E8',
         paddingTop: Constants.statusBarHeight + 10,
         paddingHorizontal: 15,
+        paddingBottom: 20
     },
 
     header: {
@@ -15,6 +16,10 @@ export default StyleSheet.create({
 
     headerButton: {
         width: 36
+    },
+
+    saveButton: {
+        width: 100
     },
 
     title: {
@@ -27,12 +32,12 @@ export default StyleSheet.create({
     },
 
     bagContainer: {
-        //alignItems: 'center',
         flexDirection: 'row',
+        justifyContent: 'space-between',
         backgroundColor: '#FFF',
         padding: 10,
         borderRadius: 8,
-        elevation: 2
+        elevation: 2,
     },
 
     coinContainer: {
@@ -40,9 +45,8 @@ export default StyleSheet.create({
         backgroundColor: '#4A55A1',
         borderRadius: 8,
         height: '75%',
-        width: 100,
         padding: 10,
-        elevation: 9
+        elevation: 9,
     },
     
     coinTitle: {
@@ -53,7 +57,7 @@ export default StyleSheet.create({
     coinInput: {
         backgroundColor: '#353535',
         borderRadius: 8,
-        width: 75,
+        width: '75%',
         height: 50,
         elevation: 10,
         color: '#FFF',
@@ -64,10 +68,9 @@ export default StyleSheet.create({
     bagInput: {
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
-        width: '65%',
         height: 550,
         marginLeft: 25,
         padding: 5,
-        fontSize: 20
+        fontSize: 18
     }
 })

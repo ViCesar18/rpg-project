@@ -17,14 +17,18 @@ export default StyleSheet.create({
         width: 36
     },
 
+    saveButton: {
+        width: 100
+    },
+
     content: {
         flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     attributesContainer: {
         backgroundColor: '#4A55A1',
-        marginRight: 50,
-        width: '75%',
+        width: '100%',
         height: 635,
         paddingVertical: 10,
         paddingLeft: 5,
@@ -50,7 +54,7 @@ export default StyleSheet.create({
         fontSize: 12
     },
 
-    attributeInput: {
+    attributeModifierInput: {
         height: '70%',
         backgroundColor: '#4A55A1',
         width: '100%',
@@ -59,7 +63,7 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
-    attributeModifierInput: {
+    attributeInput: {
         width: 50,
         height: 75,
         backgroundColor: '#4A55A1',
@@ -70,6 +74,10 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
 
+    darkInputsGroup: {
+        width: '50%'
+    },
+
     smallDarkInputContainer: {
         flexDirection: 'row',
         marginBottom: 10,
@@ -77,7 +85,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#353535',
         borderRadius: 8,
-        width: 195,
+        width: '100%',
         height: 40,
     },
 
@@ -94,7 +102,6 @@ export default StyleSheet.create({
     },
 
     smallDarkInputText: {
-        width: 140,
         color: '#FFF',
         fontSize: 11,
         textAlign: 'center'
@@ -103,7 +110,8 @@ export default StyleSheet.create({
     darkInputContainer: {
         backgroundColor: '#353535',
         borderRadius: 8,
-        padding: 0,
+        paddingRight: 10,
+        paddingVertical: 5,
         elevation: 10,
         marginBottom: 10,
     },
@@ -113,12 +121,14 @@ export default StyleSheet.create({
         fontSize: 13,
         color: '#FFF',
         textAlign: 'center',
-        marginBottom: 5
+        marginBottom: 5,
+        marginLeft: 10
     },
 
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         marginBottom: 5,
     },
 
@@ -129,7 +139,7 @@ export default StyleSheet.create({
 
     mainInput: {
         backgroundColor: '#FFF',
-        width: 25,
+        width: '15%',
         height: 25,
         textAlign: 'center'
     },
@@ -137,7 +147,7 @@ export default StyleSheet.create({
     inputText: {
         color: '#FFF',
         fontSize: 11,
-        paddingLeft: 5
+        paddingLeft: 5,
     },
 
     inputAdditionalText: {

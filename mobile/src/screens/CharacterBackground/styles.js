@@ -9,11 +9,15 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
     },
     header: {
-        marginBottom: 0
+        marginBottom: 15
     },
 
     headerButton: {
         width: 36
+    },
+
+    saveButton: {
+        width: 100
     },
 
     darkInputContainer: {
@@ -53,7 +57,6 @@ export default StyleSheet.create({
     darkModalButton: {
         backgroundColor: '#FFF',
         borderRadius: 8,
-        marginBottom: 5,
         padding: 5
     },
 
@@ -71,11 +74,12 @@ export default StyleSheet.create({
     },
 
     modalView: {
+        height: '85%',
         margin: 20,
         backgroundColor: "#FFF",
         borderRadius: 20,
-        paddingBottom: 35,
-        paddingLeft: 35,
+        paddingBottom: 25,
+        paddingLeft: 25,
         elevation: 5,
         flexGrow: 0
     },
@@ -87,18 +91,26 @@ export default StyleSheet.create({
     },
 
     modalTitle: {
-        marginRight: 35,
+        marginRight: 25,
         fontFamily: 'Montserrat-Bold',
         fontSize: 25
     },
 
     modalInput: {
+        flex: 1,
+        height: '100%',
         backgroundColor: '#E3E8E8',
         borderRadius: 8,
-        marginRight: 35,
-        height: 500,
+        marginRight: 25,
         marginTop: 10,
         padding: 5,
         fontSize: 18
+    },
+
+    modalConfirmButton: {
+        alignSelf: 'flex-end',
+        marginRight: 25,
+        marginTop: 15,
+        width: 50
     }
 })

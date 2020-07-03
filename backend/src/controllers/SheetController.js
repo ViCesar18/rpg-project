@@ -1,4 +1,5 @@
 const connection = require('../database/connection')
+const { update } = require('../database/connection')
 
 module.exports = {
     async create(request, response) {
@@ -10,6 +11,7 @@ module.exports = {
 
             //Geral
             character_name: body.character_name,
+            character_img: body.character_img,
             class: body.class,
             level: body.level,
             background: body.background,
@@ -97,6 +99,9 @@ module.exports = {
             perception: body.perception,
             perc_is_proficient: body.perc_is_proficient,
 
+            performance: body.perception,
+            perf_is_proficient: body.perc_is_proficient,
+
             persuasion: body.persuasion,
             pers_is_proficient: body.pers_is_proficient,
 
@@ -118,13 +123,18 @@ module.exports = {
             speed: body.speed,
             hp_max: body.hp_max,
             hp_current: body.hp_current,
-            hp_temporary: body.hp_temporary,
+            temporary_hp_current: body.temporary_hp_current,
+            temporary_hp_max: body.temporary_hp_current,
 
             hp_dice_total: body.hp_dice_total,
             hp_dice: body.hp_dice,
 
-            successes_death_saves: body.successes_death_saves,
-            failures_death_saves: body.failures_death_saves,
+            death_saves_successes_1: body.death_saves_successes_1,
+            death_saves_successes_2: body.death_saves_successes_2,
+            death_saves_successes_3: body.death_saves_successes_3,
+            death_saves_failures_1: body.death_saves_failures_1,
+            death_saves_failures_2: body.death_saves_failures_2,
+            death_saves_failures_3: body.death_saves_failures_3,
 
             //Ataques e magias
             atk_name_1: body.atk_name_1,
@@ -168,10 +178,8 @@ module.exports = {
             skin: body.skin,
             hair: body.hair,
 
-            appearance_img: body.appearance_img,
             allies_name: body.allies_name,
             allies_description: body.allies_description,
-            allies_img: body.allies_img,
 
             character_backstory: body.character_backstory,
             additional_features: body.additional_features,
@@ -254,6 +262,30 @@ module.exports = {
 
         await connection('spells').where('sheet_id', sheet_id).delete()
         await connection('sheets').where('sheet_id', sheet_id).delete()
+
+        return response.status(204).send()
+    },
+
+    async update(request, response) {
+        const user_id = request.headers.authorization
+        const { sheet_id, ...updated_fields} = request.body
+
+        const sheet = await connection('sheets')
+         .where({ sheet_id })
+         .select('user_id')
+         .first()
+
+        if(sheet === undefined){
+            return response.status(400).json({ error: 'Ficha não encontrada!' })
+        }
+
+        if(sheet.user_id != user_id){
+            return response.status(401).json({ error: 'Operação não permitida.' })
+        }
+
+        await connection('sheets')
+         .where({ sheet_id })
+         .update(updated_fields)
 
         return response.status(204).send()
     }

@@ -7,6 +7,7 @@ exports.up = function(knex) {
 
       //Geral
       table.string('character_name', 24).notNullable()
+      table.string('character_img').notNullable()
       table.string('class', 16).notNullable()
       table.integer('level').unsigned().notNullable()
       table.string('background', 16).notNullable()
@@ -15,125 +16,133 @@ exports.up = function(knex) {
       table.integer('xp_points').unsigned().notNullable()
       
       //Atributos
-      table.string('inspiration', 4)
-      table.integer('proficiency_bonus').unsigned().notNullable()
+      table.string('inspiration', 3)
+      table.string('proficiency_bonus', 2).notNullable()
 
       table.integer('strength').unsigned().notNullable()
-      table.integer('strength_modifier').notNullable()
+      table.string('strength_modifier', 3).notNullable()
 
       table.integer('dexterity').unsigned().notNullable()
-      table.integer('dexterity_modifier').notNullable()
+      table.string('dexterity_modifier', 3).notNullable()
 
       table.integer('constitution').unsigned().notNullable()
-      table.integer('constitution_modifier').notNullable()
+      table.string('constitution_modifier', 3).notNullable()
 
       table.integer('intelligence').unsigned().notNullable()
-      table.integer('intelligence_modifier').notNullable()
+      table.string('intelligence_modifier', 3).notNullable()
 
       table.integer('wisdom').unsigned().notNullable()
-      table.integer('wisdom_modifier').notNullable()
+      table.string('wisdom_modifier', 3).notNullable()
 
       table.integer('charisma').unsigned().notNullable()
-      table.integer('charisma_modifier').notNullable()
+      table.string('charisma_modifier', 3).notNullable()
 
       table.integer('passive_wisdom').notNullable()
 
       //Saving Throws
-      table.integer('str_saving_throw').notNullable()
+      table.string('str_saving_throw', 3).notNullable()
       table.boolean('str_st_is_proficient').notNullable()
 
-      table.integer('dex_saving_throw').notNullable()
+      table.string('dex_saving_throw', 3).notNullable()
       table.boolean('dex_st_is_proficient').notNullable()
 
-      table.integer('con_saving_throw').notNullable()
+      table.string('con_saving_throw', 3).notNullable()
       table.boolean('con_st_is_proficient').notNullable()
 
-      table.integer('int_saving_throw').notNullable()
+      table.string('int_saving_throw', 3).notNullable()
       table.boolean('int_st_is_proficient').notNullable()
 
-      table.integer('wis_saving_throw').notNullable()
+      table.string('wis_saving_throw', 3).notNullable()
       table.boolean('wis_st_is_proficient').notNullable()
 
-      table.integer('cha_saving_throw').notNullable()
+      table.string('cha_saving_throw', 3).notNullable()
       table.boolean('cha_st_is_proficient').notNullable()
 
       //Skiils
-      table.integer('acrobatics').notNullable()
+      table.string('acrobatics', 3).notNullable()
       table.boolean('acr_is_proficient').notNullable()
       
-      table.integer('animal_handling').notNullable()
+      table.string('animal_handling', 3).notNullable()
       table.boolean('anh_is_proficient').notNullable()
 
-      table.integer('arcana').notNullable()
+      table.string('arcana', 3).notNullable()
       table.boolean('arc_is_proficient').notNullable()
 
-      table.integer('athletics').notNullable()
+      table.string('athletics', 3).notNullable()
       table.boolean('ath_is_proficient').notNullable()
 
-      table.integer('deception').notNullable()
+      table.string('deception', 3).notNullable()
       table.boolean('dec_is_proficient').notNullable()
 
-      table.integer('history').notNullable()
+      table.string('history', 3).notNullable()
       table.boolean('his_is_proficient').notNullable()
 
-      table.integer('insight').notNullable()
+      table.string('insight', 3).notNullable()
       table.boolean('ins_is_proficient').notNullable()
 
-      table.integer('intimidation').notNullable()
+      table.string('intimidation', 3).notNullable()
       table.boolean('itm_is_proficient').notNullable()
 
-      table.integer('investigation').notNullable()
+      table.string('investigation', 3).notNullable()
       table.boolean('inv_is_proficient').notNullable()
 
-      table.integer('medicine').notNullable()
+      table.string('medicine', 3).notNullable()
       table.boolean('med_is_proficient').notNullable()
 
-      table.integer('nature').notNullable()
+      table.string('nature', 3).notNullable()
       table.boolean('nat_is_proficient').notNullable()
 
-      table.integer('perception').notNullable()
+      table.string('perception', 3).notNullable()
       table.boolean('perc_is_proficient').notNullable()
 
-      table.integer('persuasion').notNullable()
+      table.string('performance', 3).notNullable()
+      table.boolean('perf_is_proficient').notNullable()
+
+      table.string('persuasion', 3).notNullable()
       table.boolean('pers_is_proficient').notNullable()
 
-      table.integer('religion').notNullable()
+      table.string('religion', 3).notNullable()
       table.boolean('rel_is_proficient').notNullable()
 
-      table.integer('sleight_of_hand').notNullable()
+      table.string('sleight_of_hand', 3).notNullable()
       table.boolean('sle_is_proficient').notNullable()
 
-      table.integer('stealth').notNullable()
+      table.string('stealth', 3).notNullable()
       table.boolean('ste_is_proficient').notNullable()
 
-      table.integer('survival').notNullable()
+      table.string('survival', 3).notNullable()
       table.boolean('sur_is_proficient').notNullable()
 
       //Informações de combate
       table.integer('armor_class').unsigned().notNullable()
-      table.integer('initiative').unsigned().notNullable()
+      table.string('initiative', 3).notNullable()
       table.string('speed', 16).notNullable()
       table.integer('hp_max').unsigned().notNullable()
       table.integer('hp_current').unsigned().notNullable()
-      table.integer('hp_temporary').unsigned()
+      table.integer('temporary_hp_current').unsigned()
+      table.integer('temporary_hp_max').unsigned()
 
       table.integer('hp_dice_total').unsigned().notNullable()
       table.string('hp_dice', 16).notNullable()
 
-      table.integer('successes_death_saves').unsigned()
-      table.integer('failures_death_saves').unsigned()
+      table.boolean('death_saves_successes_1').notNullable()
+      table.boolean('death_saves_successes_2').notNullable()
+      table.boolean('death_saves_successes_3').notNullable()
+      table.boolean('death_saves_failures_1').notNullable()
+      table.boolean('death_saves_failures_2').notNullable()
+      table.boolean('death_saves_failures_3').notNullable()
 
       //Ataques e magias
       table.string('atk_name_1', 20)
-      table.integer('atk_bonus_1').unsigned()
+      table.string('atk_bonus_1', 3)
       table.string('atk_damage_and_type_1', 20)
 
       table.string('atk_name_2', 20)
-      table.integer('atk_bonus_2').unsigned()
+      table.string('atk_bonus_2', 3)
       table.string('atk_damage_and_type_2', 20)
 
       table.string('atk_name_3', 20)
-      table.integer('atk_bonus_3').unsigned()
+      table.string('atk_bonus_3', 3)
       table.string('atk_damage_and_type_3', 20)
 
       table.text('atk_description')
@@ -159,16 +168,14 @@ exports.up = function(knex) {
 
       //Descrições detalhadas
       table.integer('age').unsigned()
-      table.float('height').unsigned()
-      table.float('weight').unsigned()
+      table.string('height', 6)
+      table.string('weight', 6)
       table.string('eyes', 12)
-      table.string('skin', 12)
+      table.string('skin', 20)
       table.string('hair', 12)
 
-      table.string('appearance_img')
       table.string('allies_name', 16)
       table.text('allies_description')
-      table.string('allies_img')
 
       table.text('character_backstory')
       table.text('additional_features')
