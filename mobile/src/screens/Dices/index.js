@@ -1,5 +1,6 @@
-import React from 'react'
-import { View, TouchableHighlight, Image, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { View, TouchableHighlight, Image, TouchableOpacity } from 'react-native'
+import RNPickerSelect from 'react-native-picker-select'
 import { DefaultText, DefaultTextInput } from '../../components'
 
 import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
@@ -9,6 +10,8 @@ const Icon = createIconSetFromIcoMoon(iconMoonConfig)
 import styles from './styles'
 
 export default function Dices({ navigation }) {
+    const [selectedValue, setSelectedValue] = useState('d20')
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -24,158 +27,22 @@ export default function Dices({ navigation }) {
                     <DefaultText style={styles.title}>Dados</DefaultText>
                 </View>
             </View>
-            <ScrollView contentContainerStyle={styles.content}>
-                <View style={styles.dicesContainer}>
-                    <View style={styles.columnTitleContainer}>
-                        <DefaultText style={[styles.columnTitle, { marginRight: '24%' }]}>Nº Dados</DefaultText>
-                        <DefaultText style={styles.columnTitle}>Modificador</DefaultText>
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d4" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d4</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d6" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d6</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d8" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d8</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d10" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d10</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d12" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d12</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={styles.dice}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d20" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d20</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-
-                    <View style={[styles.dice, { marginBottom: 0 }]}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name="dice-d100" size={36} color={'#FFF'} />
-                            <DefaultText style={styles.diceTitle}>d100</DefaultText>
-                        </View>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                        <DefaultTextInput style={{ color: '#FFF', fontSize: 28 }}>+</DefaultTextInput>
-                        <DefaultTextInput
-                            style={styles.diceInput}
-                            maxLength={1}
-                            selectionColor="#4A55A1"
-                            keyboardType="number-pad"
-                        />
-                    </View>
-                </View>
-
-                <TouchableOpacity style={styles.button}>
-                    <DefaultText style={styles.buttonText}>Rolar</DefaultText>
-                </TouchableOpacity>
-            </ScrollView>
+            <View style={styles.content}>
+                <RNPickerSelect
+                    style={styles.dicePicker}
+                    onValueChange={() => {}}
+                    placeholder={{ label: 'Selecione um dado...', value: null, color: '#C2C2C2' }}
+                    items={[
+                        { label: 'd4', value: 'd4' },
+                        { label: 'd6', value: 'd6' },
+                        { label: 'd8', value: 'd8' },
+                        { label: 'd10', value: 'd10' },
+                        { label: 'd12', value: 'd12' },
+                        { label: 'd20', value: 'd20' },
+                        { label: 'd100', value: 'd100' },
+                    ]}
+                />
+            </View>
         </View>
     )
 }

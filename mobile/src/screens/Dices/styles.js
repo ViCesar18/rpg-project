@@ -37,58 +37,26 @@ export default StyleSheet.create({
         padding: 25,
     },
 
-    dicesContainer: {
-        justifyContent: 'space-between',
-        backgroundColor: '#272D54',
-        borderRadius: 30,
-        padding: 15
+    dicePicker: {
+        inputIOS: {
+            fontSize: 16,
+            paddingVertical: 12,
+            paddingHorizontal: 10,
+            borderWidth: 1,
+            borderColor: 'gray',
+            borderRadius: 4,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+          },
+          inputAndroid: {
+            fontSize: 16,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            borderWidth: 0.5,
+            borderColor: 'purple',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+          },
     },
-
-    columnTitleContainer: {
-        flexDirection: 'row',
-        marginLeft: '33%'
-    },
-
-    columnTitle: {
-        fontFamily: 'Montserrat-Bold',
-        color: '#FFF',
-    },
-
-    dice: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 28
-    },
-
-    diceTitle: {
-        marginLeft: 10,
-        width: 40,
-        color: '#FFF'
-    },
-
-    diceInput: {
-        backgroundColor: '#FFF',
-        borderRadius: 8,
-        width: '25%',
-        textAlign: 'center',
-        fontSize: 24
-    },
-
-    button: {
-        alignSelf: 'center',
-        height: 45,
-        backgroundColor: '#B7123C',
-        justifyContent: 'center',
-        alignContent: 'center',
-        padding: 10,
-        marginTop: 10,
-        borderRadius: 8,
-        elevation: 10
-    },
-
-    buttonText: {
-        fontFamily: 'Montserrat-Bold',
-        color: '#FFF',
-        fontSize: 28
-    }
 })
