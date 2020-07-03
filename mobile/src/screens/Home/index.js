@@ -53,7 +53,7 @@ export default function Home({ navigation }) {
                 >
                     <Feather name={'menu'} size={36} color={'#FFF'} />
                 </TouchableHighlight>
-                <Image style={styles.headerLogo} source={require('../../assets/logo.png')} />
+                <Image style={styles.headerLogo} source={require('../../assets/logo/logo.png')} />
             </View>
 
             <FlatList

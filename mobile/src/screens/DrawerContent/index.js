@@ -63,7 +63,7 @@ export default function CustomDrawer({ navigation, state }) {
                         icon={({ color }) => (
                             <View style={styles.itemIconContent}>
                                 <Icon
-                                    name="dice-d20"
+                                    name="dice"
                                     color={color}
                                     size={40}
                                 />
