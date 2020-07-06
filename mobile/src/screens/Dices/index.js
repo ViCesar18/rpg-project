@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, TouchableHighlight, Image, TouchableOpacity } from 'react-native'
-import RNPickerSelect from 'react-native-picker-select'
+import { View, TouchableHighlight, Image, TouchableOpacity, ScrollView } from 'react-native'
+import RNPickerSelect from 'react-native-picker-select';
 import { DefaultText, DefaultTextInput } from '../../components'
 
 import { Feather, createIconSetFromIcoMoon } from '@expo/vector-icons'
@@ -27,9 +27,11 @@ export default function Dices({ navigation }) {
                     <DefaultText style={styles.title}>Dados</DefaultText>
                 </View>
             </View>
-            <View style={styles.content}>
+            <ScrollView style={styles.content}>
                 <RNPickerSelect
-                    style={styles.dicePicker}
+                    useNativeAndroidPickerStyle={false}
+                    Icon={() => <Feather name={'chevron-down'} size={50} color={'#FFF'} />}
+                    style={{ inputAndroid: styles.dicePicker, inputIOS: styles.dicePicker }}
                     onValueChange={() => {}}
                     placeholder={{ label: 'Selecione um dado...', value: null, color: '#C2C2C2' }}
                     items={[
@@ -42,7 +44,34 @@ export default function Dices({ navigation }) {
                         { label: 'd100', value: 'd100' },
                     ]}
                 />
-            </View>
+
+                <View style={{ marginTop: '5%' }}>
+                    <DefaultText style={styles.inputTitle}>Número de Dados</DefaultText>
+                    <DefaultTextInput
+                        style={[styles.dicePicker, { width: 125, textAlign: 'center' }]}
+                        keyboardType="number-pad"
+                        maxLength={2}
+                        selectionColor="#4A55A1"
+                    />
+                </View>
+
+                <View style={{ marginTop: '5%' }}>
+                    <DefaultText style={styles.inputTitle}>Modificador</DefaultText>
+                    <DefaultTextInput
+                        style={[styles.dicePicker, { width: 125, textAlign: 'center' }]}
+                        keyboardType="number-pad"
+                        maxLength={2}
+                        selectionColor="#4A55A1"
+                    />
+                </View>
+
+                <View style={{ alignSelf: 'center', marginTop: '5%' }}>
+                    <TouchableOpacity style={styles.iconView}>
+                        <Icon name="dice-d20" size={100} color="#FFF" />
+                    </TouchableOpacity>
+                    <DefaultText style={styles.buttonText}>Rolar</DefaultText>
+                </View>
+            </ScrollView>
         </View>
     )
 }
